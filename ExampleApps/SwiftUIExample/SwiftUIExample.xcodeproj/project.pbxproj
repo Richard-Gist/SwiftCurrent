@@ -64,6 +64,8 @@
 		D7DBD1FF26CD920700F1E39B /* CustomAssertions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DBD1F926CD920700F1E39B /* CustomAssertions.swift */; };
 		D7DBD20626CD923600F1E39B /* XCTestHooks.m in Sources */ = {isa = PBXBuildFile; fileRef = D7DBD20126CD923600F1E39B /* XCTestHooks.m */; };
 		D7DBD20726CD923600F1E39B /* NSObjectLoadable.m in Sources */ = {isa = PBXBuildFile; fileRef = D7DBD20526CD923600F1E39B /* NSObjectLoadable.m */; };
+		D7F30ADB26D6A59600E0F62D /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F30ADA26D6A59600E0F62D /* LoginView.swift */; };
+		D7F30ADE26D6ADB400E0F62D /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F30ADD26D6ADB400E0F62D /* Colors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -134,6 +136,8 @@
 		D7DBD20326CD923600F1E39B /* NSObjectLoadable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSObjectLoadable.h; sourceTree = "<group>"; };
 		D7DBD20426CD923600F1E39B /* XCTestHooks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCTestHooks.h; sourceTree = "<group>"; };
 		D7DBD20526CD923600F1E39B /* NSObjectLoadable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSObjectLoadable.m; sourceTree = "<group>"; };
+		D7F30ADA26D6A59600E0F62D /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		D7F30ADD26D6ADB400E0F62D /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -257,6 +261,8 @@
 		CAC34B6D26A07FE90039A373 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D7F30ADC26D6AD9E00E0F62D /* Design */,
+				D7F30AD926D6A54900E0F62D /* SignUp */,
 				CA0536F926A0917A00BF8FC5 /* Profile */,
 				CAC34B6E26A07FE90039A373 /* QRScannerFeatureView.swift */,
 				CAC34B6F26A07FE90039A373 /* QRScannerFeatureOnboardingView.swift */,
@@ -353,6 +359,22 @@
 				D7DBD20426CD923600F1E39B /* XCTestHooks.h */,
 			);
 			path = Include;
+			sourceTree = "<group>";
+		};
+		D7F30AD926D6A54900E0F62D /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				D7F30ADA26D6A59600E0F62D /* LoginView.swift */,
+			);
+			path = SignUp;
+			sourceTree = "<group>";
+		};
+		D7F30ADC26D6AD9E00E0F62D /* Design */ = {
+			isa = PBXGroup;
+			children = (
+				D7F30ADD26D6ADB400E0F62D /* Colors.swift */,
+			);
+			path = Design;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -474,6 +496,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA7B829F26A1FAAC005AA87D /* InspectableAlert.swift in Sources */,
+				D7F30ADE26D6ADB400E0F62D /* Colors.swift in Sources */,
 				CA0536F626A0888200BF8FC5 /* ProfileFeatureOnboardingView.swift in Sources */,
 				CAC34B4326A07F830039A373 /* SwiftUIExampleApp.swift in Sources */,
 				CA0536F426A0887800BF8FC5 /* ProfileFeatureView.swift in Sources */,
@@ -489,6 +512,7 @@
 				CAC34B7726A07FE90039A373 /* MapFeatureView.swift in Sources */,
 				CAC34B7526A07FE90039A373 /* MapFeatureOnboardingView.swift in Sources */,
 				CA7B82A526A2061B005AA87D /* MFAView.swift in Sources */,
+				D7F30ADB26D6A59600E0F62D /* LoginView.swift in Sources */,
 				CAC34B7326A07FE90039A373 /* QRScannerFeatureView.swift in Sources */,
 				CAC34B7426A07FE90039A373 /* QRScannerFeatureOnboardingView.swift in Sources */,
 			);
@@ -667,7 +691,7 @@
 				DEVELOPMENT_TEAM = KRX3M99K22;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = SwiftUIExample/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -689,7 +713,7 @@
 				DEVELOPMENT_TEAM = KRX3M99K22;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = SwiftUIExample/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -709,7 +733,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KRX3M99K22;
 				INFOPLIST_FILE = SwiftUIExampleTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -732,7 +756,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KRX3M99K22;
 				INFOPLIST_FILE = SwiftUIExampleTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
