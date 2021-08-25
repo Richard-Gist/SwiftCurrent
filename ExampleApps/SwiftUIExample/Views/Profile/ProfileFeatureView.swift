@@ -33,12 +33,6 @@ struct ProfileFeatureView: View, FlowRepresentable {
                     Section(header: Text("Account Information:").font(.title)) {
                         AccountInformationView().padding()
                     }
-                    Divider()
-                }
-                VStack {
-                    Button("Clear User Defaults") {
-                        Self.userDefaults.dictionaryRepresentation().keys.forEach(Self.userDefaults.removeObject(forKey:))
-                    }
                 }
                 Spacer()
             }

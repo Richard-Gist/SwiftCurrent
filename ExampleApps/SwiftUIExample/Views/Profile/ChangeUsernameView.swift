@@ -24,12 +24,16 @@ struct ChangeUsernameView: View, FlowRepresentable {
     var body: some View {
         VStack {
             HStack {
-                Text("Enter new username: ")
+                Text("New username: ")
                 TextField("\(currentUsername)", text: $currentUsername)
+                    .background(Color.secondary.opacity(0.3))
+                    .padding()
             }
             Button("Save") {
                 proceedInWorkflow(currentUsername)
             }
-        }.onReceive(inspection.notice) { inspection.visit(self, $0) } // ViewInspector
+        }
+        .padding()
+        .onReceive(inspection.notice) { inspection.visit(self, $0) } // ViewInspector
     }
 }

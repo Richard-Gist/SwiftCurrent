@@ -20,7 +20,7 @@ struct AccountInformationView: View, FlowRepresentable {
     weak var _workflowPointer: AnyFlowRepresentable?
 
     var body: some View {
-        VStack { // swiftlint:disable:this closure_body_length
+        VStack(alignment: .leading, spacing: 25) { // swiftlint:disable:this closure_body_length
             if !usernameWorkflowLaunched {
                 HStack {
                     Text("Username: \(username)")
@@ -32,7 +32,7 @@ struct AccountInformationView: View, FlowRepresentable {
             } else {
                 WorkflowLauncher(isLaunched: $usernameWorkflowLaunched, startingArgs: username) {
                     thenProceed(with: MFAView.self) {
-                        thenProceed(with: ChangeUsernameView.self)
+                        thenProceed(with: ChangeUsernameView.self).presentationType(.modal)
                     }
                 }.onFinish {
                     guard case .args(let newUsername as String) = $0 else { return }

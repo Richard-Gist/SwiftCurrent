@@ -31,7 +31,7 @@ import UIKit
   ```
  */
 @available(iOS 14.0, macOS 11, tvOS 14.0, watchOS 7.0, *)
-public struct WorkflowItem<F: FlowRepresentable & View, Wrapped: View, Content: View>: View {
+public struct WorkflowItem<F: FlowRepresentable & View, Wrapped: View & SwiftUIWorkflowPresentable, Content: View>: View {
     // These need to be state variables to survive SwiftUI re-rendering. Change under penalty of torture BY the codebase you modified.
     @State private var content: Content?
     @State private var wrapped: Wrapped?
@@ -39,6 +39,7 @@ public struct WorkflowItem<F: FlowRepresentable & View, Wrapped: View, Content: 
     @State private var modifierClosure: ((AnyFlowRepresentableView) -> Void)?
     @State private var flowPersistenceClosure: (AnyWorkflow.PassedArgs) -> FlowPersistence = { _ in .default }
     @State private var launchStyle: LaunchStyle.SwiftUI.PresentationType = .default
+    @State private var isActive = false
 
     @EnvironmentObject private var model: WorkflowViewModel
     @EnvironmentObject private var launcher: Launcher
@@ -48,15 +49,30 @@ public struct WorkflowItem<F: FlowRepresentable & View, Wrapped: View, Content: 
     public var body: some View {
         ViewBuilder {
             if model.isLaunched == true {
-                if model.body?.extractErasedView() is Content {
-                    content
+                if let wrapped = wrapped {
+                    switch wrapped.workflowLaunchStyle {
+                        case .navigationLink:
+                            content.navLink(to: wrapped, isActive: $isActive)
+                        case .modal:
+                            content.sheet(isPresented: $isActive) { wrapped }
+                        case .default:
+                            if model.body?.extractErasedView() is Content {
+                                content
+                            } else {
+                                wrapped
+                            }
+                    }
                 } else {
-                    wrapped
+                    if model.body?.extractErasedView() is Content {
+                        content
+                    }
                 }
             }
         }
         .onReceive(model.$body) {
-            if let body = $0?.extractErasedView() as? Content {
+            if $0?.previouslyLoadedElement?.extractErasedView() is Content {
+                isActive = true
+            } else if let body = $0?.extractErasedView() as? Content {
                 content = body
             }
         }
@@ -164,6 +180,13 @@ extension WorkflowItem: WorkflowModifier {
     func modify(workflow: AnyWorkflow) {
         workflow.append(metadata)
         (wrapped as? WorkflowModifier)?.modify(workflow: workflow)
+    }
+}
+
+@available(iOS 14.0, macOS 11, tvOS 14.0, watchOS 7.0, *)
+extension WorkflowItem: SwiftUIWorkflowPresentable {
+    public var workflowLaunchStyle: LaunchStyle.SwiftUI.PresentationType {
+        launchStyle
     }
 }
 
