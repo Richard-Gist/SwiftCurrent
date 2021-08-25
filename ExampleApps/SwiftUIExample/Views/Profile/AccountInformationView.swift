@@ -24,7 +24,8 @@ struct AccountInformationView: View, FlowRepresentable {
             HStack {
                 if !usernameWorkflowLaunched {
                     HStack {
-                        Image(systemName: "person")
+                        Image(systemName: "person.fill")
+                            .foregroundColor(.icon)
                         Text("Username: ")
                         Text(username)
                         Spacer()
@@ -34,6 +35,7 @@ struct AccountInformationView: View, FlowRepresentable {
                             }
                         } label: {
                             Image(systemName: "pencil")
+                                .foregroundColor(.icon)
                         }
                     }
                     .textEntryStyle()
@@ -54,7 +56,8 @@ struct AccountInformationView: View, FlowRepresentable {
 
             if !passwordWorkflowLaunched {
                 HStack {
-                    Image(systemName: "lock")
+                    Image(systemName: "lock.fill")
+                        .foregroundColor(.icon)
                     Text("Password: ")
                     SecureField(text: $password) { EmptyView() }.disabled(true)
                     Spacer()
@@ -64,6 +67,7 @@ struct AccountInformationView: View, FlowRepresentable {
                         }
                     } label: {
                         Image(systemName: "pencil")
+                            .foregroundColor(.icon)
                     }
                 }
                 .textEntryStyle()
