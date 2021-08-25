@@ -17,7 +17,8 @@ struct SwiftUIExampleApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+                ContentView()
+                    .preferredColorScheme(.dark)
         }
     }
 }

@@ -30,7 +30,9 @@ struct ChangeUsernameView: View, FlowRepresentable {
                     .padding()
             }
             Button("Save") {
-                proceedInWorkflow(currentUsername)
+                withAnimation {
+                    proceedInWorkflow(currentUsername)
+                }
             }
         }
         .padding()

@@ -10,7 +10,8 @@ import SwiftUI
 import SwiftCurrent
 import SwiftCurrent_SwiftUI
 
-struct LoginView: View {
+struct LoginView: View, FlowRepresentable {
+    weak var _workflowPointer: AnyFlowRepresentable?
     @State var email = ""
     @State var password = ""
     @State var showSignUp = false
@@ -69,7 +70,7 @@ struct LoginView: View {
                     .padding(.horizontal, 20)
 
                     Button {
-                        print("Proceed here")
+                        proceedInWorkflow()
                     } label: {
                         Text("LOGIN")
                             .primaryButtonStyle()

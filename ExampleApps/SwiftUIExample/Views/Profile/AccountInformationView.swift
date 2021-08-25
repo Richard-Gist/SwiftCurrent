@@ -21,31 +21,49 @@ struct AccountInformationView: View, FlowRepresentable {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 25) { // swiftlint:disable:this closure_body_length
-            if !usernameWorkflowLaunched {
-                HStack {
-                    Text("Username: \(username)")
-                    Spacer()
-                    Button("Change Username") {
-                        usernameWorkflowLaunched = true
+            HStack {
+                if !usernameWorkflowLaunched {
+                    HStack {
+                        Image(systemName: "person")
+                        Text("Username: \(username)")
+                        Spacer()
+                        Button {
+                            withAnimation {
+                                usernameWorkflowLaunched = true
+                            }
+                        } label: {
+                            Image(systemName: "pencil")
+                        }
                     }
+                    .textEntryStyle()
                 }
-            } else {
-                WorkflowLauncher(isLaunched: $usernameWorkflowLaunched, startingArgs: username) {
-                    thenProceed(with: MFAView.self) {
-                        thenProceed(with: ChangeUsernameView.self).presentationType(.modal)
+                    WorkflowLauncher(isLaunched: $usernameWorkflowLaunched.animation(), startingArgs: username) {
+                        thenProceed(with: MFAView.self) {
+                            thenProceed(with: ChangeUsernameView.self).presentationType(.modal)
+                        }
+                    }.onFinish {
+                        guard case .args(let newUsername as String) = $0 else { return }
+                        username = newUsername
+                        withAnimation {
+                            usernameWorkflowLaunched = false
+                        }
                     }
-                }.onFinish {
-                    guard case .args(let newUsername as String) = $0 else { return }
-                    username = newUsername
-                    usernameWorkflowLaunched = false
-                }
+
             }
+
             if !passwordWorkflowLaunched {
-                Button("Change Password") {
-                    passwordWorkflowLaunched = true
+                HStack {
+                    Text("Password: ")
+                    Spacer()
+                    Button("Change Password") {
+                        withAnimation {
+                            passwordWorkflowLaunched = true
+                        }
+                    }
                 }
+                .textEntryStyle()
             } else {
-                WorkflowLauncher(isLaunched: $passwordWorkflowLaunched, startingArgs: password) {
+                WorkflowLauncher(isLaunched: $passwordWorkflowLaunched.animation(), startingArgs: password) {
                     thenProceed(with: MFAView.self) {
                         thenProceed(with: ChangePasswordView.self)
                     }
@@ -56,5 +74,14 @@ struct AccountInformationView: View, FlowRepresentable {
                 }
             }
         }.onReceive(inspection.notice) { inspection.visit(self, $0) } // ViewInspector
+    }
+}
+
+struct temp: PreviewProvider {
+    static var previews: some View {
+        AccountInformationView()
+            .preferredColorScheme(.dark)
+            .background(Color.primaryBackground)
+
     }
 }

@@ -9,7 +9,7 @@
 import SwiftUI
 import SwiftCurrent
 
-struct TermsAndConditions: View, FlowRepresentable {
+struct TermsAndConditions: View, PassthroughFlowRepresentable {
     weak var _workflowPointer: AnyFlowRepresentable?
     var body: some View {
         VStack {

@@ -37,7 +37,9 @@ struct MFAView: View, PassthroughFlowRepresentable {
                     TextField("Enter Code:", text: $enteredCode)
                     Button("Submit") {
                         if enteredCode == "1234" {
-                            proceedInWorkflow()
+                            withAnimation {
+                                proceedInWorkflow()
+                            }
                         } else {
                             errorMessage = ErrorMessage(message: "Invalid code entered, abandoning workflow.")
                         }
@@ -46,11 +48,11 @@ struct MFAView: View, PassthroughFlowRepresentable {
             }
             .padding()
             .id(id)
-            .onAppear {
-                withAnimation {
-                    svProxy.scrollTo(id)
-                }
-            }
+//            .onAppear {
+//                withAnimation {
+//                    svProxy.scrollTo(id)
+//                }
+//            }
         }
         .testableAlert(item: $errorMessage) { message in
             Alert(title: Text(message.message), dismissButton: .default(Text("Ok")) {

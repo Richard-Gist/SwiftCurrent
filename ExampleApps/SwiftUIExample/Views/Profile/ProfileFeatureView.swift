@@ -37,11 +37,13 @@ struct ProfileFeatureView: View, FlowRepresentable {
                 Spacer()
             }
         }
+        .background(Color.primaryBackground)
+
     }
 }
 
 struct ProfileFeature_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileFeatureView()
+        ProfileFeatureView().preferredColorScheme(.dark)
     }
 }

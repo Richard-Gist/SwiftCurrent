@@ -45,7 +45,9 @@ struct ChangePasswordView: View, FlowRepresentable {
                 submitted = true
                 validatePassword(newPassword)
                 if errors.isEmpty {
-                    proceedInWorkflow(newPassword)
+                    withAnimation {
+                        proceedInWorkflow(newPassword)
+                    }
                 }
             }
         }
