@@ -10,12 +10,23 @@ import SwiftUI
 
 struct TermsAndConditions: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        GeometryReader { _ in
+            VStack {
+                HStack {
+                    Image(systemName: "document")
+                    VStack {
+                        Text("Terms of Service")
+                        Text("Last Update 08/25/2021")
+                    }
+                }
+
+            }
+        }.background(Color.primaryBackground.edgesIgnoringSafeArea(.all))
     }
 }
 
 struct TermsAndConditions_Previews: PreviewProvider {
     static var previews: some View {
-        TermsAndConditions()
+        TermsAndConditions().preferredColorScheme(.dark)
     }
 }

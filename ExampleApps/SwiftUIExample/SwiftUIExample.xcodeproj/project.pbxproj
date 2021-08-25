@@ -69,6 +69,7 @@
 		D7F30ADE26D6ADB400E0F62D /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F30ADD26D6ADB400E0F62D /* Colors.swift */; };
 		D7F30AE026D6B93100E0F62D /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F30ADF26D6B93100E0F62D /* Images.swift */; };
 		D7F30AE226D6BA8A00E0F62D /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F30AE126D6BA8A00E0F62D /* Styles.swift */; };
+		D7F30AE426D6CDE800E0F62D /* TermsAndConditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F30AE326D6CDE800E0F62D /* TermsAndConditions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -144,6 +145,7 @@
 		D7F30ADD26D6ADB400E0F62D /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		D7F30ADF26D6B93100E0F62D /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		D7F30AE126D6BA8A00E0F62D /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
+		D7F30AE326D6CDE800E0F62D /* TermsAndConditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAndConditions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -372,6 +374,7 @@
 			children = (
 				D7F30ADA26D6A59600E0F62D /* LoginView.swift */,
 				CAC7498F26D6B8540001BB39 /* SignUpView.swift */,
+				D7F30AE326D6CDE800E0F62D /* TermsAndConditions.swift */,
 			);
 			path = SignUp;
 			sourceTree = "<group>";
@@ -507,6 +510,7 @@
 				CA7B829F26A1FAAC005AA87D /* InspectableAlert.swift in Sources */,
 				D7F30ADE26D6ADB400E0F62D /* Colors.swift in Sources */,
 				CA0536F626A0888200BF8FC5 /* ProfileFeatureOnboardingView.swift in Sources */,
+				D7F30AE426D6CDE800E0F62D /* TermsAndConditions.swift in Sources */,
 				CAC34B4326A07F830039A373 /* SwiftUIExampleApp.swift in Sources */,
 				CA0536F426A0887800BF8FC5 /* ProfileFeatureView.swift in Sources */,
 				CA4B40B926A09E5800B18626 /* ChangeUsernameView.swift in Sources */,
