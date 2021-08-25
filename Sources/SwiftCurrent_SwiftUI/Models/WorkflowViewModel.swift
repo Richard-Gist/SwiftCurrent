@@ -41,7 +41,6 @@ extension WorkflowViewModel: OrchestrationResponder {
 
     func abandon(_ workflow: AnyWorkflow, onFinish: (() -> Void)?) {
         isLaunched = false
-        body = nil
         onAbandonPublisher.send()
         if isLaunched == true {
             workflow.launch(withOrchestrationResponder: self, passedArgs: launchArgs)
