@@ -7,8 +7,10 @@
 //
 
 import SwiftUI
+import SwiftCurrent
 
-struct TermsAndConditions: View {
+struct TermsAndConditions: View, FlowRepresentable {
+    weak var _workflowPointer: AnyFlowRepresentable?
     var body: some View {
         GeometryReader { _ in
             VStack {

@@ -69,7 +69,6 @@ struct LoginView: View {
                     .padding(.horizontal, 20)
 
                     Button {
-                        showSignUp = true
                         print("Proceed here")
                     } label: {
                         Text("LOGIN")
@@ -105,7 +104,7 @@ struct LoginView: View {
         .sheet(isPresented: $showSignUp) {
             WorkflowLauncher(isLaunched: $showSignUp) {
                 thenProceed(with: SignUp.self) {
-                    thenProceed(with: Next.self).presentationType(.navigationLink)
+                    thenProceed(with: TermsAndConditions.self).presentationType(.navigationLink)
                 }.presentationType(.navigationLink)
             }.embedInNavigationView()
         }
