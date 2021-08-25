@@ -85,12 +85,3 @@ struct AccountInformationView: View, FlowRepresentable {
         }.onReceive(inspection.notice) { inspection.visit(self, $0) } // ViewInspector
     }
 }
-
-struct temp: PreviewProvider {
-    static var previews: some View {
-        AccountInformationView()
-            .preferredColorScheme(.dark)
-            .background(Color.primaryBackground)
-
-    }
-}

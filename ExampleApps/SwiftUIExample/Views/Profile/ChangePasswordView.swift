@@ -35,12 +35,15 @@ struct ChangePasswordView: View, FlowRepresentable {
             TextField("Old Password", text: $oldPassword)
                 .autocapitalization(.none)
                 .disableAutocorrection(true)
+                .textEntryStyle()
             TextField("New Password", text: $newPassword)
                 .autocapitalization(.none)
                 .disableAutocorrection(true)
+                .textEntryStyle()
             TextField("Confirm New Password", text: $confirmNewPassword)
                 .autocapitalization(.none)
                 .disableAutocorrection(true)
+                .textEntryStyle()
             Button("Save") {
                 submitted = true
                 validatePassword(newPassword)

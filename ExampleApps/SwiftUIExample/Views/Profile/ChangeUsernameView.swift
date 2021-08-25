@@ -24,18 +24,32 @@ struct ChangeUsernameView: View, FlowRepresentable {
     var body: some View {
         VStack {
             HStack {
+                Image(systemName: "person.fill")
+                    .foregroundColor(.icon)
                 Text("New username: ")
                 TextField("\(currentUsername)", text: $currentUsername)
-                    .background(Color.secondary.opacity(0.3))
-                    .padding()
+                Spacer()
             }
-            Button("Save") {
+            .textEntryStyle()
+            Button {
                 withAnimation {
                     proceedInWorkflow(currentUsername)
                 }
+            } label: {
+                Text("SAVE")
+                    .primaryButtonStyle()
             }
         }
         .padding()
         .onReceive(inspection.notice) { inspection.visit(self, $0) } // ViewInspector
+    }
+}
+
+struct temp: PreviewProvider {
+    static var previews: some View {
+        ChangeUsernameView()
+            .preferredColorScheme(.dark)
+            .background(Color.primaryBackground)
+
     }
 }
