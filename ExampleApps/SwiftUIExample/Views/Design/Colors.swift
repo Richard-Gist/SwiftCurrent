@@ -15,6 +15,10 @@ extension Color {
         Color.init(red: 24/255, green: 24/255, blue: 24/255)
     }
 
+    static var primaryText: Color {
+        white
+    }
+
     static var card: Color {
         Color.init(red: 86/255, green: 86/255, blue: 118/255)
             .opacity(0.8)
@@ -29,6 +33,6 @@ extension Color {
     }
 
     static var divider: Color {
-        Color.white.opacity(0.5)
+        white.opacity(0.5)
     }
 }
