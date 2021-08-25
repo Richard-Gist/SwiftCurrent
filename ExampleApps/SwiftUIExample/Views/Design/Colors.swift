@@ -11,7 +11,6 @@ import SwiftUI
 
 extension Color {
     static var primaryBackground: Color {
-//        Color.init(red: 29/255, green: 30/255, blue: 72/255)
         Color.init(red: 24/255, green: 24/255, blue: 24/255)
     }
 
@@ -25,11 +24,15 @@ extension Color {
     }
 
     static var icon: Color {
-        Color.init(red: 130/255, green: 18/255, blue: 196/255)
+        primaryColor
     }
 
     static var primaryButton: Color {
-        Color.init(red: 130/255, green: 18/255, blue: 196/255)
+        primaryColor
+    }
+
+    private static var primaryColor: Color {
+        Color.init(red: 0/255, green: 134/255, blue: 234/255)
     }
 
     static var divider: Color {

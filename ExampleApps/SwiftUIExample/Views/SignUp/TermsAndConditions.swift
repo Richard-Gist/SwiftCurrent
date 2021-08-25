@@ -15,6 +15,7 @@ struct TermsAndConditions: View, FlowRepresentable {
         VStack {
             HStack {
                 Image(systemName: "doc.on.doc")
+                    .foregroundColor(.icon)
                 Text("Last Update 08/25/2021")
                     .font(.subheadline)
                     .foregroundColor(Color.white.opacity(0.8))
@@ -33,11 +34,13 @@ struct TermsAndConditions: View, FlowRepresentable {
             VStack(alignment: .leading) {
                 HStack {
                     Image(systemName: "checkmark.circle")
-                    Text("I agree with the")
+                        .foregroundColor(.icon)
+                    Text("I agree with the Terms of Service")
                 }
                 HStack {
                     Image(systemName: "checkmark.circle")
-                    Text("I agree with the stuff")
+                        .foregroundColor(.icon)
+                    Text("I agree with the Privacy Policy")
                 }
             }
             .padding(.bottom)
