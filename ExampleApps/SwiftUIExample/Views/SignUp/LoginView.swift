@@ -17,7 +17,7 @@ struct LoginView: View {
     @State var showPassword = false
     var body: some View {
         GeometryReader { _ in
-            VStack {
+            VStack(spacing: 40) {
                 Image.logo
                     .resizable()
                     .frame(width: 120, height: 120)
@@ -34,12 +34,9 @@ struct LoginView: View {
                                     .foregroundColor(.icon)
 
                                 TextField("Email Address", text: $email)
-
                                     .keyboardType(.emailAddress)
                             }
-                            .padding()
-                            .background()
-                            .clipShape(Capsule())
+                            .textEntryStyle()
 
                             HStack(spacing: 15) {
                                 Button {
@@ -56,8 +53,8 @@ struct LoginView: View {
                                         .disableAutocorrection(true)
                                 }
                             }
+                            .textEntryStyle()
                         }
-                        .padding(.horizontal)
 
                         HStack {
                             Spacer(minLength: 0)
@@ -65,7 +62,7 @@ struct LoginView: View {
 
                     }
                     .padding()
-                    .padding(.bottom, 65)
+                    .padding(.bottom, 25)
                     .background(Color.card)
                     .cornerRadius(35)
                     .padding(.horizontal, 20)
@@ -78,6 +75,28 @@ struct LoginView: View {
                             .primaryButtonStyle()
                     }
                     .offset(y: 25)
+                }
+                .padding(.bottom, 27)
+
+                HStack(spacing: 15) {
+                    Rectangle()
+                        .fill(Color.divider)
+                        .frame(height: 1)
+
+                    Text("OR")
+                        .foregroundColor(Color.white.opacity(0.8))
+
+                    Rectangle()
+                        .fill(Color.divider)
+                        .frame(height: 1)
+                }
+                .padding(.horizontal)
+
+                Button {
+                    showSignUp = true
+                } label: {
+                    Text("Sign Up")
+                        .secondaryButtonStyle()
                 }
             }
         }
@@ -94,6 +113,8 @@ struct LoginView: View {
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginView().preferredColorScheme(.dark)
+        Group {
+            LoginView().preferredColorScheme(.dark)
+        }
     }
 }

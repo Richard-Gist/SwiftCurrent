@@ -11,20 +11,38 @@ import SwiftUI
 
 extension Text {
     func titleStyle() -> Text {
-        self
-            .foregroundColor(.primaryText)
+        foregroundColor(.primaryText)
             .font(.title)
             .fontWeight(.bold)
     }
 
     func primaryButtonStyle() -> some View {
-        self
-            .foregroundColor(.white)
+        foregroundColor(.white)
             .fontWeight(.bold)
             .padding(.vertical)
             .padding(.horizontal, 50)
             .background(Color.primaryButton)
             .clipShape(Capsule())
             .shadow(color: .white.opacity(0.1), radius: 5, x: 0, y: 5)
+    }
+
+    func secondaryButtonStyle() -> some View {
+        foregroundColor(.white)
+            .fontWeight(.bold)
+            .shadow(color: .white.opacity(0.1), radius: 5, x: 0, y: 5)
+            .padding(.vertical)
+            .padding(.horizontal, 50)
+            .clipShape(Capsule())
+            .overlay(Capsule().stroke(Color.primaryButton, lineWidth: 4))
+            .shadow(color: .white.opacity(0.1), radius: 5, x: 0, y: 5)
+    }
+}
+
+extension View {
+    func textEntryStyle() -> some View {
+        padding(.horizontal, 10)
+            .padding(.vertical, 15)
+            .background(EmptyView().background().opacity(0.5))
+            .clipShape(Capsule())
     }
 }
