@@ -25,24 +25,22 @@ struct LoginView: View {
 
                 ZStack(alignment: .bottom) {
                     VStack {
-                            Text("Welcome!")
-                                .titleStyle()
+                        Text("Welcome!")
+                            .titleStyle()
 
-                        VStack {
+                        VStack(spacing: 15) {
                             HStack(spacing: 15) {
                                 Image(systemName: "envelope.fill")
                                     .foregroundColor(.icon)
 
                                 TextField("Email Address", text: $email)
+
                                     .keyboardType(.emailAddress)
                             }
+                            .padding()
+                            .background()
+                            .clipShape(Capsule())
 
-                            Divider().background(Color.divider)
-                        }
-                        .padding(.horizontal)
-                        .padding(.top, 40)
-
-                        VStack {
                             HStack(spacing: 15) {
                                 Button {
                                     showPassword.toggle()
@@ -58,21 +56,19 @@ struct LoginView: View {
                                         .disableAutocorrection(true)
                                 }
                             }
-
-                            Divider().background(Color.divider)
                         }
                         .padding(.horizontal)
-                        .padding(.top, 30)
 
                         HStack {
                             Spacer(minLength: 0)
                         }
 
-                    }.padding()
-                        .padding(.bottom, 65)
-                        .background(Color.card)
-                        .cornerRadius(35)
-                        .padding(.horizontal, 20)
+                    }
+                    .padding()
+                    .padding(.bottom, 65)
+                    .background(Color.card)
+                    .cornerRadius(35)
+                    .padding(.horizontal, 20)
 
                     Button {
                         showSignUp = true
