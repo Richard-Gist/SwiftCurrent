@@ -56,7 +56,9 @@ struct MFAView: View, PassthroughFlowRepresentable {
         }
         .testableAlert(item: $errorMessage) { message in
             Alert(title: Text(message.message), dismissButton: .default(Text("Ok")) {
-                workflow?.abandon()
+                withAnimation {
+                    workflow?.abandon()
+                }
             })
         }
         .animation(.easeInOut)

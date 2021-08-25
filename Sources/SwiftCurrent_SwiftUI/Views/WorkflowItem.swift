@@ -40,6 +40,7 @@ public struct WorkflowItem<F: FlowRepresentable & View, Wrapped: View & SwiftUIW
     @State private var flowPersistenceClosure: (AnyWorkflow.PassedArgs) -> FlowPersistence = { _ in .default }
     @State private var launchStyle: LaunchStyle.SwiftUI.PresentationType = .default
     @State private var isActive = false
+    @State private var persistence: FlowPersistence = .default
 
     @EnvironmentObject private var model: WorkflowViewModel
     @EnvironmentObject private var launcher: Launcher
@@ -48,29 +49,27 @@ public struct WorkflowItem<F: FlowRepresentable & View, Wrapped: View & SwiftUIW
 
     public var body: some View {
         ViewBuilder {
-            if let wrapped = wrapped {
-                if launchStyle == .navigationLink {
-                    content.navLink(to: ViewBuilder { wrapped.environmentObject(model).environmentObject(launcher) }, isActive: $isActive)
-                } else if wrapped.workflowLaunchStyle == .modal {
-                    content.sheet(isPresented: $isActive) { wrapped }
-                } else {
-                    if let body = model.body?.extractErasedView() as? Content {
-                        body
-                    } else {
-                        wrapped
-                    }
-                }
+            if launchStyle == .navigationLink {
+                content.navLink(to: ViewBuilder { wrapped.environmentObject(model).environmentObject(launcher) }, isActive: $isActive)
+            } else if wrapped?.workflowLaunchStyle == .modal {
+                content.sheet(isPresented: $isActive) { wrapped }
             } else {
                 if let body = model.body?.extractErasedView() as? Content {
-                    body
+                    content ?? body
+                } else {
+                    wrapped
                 }
             }
         }
         .onReceive(model.$body) {
             if $0?.previouslyLoadedElement?.extractErasedView() is Content {
                 isActive = true
-            } else if let body = $0?.extractErasedView() as? Content {
+            }
+            if let body = $0?.extractErasedView() as? Content {
                 content = body
+                persistence = $0?.value.metadata.persistence ?? .default
+            } else if persistence == .removedAfterProceeding {
+                content = nil
             }
         }
         .onReceive(inspection.notice) { inspection.visit(self, $0) }

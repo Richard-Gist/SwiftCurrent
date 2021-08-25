@@ -42,12 +42,8 @@ struct ContentView: View {
                 thenProceed(with: LoginView.self) {
                     thenProceed(with: ProfileFeatureOnboardingView.self) {
                         thenProceed(with: ProfileFeatureView.self)
-                    }.applyModifiers {
-                        $0
-                            .animation(.spring(), value: 2)
-                            .transition(.slide)
                     }
-                }
+                }.persistence(.removedAfterProceeding)
             }.tabItem {
                 Label("Profile", systemImage: "person.crop.circle")
             }
