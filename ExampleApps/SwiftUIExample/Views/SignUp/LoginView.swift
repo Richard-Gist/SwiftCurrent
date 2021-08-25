@@ -107,7 +107,11 @@ struct LoginView: View, FlowRepresentable {
                 thenProceed(with: SignUp.self) {
                     thenProceed(with: TermsAndConditions.self).presentationType(.navigationLink)
                 }.presentationType(.navigationLink)
-            }.embedInNavigationView()
+            }
+            .embedInNavigationView()
+            .onFinish { _ in
+                proceedInWorkflow()
+            }
         }
     }
 }
