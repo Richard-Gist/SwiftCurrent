@@ -42,6 +42,7 @@ import SwiftCurrent
 /// ```
 @available(iOS 14.0, macOS 11, tvOS 14.0, watchOS 7.0, *)
 public struct WorkflowLauncher<Content: View>: View {
+    @Binding var isLaunched: Bool
     @State private var content: Content
     @StateObject private var model: WorkflowViewModel
     @StateObject private var launcher: Launcher
@@ -52,8 +53,17 @@ public struct WorkflowLauncher<Content: View>: View {
     let inspection = Inspection<Self>()
 
     public var body: some View {
-        if shouldEmbedInNavView {
-            NavigationView {
+        if isLaunched {
+            if shouldEmbedInNavView {
+                NavigationView {
+                    content
+                        .environmentObject(model)
+                        .environmentObject(launcher)
+                        .onReceive(model.onFinishPublisher, perform: _onFinish)
+                        .onReceive(model.onAbandonPublisher) { onAbandon.forEach { $0() } }
+                        .onReceive(inspection.notice) { inspection.visit(self, $0) }
+                }
+            } else {
                 content
                     .environmentObject(model)
                     .environmentObject(launcher)
@@ -61,13 +71,6 @@ public struct WorkflowLauncher<Content: View>: View {
                     .onReceive(model.onAbandonPublisher) { onAbandon.forEach { $0() } }
                     .onReceive(inspection.notice) { inspection.visit(self, $0) }
             }
-        } else {
-            content
-                .environmentObject(model)
-                .environmentObject(launcher)
-                .onReceive(model.onFinishPublisher, perform: _onFinish)
-                .onReceive(model.onAbandonPublisher) { onAbandon.forEach { $0() } }
-                .onReceive(inspection.notice) { inspection.visit(self, $0) }
         }
     }
 
@@ -124,6 +127,7 @@ public struct WorkflowLauncher<Content: View>: View {
         _model = current._model
         _launcher = current._launcher
         _content = current._content
+        _isLaunched = current._isLaunched
         _onFinish = State(initialValue: onFinish)
         _onAbandon = State(initialValue: onAbandon)
         _shouldEmbedInNavView = State(initialValue: shouldEmbedInNavView)
@@ -132,7 +136,8 @@ public struct WorkflowLauncher<Content: View>: View {
     private init<F, W, C>(isLaunched: Binding<Bool>, startingArgs: AnyWorkflow.PassedArgs, content: Content) where Content == WorkflowItem<F, W, C> {
         let wf = AnyWorkflow.empty
         content.modify(workflow: wf)
-        let model = WorkflowViewModel(isLaunched: isLaunched, launchArgs: startingArgs)
+        _isLaunched = isLaunched
+        let model = WorkflowViewModel(isLaunched: _isLaunched, launchArgs: startingArgs)
         _model = StateObject(wrappedValue: model)
         _launcher = StateObject(wrappedValue: Launcher(workflow: wf,
                                                        responder: model,

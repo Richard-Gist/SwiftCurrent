@@ -48,24 +48,22 @@ public struct WorkflowItem<F: FlowRepresentable & View, Wrapped: View & SwiftUIW
 
     public var body: some View {
         ViewBuilder {
-            if true {
-                if let wrapped = wrapped {
-                    switch launchStyle {
-                        case .navigationLink:
-                            content.navLink(to: ViewBuilder { wrapped.environmentObject(model).environmentObject(launcher) }, isActive: $isActive)
-                        case .modal:
-                            content.sheet(isPresented: $isActive) { wrapped }
-                        case .default:
-                            if model.body?.extractErasedView() is Content {
-                                content
-                            } else {
-                                wrapped
-                            }
-                    }
-                } else {
-                    if model.body?.extractErasedView() is Content {
-                        content
-                    }
+            if let wrapped = wrapped {
+                switch launchStyle {
+                    case .navigationLink:
+                        content.navLink(to: ViewBuilder { wrapped.environmentObject(model).environmentObject(launcher) }, isActive: $isActive)
+                    case .modal:
+                        content.sheet(isPresented: $isActive) { wrapped }
+                    case .default:
+                        if model.body?.extractErasedView() is Content {
+                            content
+                        } else {
+                            wrapped
+                        }
+                }
+            } else {
+                if model.body?.extractErasedView() is Content {
+                    content
                 }
             }
         }
