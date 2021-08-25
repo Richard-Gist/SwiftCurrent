@@ -25,7 +25,8 @@ struct AccountInformationView: View, FlowRepresentable {
                 if !usernameWorkflowLaunched {
                     HStack {
                         Image(systemName: "person")
-                        Text("Username: \(username)")
+                        Text("Username: ")
+                        Text(username)
                         Spacer()
                         Button {
                             withAnimation {
@@ -53,12 +54,16 @@ struct AccountInformationView: View, FlowRepresentable {
 
             if !passwordWorkflowLaunched {
                 HStack {
+                    Image(systemName: "lock")
                     Text("Password: ")
+                    SecureField(text: $password) { EmptyView() }.disabled(true)
                     Spacer()
-                    Button("Change Password") {
+                    Button{
                         withAnimation {
                             passwordWorkflowLaunched = true
                         }
+                    } label: {
+                        Image(systemName: "pencil")
                     }
                 }
                 .textEntryStyle()
