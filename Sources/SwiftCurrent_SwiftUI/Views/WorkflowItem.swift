@@ -48,11 +48,11 @@ public struct WorkflowItem<F: FlowRepresentable & View, Wrapped: View & SwiftUIW
 
     public var body: some View {
         ViewBuilder {
-            if model.isLaunched == true {
+            if true {
                 if let wrapped = wrapped {
-                    switch wrapped.workflowLaunchStyle {
+                    switch launchStyle {
                         case .navigationLink:
-                            content.navLink(to: wrapped, isActive: $isActive)
+                            content.navLink(to: ViewBuilder { wrapped.environmentObject(model).environmentObject(launcher) }, isActive: $isActive)
                         case .modal:
                             content.sheet(isPresented: $isActive) { wrapped }
                         case .default:

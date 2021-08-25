@@ -1,19 +1,19 @@
 //
-//  LoginView.swift
-//  LoginView
+//  SignUp.swift
+//  SignUp
 //
-//  Created by Richard Gist on 8/25/21.
+//  Created by Tyler Thompson on 8/25/21.
 //  Copyright © 2021 WWT and Tyler Thompson. All rights reserved.
 //
 
 import SwiftUI
 import SwiftCurrent
-import SwiftCurrent_SwiftUI
 
-struct LoginView: View {
+struct SignUp: View, FlowRepresentable {
+    weak var _workflowPointer: AnyFlowRepresentable?
     @State var email = ""
     @State var password = ""
-    @State var showSignUp = false
+
     var body: some View {
         GeometryReader { _ in
             VStack {
@@ -23,7 +23,7 @@ struct LoginView: View {
 
                 ZStack(alignment: .bottom) {
                     VStack {
-                        Text("Login")
+                        Text("Sign Up")
                             .foregroundColor(.white)
                             .font(.title)
                             .fontWeight(.bold)
@@ -67,10 +67,9 @@ struct LoginView: View {
                         .padding(.horizontal, 20)
 
                     Button {
-                        showSignUp = true
-                        print("Proceed here")
+                        proceedInWorkflow()
                     } label: {
-                        Text("SIGN UP")
+                        Text("Next")
                             .foregroundColor(.white)
                             .fontWeight(.bold)
                             .padding(.vertical)
@@ -84,18 +83,18 @@ struct LoginView: View {
             }
         }
         .background(Color.primaryBackground.edgesIgnoringSafeArea(.all))
-        .sheet(isPresented: $showSignUp) {
-            WorkflowLauncher(isLaunched: $showSignUp) {
-                thenProceed(with: SignUp.self) {
-                    thenProceed(with: Next.self).presentationType(.navigationLink)
-                }.presentationType(.navigationLink)
-            }.embedInNavigationView()
-        }
     }
 }
 
-struct LoginView_Previews: PreviewProvider {
+struct Next: View, FlowRepresentable {
+    weak var _workflowPointer: AnyFlowRepresentable?
+    var body: some View {
+        Text("I AM NEXT!")
+    }
+}
+
+struct SignUp_Previews: PreviewProvider {
     static var previews: some View {
-        LoginView().preferredColorScheme(.dark)
+        SignUp()
     }
 }

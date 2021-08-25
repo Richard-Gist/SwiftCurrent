@@ -52,12 +52,23 @@ public struct WorkflowLauncher<Content: View>: View {
     let inspection = Inspection<Self>()
 
     public var body: some View {
-        content
-            .environmentObject(model)
-            .environmentObject(launcher)
-            .onReceive(model.onFinishPublisher, perform: _onFinish)
-            .onReceive(model.onAbandonPublisher) { onAbandon.forEach { $0() } }
-            .onReceive(inspection.notice) { inspection.visit(self, $0) }
+        if shouldEmbedInNavView {
+            NavigationView {
+                content
+                    .environmentObject(model)
+                    .environmentObject(launcher)
+                    .onReceive(model.onFinishPublisher, perform: _onFinish)
+                    .onReceive(model.onAbandonPublisher) { onAbandon.forEach { $0() } }
+                    .onReceive(inspection.notice) { inspection.visit(self, $0) }
+            }
+        } else {
+            content
+                .environmentObject(model)
+                .environmentObject(launcher)
+                .onReceive(model.onFinishPublisher, perform: _onFinish)
+                .onReceive(model.onAbandonPublisher) { onAbandon.forEach { $0() } }
+                .onReceive(inspection.notice) { inspection.visit(self, $0) }
+        }
     }
 
     /**
