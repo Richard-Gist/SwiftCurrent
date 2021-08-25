@@ -38,7 +38,7 @@ struct AccountInformationView: View, FlowRepresentable {
                     }
                     .textEntryStyle()
                 }
-                    WorkflowLauncher(isLaunched: $usernameWorkflowLaunched.animation(), startingArgs: username) {
+                    WorkflowLauncher(isLaunched: $usernameWorkflowLaunched, startingArgs: username) {
                         thenProceed(with: MFAView.self) {
                             thenProceed(with: ChangeUsernameView.self).presentationType(.modal)
                         }

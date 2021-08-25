@@ -56,6 +56,7 @@ extension WorkflowViewModel: OrchestrationResponder {
             }
         }
         onFinishPublisher.send(passedArgs)
+        onFinishPublisher.send(nil)
         onFinish?(passedArgs)
     }
 }
