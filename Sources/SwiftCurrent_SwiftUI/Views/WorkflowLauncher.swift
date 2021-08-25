@@ -53,25 +53,32 @@ public struct WorkflowLauncher<Content: View>: View {
     let inspection = Inspection<Self>()
 
     public var body: some View {
-        if isLaunched {
-            if shouldEmbedInNavView {
-                NavigationView {
-                    content
-                        .environmentObject(model)
-                        .environmentObject(launcher)
-                        .onReceive(model.onFinishPublisher, perform: _onFinish)
-                        .onReceive(model.onAbandonPublisher) { onAbandon.forEach { $0() } }
-                        .onReceive(inspection.notice) { inspection.visit(self, $0) }
+        ViewBuilder {
+            if isLaunched {
+                if shouldEmbedInNavView {
+                    NavigationView {
+                        workflowContent
+                    }
+                } else {
+                    workflowContent
                 }
-            } else {
-                content
-                    .environmentObject(model)
-                    .environmentObject(launcher)
-                    .onReceive(model.onFinishPublisher, perform: _onFinish)
-                    .onReceive(model.onAbandonPublisher) { onAbandon.forEach { $0() } }
-                    .onReceive(inspection.notice) { inspection.visit(self, $0) }
             }
         }
+        .onChange(of: isLaunched) {
+            if $0 == false { resetWorkflow() }
+        }
+    }
+
+    var workflowContent: some View {
+        content
+            .environmentObject(model)
+            .environmentObject(launcher)
+            .onReceive(model.onFinishPublisher, perform: _onFinish)
+            .onReceive(model.onAbandonPublisher) { onAbandon.forEach { $0() } }
+            .onChange(of: isLaunched) {
+                if $0 == false { resetWorkflow() }
+            }
+            .onReceive(inspection.notice) { inspection.visit(self, $0) }
     }
 
     /**
@@ -149,6 +156,12 @@ public struct WorkflowLauncher<Content: View>: View {
         guard let args = args else { return }
         onFinish.forEach { $0(args) }
     }
+
+    private func resetWorkflow() {
+        launcher.workflow.launch(withOrchestrationResponder: model, passedArgs: launcher.launchArgs)
+    }
+
+    private func ViewBuilder<V: View>(@ViewBuilder builder: () -> V) -> some View { builder() }
 
     /// Adds an action to perform when this `Workflow` has finished.
     public func onFinish(closure: @escaping (AnyWorkflow.PassedArgs) -> Void) -> Self {
