@@ -112,16 +112,6 @@ struct LoginView: View, FlowRepresentable {
             .embedInNavigationView()
             .onFinish { _ in
                 showSignUp = false
-                isLoggedIn = true
-            }
-            .onDisappear {
-                if isLoggedIn {
-                    proceedInWorkflow()
-                }
-            }
-        }
-        .onAppear {
-            if isLoggedIn {
                 proceedInWorkflow()
             }
         }

@@ -54,15 +54,15 @@ public struct WorkflowItem<F: FlowRepresentable & View, Wrapped: View & SwiftUIW
                 } else if wrapped.workflowLaunchStyle == .modal {
                     content.sheet(isPresented: $isActive) { wrapped }
                 } else {
-                    if model.body?.extractErasedView() is Content {
-                        content
+                    if let body = model.body?.extractErasedView() as? Content {
+                        body
                     } else {
                         wrapped
                     }
                 }
             } else {
-                if model.body?.extractErasedView() is Content {
-                    content
+                if let body = model.body?.extractErasedView() as? Content {
+                    body
                 }
             }
         }
