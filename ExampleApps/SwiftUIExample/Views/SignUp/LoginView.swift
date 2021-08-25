@@ -20,6 +20,7 @@ struct LoginView: View {
             VStack(spacing: 40) {
                 Image.logo
                     .resizable()
+                    .shadow(color: .white.opacity(0.1), radius: 5, x: 0, y: 5)
                     .frame(width: 120, height: 120)
                     .foregroundColor(.icon)
 
