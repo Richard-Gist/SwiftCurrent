@@ -24,9 +24,7 @@ struct MFAView: View, PassthroughFlowRepresentable {
                 if !pushSent {
                     Text("This is your friendly MFA Assistant! Tap the button below to pretend to send a push notification and require an account code")
                     Button {
-                        withAnimation {
-                            pushSent = true
-                        }
+                        withAnimation { pushSent = true }
                     } label: {
                         Text("Start MFA")
                             .font(.title)
