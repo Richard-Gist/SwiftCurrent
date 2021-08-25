@@ -19,41 +19,39 @@ struct MFAView: View, PassthroughFlowRepresentable {
     weak var _workflowPointer: AnyFlowRepresentable?
 
     var body: some View {
-        ScrollViewReader { svProxy in
-            VStack(spacing: 30) {
-                if !pushSent {
-                    Text("This is your friendly MFA Assistant! Tap the button below to pretend to send a push notification and require an account code")
-                    Button {
-                        withAnimation { pushSent = true }
-                    } label: {
-                        Text("Start MFA")
-                            .font(.title)
-                            .foregroundColor(Color.white)
-                            .padding()
-                    }
-                    .background(Color.blue)
-                } else {
-                    Text("Code (enter 1234 to proceed): ").font(.title)
-                    TextField("Enter Code:", text: $enteredCode)
-                    Button("Submit") {
-                        if enteredCode == "1234" {
-                            withAnimation {
-                                proceedInWorkflow()
-                            }
-                        } else {
-                            errorMessage = ErrorMessage(message: "Invalid code entered, abandoning workflow.")
+        VStack(spacing: 30) {
+            if !pushSent {
+                Text("This is your friendly MFA Assistant! Tap the button below to pretend to send a push notification and require an account code")
+                Button {
+                    withAnimation { pushSent = true }
+                } label: {
+                    Text("Start MFA")
+                        .primaryButtonStyle()
+                }
+            } else {
+                Text("Code (enter 1234 to proceed)").font(.title)
+                HStack {
+                    Image(systemName: "number")
+                        .foregroundColor(.icon)
+                    TextField("Enter Code", text: $enteredCode)
+                    Spacer()
+                }
+                .textEntryStyle()
+                Button {
+                    if enteredCode == "1234" {
+                        withAnimation {
+                            proceedInWorkflow()
                         }
+                    } else {
+                        errorMessage = ErrorMessage(message: "Invalid code entered, abandoning workflow.")
                     }
+                } label: {
+                    Text("Submit")
+                        .primaryButtonStyle()
                 }
             }
-            .padding()
-            .id(id)
-//            .onAppear {
-//                withAnimation {
-//                    svProxy.scrollTo(id)
-//                }
-//            }
         }
+        .padding()
         .testableAlert(item: $errorMessage) { message in
             Alert(title: Text(message.message), dismissButton: .default(Text("Ok")) {
                 withAnimation {
