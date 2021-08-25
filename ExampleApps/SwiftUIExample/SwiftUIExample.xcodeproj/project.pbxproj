@@ -67,6 +67,8 @@
 		D7DBD20726CD923600F1E39B /* NSObjectLoadable.m in Sources */ = {isa = PBXBuildFile; fileRef = D7DBD20526CD923600F1E39B /* NSObjectLoadable.m */; };
 		D7F30ADB26D6A59600E0F62D /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F30ADA26D6A59600E0F62D /* LoginView.swift */; };
 		D7F30ADE26D6ADB400E0F62D /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F30ADD26D6ADB400E0F62D /* Colors.swift */; };
+		D7F30AE026D6B93100E0F62D /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F30ADF26D6B93100E0F62D /* Images.swift */; };
+		D7F30AE226D6BA8A00E0F62D /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F30AE126D6BA8A00E0F62D /* Styles.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -140,6 +142,8 @@
 		D7DBD20526CD923600F1E39B /* NSObjectLoadable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSObjectLoadable.m; sourceTree = "<group>"; };
 		D7F30ADA26D6A59600E0F62D /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		D7F30ADD26D6ADB400E0F62D /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		D7F30ADF26D6B93100E0F62D /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
+		D7F30AE126D6BA8A00E0F62D /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -376,6 +380,8 @@
 			isa = PBXGroup;
 			children = (
 				D7F30ADD26D6ADB400E0F62D /* Colors.swift */,
+				D7F30ADF26D6B93100E0F62D /* Images.swift */,
+				D7F30AE126D6BA8A00E0F62D /* Styles.swift */,
 			);
 			path = Design;
 			sourceTree = "<group>";
@@ -505,10 +511,12 @@
 				CA0536F426A0887800BF8FC5 /* ProfileFeatureView.swift in Sources */,
 				CA4B40B926A09E5800B18626 /* ChangeUsernameView.swift in Sources */,
 				CA6FB0DE26C6AD5200FB3285 /* UIKitInteropProgrammaticViewController.swift in Sources */,
+				D7F30AE026D6B93100E0F62D /* Images.swift in Sources */,
 				CA7B821026A123F6005AA87D /* InspectableSheet.swift in Sources */,
 				CAD0269726A0AEE00075B818 /* ChangePasswordView.swift in Sources */,
 				CAD026AC26A0C83B0075B818 /* Inspection.swift in Sources */,
 				CAC7499026D6B8540001BB39 /* SignUpView.swift in Sources */,
+				D7F30AE226D6BA8A00E0F62D /* Styles.swift in Sources */,
 				CAD0269F26A0BE810075B818 /* ContainerExtensions.swift in Sources */,
 				CA0536FB26A0919900BF8FC5 /* AccountInformationView.swift in Sources */,
 				CAD026A126A0BE9A0075B818 /* DependencyInjected.swift in Sources */,

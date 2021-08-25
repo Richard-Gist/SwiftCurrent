@@ -14,19 +14,19 @@ struct LoginView: View {
     @State var email = ""
     @State var password = ""
     @State var showSignUp = false
+    @State var showPassword = false
     var body: some View {
         GeometryReader { _ in
             VStack {
-                Image(systemName: "circle")
+                Image.logo
                     .resizable()
-                    .frame(width: 60, height: 60)
+                    .frame(width: 120, height: 120)
+                    .foregroundColor(.icon)
 
                 ZStack(alignment: .bottom) {
                     VStack {
-                        Text("Login")
-                            .foregroundColor(.white)
-                            .font(.title)
-                            .fontWeight(.bold)
+                            Text("Welcome!")
+                                .titleStyle()
 
                         VStack {
                             HStack(spacing: 15) {
@@ -44,11 +44,19 @@ struct LoginView: View {
 
                         VStack {
                             HStack(spacing: 15) {
-                                Image(systemName: "eye.slash.fill")
-                                    .foregroundColor(.icon)
-
-                                SecureField("Password", text: $password)
-                                    .disableAutocorrection(true)
+                                Button {
+                                    showPassword.toggle()
+                                } label: {
+                                    Image(systemName: showPassword ? "eye.fill" : "eye.slash.fill")
+                                        .foregroundColor(.icon)
+                                }
+                                if showPassword {
+                                    TextField("Password", text: $password)
+                                        .disableAutocorrection(true)
+                                } else {
+                                    SecureField("Password", text: $password)
+                                        .disableAutocorrection(true)
+                                }
                             }
 
                             Divider().background(Color.divider)
@@ -70,14 +78,8 @@ struct LoginView: View {
                         showSignUp = true
                         print("Proceed here")
                     } label: {
-                        Text("SIGN UP")
-                            .foregroundColor(.white)
-                            .fontWeight(.bold)
-                            .padding(.vertical)
-                            .padding(.horizontal, 50)
-                            .background(Color.primaryButton)
-                            .clipShape(Capsule())
-                            .shadow(color: .white.opacity(0.1), radius: 5, x: 0, y: 5)
+                        Text("LOGIN")
+                            .primaryButtonStyle()
                     }
                     .offset(y: 25)
                 }
