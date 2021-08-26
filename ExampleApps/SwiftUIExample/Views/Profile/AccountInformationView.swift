@@ -40,17 +40,18 @@ struct AccountInformationView: View, FlowRepresentable {
                     }
                     .textEntryStyle()
                 }
-                    WorkflowLauncher(isLaunched: $usernameWorkflowLaunched, startingArgs: username) {
-                        thenProceed(with: MFAView.self) {
-                            thenProceed(with: ChangeUsernameView.self).presentationType(.modal)
-                        }
-                    }.onFinish {
-                        guard case .args(let newUsername as String) = $0 else { return }
-                        username = newUsername
-                        withAnimation {
-                            usernameWorkflowLaunched = false
-                        }
+
+                WorkflowLauncher(isLaunched: $usernameWorkflowLaunched, startingArgs: username) {
+                    thenProceed(with: MFAView.self) {
+                        thenProceed(with: ChangeUsernameView.self)
                     }
+                }.onFinish {
+                    guard case .args(let newUsername as String) = $0 else { return }
+                    username = newUsername
+                    withAnimation {
+                        usernameWorkflowLaunched = false
+                    }
+                }
 
             }
 
@@ -74,7 +75,7 @@ struct AccountInformationView: View, FlowRepresentable {
             } else {
                 WorkflowLauncher(isLaunched: $passwordWorkflowLaunched.animation(), startingArgs: password) {
                     thenProceed(with: MFAView.self) {
-                        thenProceed(with: ChangePasswordView.self)
+                        thenProceed(with: ChangePasswordView.self).presentationType(.modal)
                     }
                 }.onFinish {
                     guard case .args(let newPassword as String) = $0 else { return }

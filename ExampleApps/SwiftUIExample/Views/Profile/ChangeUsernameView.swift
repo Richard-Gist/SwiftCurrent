@@ -31,6 +31,8 @@ struct ChangeUsernameView: View, FlowRepresentable {
                 Spacer()
             }
             .textEntryStyle()
+            .padding(.bottom)
+
             Button {
                 withAnimation {
                     proceedInWorkflow(currentUsername)
@@ -40,16 +42,15 @@ struct ChangeUsernameView: View, FlowRepresentable {
                     .primaryButtonStyle()
             }
         }
-        .padding()
         .onReceive(inspection.notice) { inspection.visit(self, $0) } // ViewInspector
     }
 }
 
+
 struct temp: PreviewProvider {
     static var previews: some View {
-        ChangeUsernameView()
+        ChangeUsernameView(with: "Username input")
             .preferredColorScheme(.dark)
             .background(Color.primaryBackground)
-
     }
 }
