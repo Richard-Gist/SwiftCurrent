@@ -16,90 +16,93 @@ struct SwiftCurrentOnboarding: View, PassthroughFlowRepresentable {
             Image.socialMediaIcon
                 .resizable()
                 .scaledToFit()
+                .padding(.horizontal)
+            Text("Value added text thing")
+                .titleStyle()
+            
+            ScrollView {
+                VStack(spacing: 50) {
+                    HStack {
+                        Image(systemName: "point.topleft.down.curvedto.point.bottomright.up")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 80, height: 80)
+                            .foregroundColor(Color.icon)
+                        VStack(alignment: .leading) {
+                            Text("Isolate your views")
+                                .font(.title2)
+                                .fontWeight(.bold)
+                            Text("Define your app in workflows so that views remain ignorant of the flow they're in.")
+                        }
+                        Spacer()
+                    }
+                    
+                    HStack {
+                        Image(systemName: "arrow.triangle.swap")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 80, height: 80)
+                            .foregroundColor(Color.icon)
+                        VStack(alignment: .leading) {
+                            Text("Optionally skip screens.")
+                                .font(.title2)
+                                .fontWeight(.bold)
+                            Text("This screen will only appear once even though the workflow hasn't changed.")
+                                .font(.subheadline)
+                        }
+                        Spacer()
+                    }
+                    
+                    HStack {
+                        Image(systemName: "arrow.triangle.branch")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 80, height: 80)
+                            .foregroundColor(Color.icon)
+                        VStack(alignment: .leading) {
+                            Text("Compose workflows together")
+                                .font(.title2)
+                                .fontWeight(.bold)
+                            Text("Create branching flows by defining new workflows and launching them.")
+                        }
+                        Spacer()
+                    }
+                    
+                    HStack {
+                        Image(systemName: "square.stack.3d.down.right")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 80, height: 80)
+                            .foregroundColor(Color.icon)
+                        VStack(alignment: .leading) {
+                            Text("Manage your view stacks")
+                                .font(.title2)
+                                .fontWeight(.bold)
+                            Text("Workflows can contextually set up navigation views and modals for you.")
+                        }
+                        Spacer()
+                    }
+                    
+                    HStack {
+                        Image(systemName: "arrow.left.arrow.right")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 80, height: 80)
+                            .foregroundColor(Color.icon)
+                        VStack(alignment: .leading) {
+                            Text("Interoperate with UIKit")
+                                .font(.title2)
+                                .fontWeight(.bold)
+                            Text("Workflows seamlessly interoperate between SwiftUI and UIKit.")
+                        }
+                        Spacer()
+                    }
+                }
+                .fixedSize(horizontal: false, vertical: true)
                 .padding()
-
-            VStack(spacing: 50) {
-                HStack {
-                    Image(systemName: "point.topleft.down.curvedto.point.bottomright.up")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 80, height: 80)
-                        .foregroundColor(Color.icon)
-                    VStack(alignment: .leading) {
-                        Text("Define your app in workflows!")
-                            .font(.title2)
-                            .fontWeight(.bold)
-                        Text("Views remain ignorant of the flow they're in.")
-                    }
-                    Spacer()
-                }
-
-                HStack {
-                    Image(systemName: "arrow.triangle.swap")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 80, height: 80)
-                        .foregroundColor(Color.icon)
-                    VStack(alignment: .leading) {
-                        Text("Optionally skip screens.")
-                            .font(.title2)
-                            .fontWeight(.bold)
-                        Text("This screen will only appear once even though the workflow hasn't changed.")
-                            .font(.subheadline)
-                    }
-                    Spacer()
-                }
-
-                HStack {
-                    Image(systemName: "arrow.triangle.branch")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 80, height: 80)
-                        .foregroundColor(Color.icon)
-                    VStack(alignment: .leading) {
-                        Text("Compose workflows together")
-                            .font(.title2)
-                            .fontWeight(.bold)
-                        Text("Create branching flows by defining new workflows and launching them.")
-                    }
-                    Spacer()
-                }
-
-                HStack {
-                    Image(systemName: "square.stack.3d.down.right")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 80, height: 80)
-                        .foregroundColor(Color.icon)
-                    VStack(alignment: .leading) {
-                        Text("Manage your view stacks")
-                            .font(.title2)
-                            .fontWeight(.bold)
-                        Text("Workflows can contextually set up navigation views and modals for you.")
-                    }
-                    Spacer()
-                }
-
-                HStack {
-                    Image(systemName: "arrow.left.arrow.right")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 80, height: 80)
-                        .foregroundColor(Color.icon)
-                    VStack(alignment: .leading) {
-                        Text("Interoperate with UIKit")
-                            .font(.title2)
-                            .fontWeight(.bold)
-                        Text("Workflows seamlessly interoperate between SwiftUI and UIKit.")
-                    }
-                    Spacer()
-                }
+                
             }
-            .fixedSize(horizontal: false, vertical: true)
-            .padding()
-
-            Spacer()
-
+            
             Button {
                 withAnimation {
                     proceedInWorkflow()
