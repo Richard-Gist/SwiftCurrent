@@ -21,4 +21,8 @@ extension Image {
     static var password: Image {
         Image(systemName: "lock.fill")
     }
+
+    static var socialMediaIcon: Image {
+        Image("swiftcurrent-logo-subtext")
+    }
 }

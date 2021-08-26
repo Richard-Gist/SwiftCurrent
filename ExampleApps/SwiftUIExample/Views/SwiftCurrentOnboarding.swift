@@ -10,7 +10,27 @@ import SwiftUI
 
 struct SwiftCurrentOnboarding: View {
     var body: some View {
-        Text("Something eye catching")
+        VStack {
+            Image.socialMediaIcon
+                .resizable()
+                .scaledToFit()
+                .padding()
+
+            Spacer()
+
+            VStack {
+                Text("Because we r cul")
+            }
+
+            Spacer()
+
+            Button {
+//                showSignUp = true
+            } label: {
+                Text("Check It Out!")
+                    .primaryButtonStyle()
+            }
+        }
     }
 }
 
