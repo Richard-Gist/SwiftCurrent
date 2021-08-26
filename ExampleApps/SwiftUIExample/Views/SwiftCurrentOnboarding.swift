@@ -30,7 +30,7 @@ struct SwiftCurrentOnboarding: View, PassthroughFlowRepresentable {
                         Text("Define your app in workflows!")
                             .font(.title2)
                             .fontWeight(.bold)
-                        Text("Create high level descriptions of the workflows in your application, views remain ignorant of the context they are launched in, what preceded them, or what comes next.")
+                        Text("Views remain ignorant of the flow they're in.")
                     }
                     Spacer()
                 }
@@ -44,7 +44,7 @@ struct SwiftCurrentOnboarding: View, PassthroughFlowRepresentable {
                         Text("Optionally skip screens.")
                             .font(.title2)
                             .fontWeight(.bold)
-                        Text("This screen will only appear once, after that even though the workflow hasn't changed, it will continually skip.")
+                        Text("This screen will only appear once even though the workflow hasn't changed.")
                             .font(.subheadline)
                     }
                     Spacer()
@@ -59,7 +59,7 @@ struct SwiftCurrentOnboarding: View, PassthroughFlowRepresentable {
                         Text("Compose workflows together")
                             .font(.title2)
                             .fontWeight(.bold)
-                        Text("Workflows are highly composable. If you want to create branching flows it's as simple as defining new workflows and launching them.")
+                        Text("Create branching flows by defining new workflows and launching them.")
                     }
                     Spacer()
                 }
