@@ -11,7 +11,7 @@ import SwiftUI
 
 extension Color {
     static var primaryBackground: Color {
-        Color.init(red: 24/255, green: 24/255, blue: 24/255)
+        .black
     }
 
     static var primaryText: Color {
