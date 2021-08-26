@@ -75,7 +75,22 @@ struct AccountInformationView: View, FlowRepresentable {
             } else {
                 WorkflowLauncher(isLaunched: $passwordWorkflowLaunched.animation(), startingArgs: password) {
                     thenProceed(with: MFAView.self) {
-                        thenProceed(with: ChangePasswordView.self).presentationType(.modal)
+                        thenProceed(with: ChangePasswordView.self)
+                            .presentationType(.modal)
+                            .applyModifiers { cpv in
+                                NavigationView {
+                                    VStack {
+                                        cpv
+                                            .padding()
+                                            .background(Color.card)
+                                            .cornerRadius(35)
+                                            .padding(.horizontal, 20)
+                                            .navigationTitle("Update password")
+
+                                        Spacer()
+                                    }
+                                }
+                            }
                     }
                 }.onFinish {
                     guard case .args(let newPassword as String) = $0 else { return }
@@ -84,5 +99,13 @@ struct AccountInformationView: View, FlowRepresentable {
                 }
             }
         }.onReceive(inspection.notice) { inspection.visit(self, $0) } // ViewInspector
+    }
+}
+
+struct AccountInformationView_Previews: PreviewProvider {
+    static var previews: some View {
+        AccountInformationView()
+            .preferredColorScheme(.dark)
+            .background(Color.primaryBackground)
     }
 }

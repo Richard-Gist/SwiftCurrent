@@ -36,6 +36,7 @@ struct ChangePasswordView: View, FlowRepresentable {
 
             HStack {
                 Image(systemName: "lock")
+                    .foregroundColor(.icon)
                 TextField("Old Password", text: $oldPassword)
                     .autocapitalization(.none)
                     .disableAutocorrection(true)
@@ -44,7 +45,8 @@ struct ChangePasswordView: View, FlowRepresentable {
             .textEntryStyle()
 
             HStack {
-                Image(systemName: "lock")
+                Image(systemName: "lock.fill")
+                    .foregroundColor(.icon)
                 TextField("New Password", text: $newPassword)
                     .autocapitalization(.none)
                     .disableAutocorrection(true)
@@ -54,6 +56,7 @@ struct ChangePasswordView: View, FlowRepresentable {
 
             HStack {
                 Image(systemName: "lock.fill")
+                    .foregroundColor(.icon)
                 TextField("Confirm New Password", text: $confirmNewPassword)
                     .autocapitalization(.none)
                     .disableAutocorrection(true)
