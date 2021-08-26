@@ -12,8 +12,8 @@ import SwiftCurrent_SwiftUI
 
 struct AccountInformationView: View, FlowRepresentable {
     @State var password = "supersecure"
-    @State private var username = "changeme"
-    @State private var usernameWorkflowLaunched = false
+    @State private var email = "change@me.com"
+    @State private var emailWorkflowLaunched = false
     @State private var passwordWorkflowLaunched = false
 
     let inspection = Inspection<Self>() // ViewInspector
@@ -22,16 +22,16 @@ struct AccountInformationView: View, FlowRepresentable {
     var body: some View {
         VStack(alignment: .leading, spacing: 25) { // swiftlint:disable:this closure_body_length
             HStack {
-                if !usernameWorkflowLaunched {
+                if !emailWorkflowLaunched {
                     HStack {
-                        Image(systemName: "person.fill")
+                        Image.account
                             .foregroundColor(.icon)
-                        Text("Username: ")
-                        Text(username)
+                        Text("Email: ")
+                        Text(email)
                         Spacer()
                         Button {
                             withAnimation {
-                                usernameWorkflowLaunched = true
+                                emailWorkflowLaunched = true
                             }
                         } label: {
                             Image(systemName: "pencil")
@@ -41,15 +41,15 @@ struct AccountInformationView: View, FlowRepresentable {
                     .textEntryStyle()
                 }
 
-                WorkflowLauncher(isLaunched: $usernameWorkflowLaunched, startingArgs: username) {
+                WorkflowLauncher(isLaunched: $emailWorkflowLaunched, startingArgs: email) {
                     thenProceed(with: MFAView.self) {
-                        thenProceed(with: ChangeUsernameView.self)
+                        thenProceed(with: ChangeEmailView.self)
                     }
                 }.onFinish {
-                    guard case .args(let newUsername as String) = $0 else { return }
-                    username = newUsername
+                    guard case .args(let newEmail as String) = $0 else { return }
+                    email = newEmail
                     withAnimation {
-                        usernameWorkflowLaunched = false
+                        emailWorkflowLaunched = false
                     }
                 }
 
@@ -57,7 +57,7 @@ struct AccountInformationView: View, FlowRepresentable {
 
             if !passwordWorkflowLaunched {
                 HStack {
-                    Image(systemName: "lock.fill")
+                    Image.password
                         .foregroundColor(.icon)
                     Text("Password: ")
                     SecureField(text: $password) { EmptyView() }.disabled(true)

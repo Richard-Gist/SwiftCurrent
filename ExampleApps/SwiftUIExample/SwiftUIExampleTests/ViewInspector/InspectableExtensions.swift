@@ -20,7 +20,7 @@ extension MapFeatureOnboardingView: Inspectable { }
 extension MapFeatureView: Inspectable { }
 extension WorkflowItem: Inspectable { }
 extension WorkflowLauncher: Inspectable { }
-extension ChangeUsernameView: Inspectable { }
+extension ChangeEmailView: Inspectable { }
 extension ChangePasswordView: Inspectable { }
 extension QRScannerFeatureView: Inspectable { }
 extension ProfileFeatureView: Inspectable { }

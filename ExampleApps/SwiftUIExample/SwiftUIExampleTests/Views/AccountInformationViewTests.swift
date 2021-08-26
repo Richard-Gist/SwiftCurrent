@@ -18,7 +18,7 @@ import SwiftCurrent
 
 final class AccountInformationViewTests: XCTestCase {
     private typealias MFAViewWorkflowView = WorkflowLauncher<WorkflowItem<MFAView, Never, MFAView>>
-    private typealias UsernameWorkflow = WorkflowLauncher<WorkflowItem<MFAView, WorkflowItem<ChangeUsernameView, Never, ChangeUsernameView>, MFAView>>
+    private typealias UsernameWorkflow = WorkflowLauncher<WorkflowItem<MFAView, WorkflowItem<ChangeEmailView, Never, ChangeEmailView>, MFAView>>
     private typealias PasswordWorkflow = WorkflowLauncher<WorkflowItem<MFAView, WorkflowItem<ChangePasswordView, Never, ChangePasswordView>, MFAView>>
 
     func testAccountInformationView() throws {
@@ -46,7 +46,7 @@ final class AccountInformationViewTests: XCTestCase {
             ViewHosting.loadView(usernameWorkflow).inspection.inspect { view in
                 XCTAssertNoThrow(try view.find(MFAView.self).actualView().proceedInWorkflow(.args("changeme")))
                 try view.actualView().inspectWrapped { view in
-                    XCTAssertNoThrow(try view.find(ChangeUsernameView.self).actualView().proceedInWorkflow("newName"))
+                    XCTAssertNoThrow(try view.find(ChangeEmailView.self).actualView().proceedInWorkflow("newName"))
                 }
             }
         ].compactMap { $0 }, timeout: TestConstant.timeout)
@@ -74,7 +74,7 @@ final class AccountInformationViewTests: XCTestCase {
             ViewHosting.loadView(usernameWorkflow).inspection.inspect { view in
                 XCTAssertNoThrow(try view.find(MFAView.self).actualView().proceedInWorkflow(.args("changeme")))
                 try view.actualView().inspectWrapped { view in
-                    XCTAssertNotNil(try view.find(ChangeUsernameView.self).actualView().proceedInWorkflowStorage?(.args(CustomObj())))
+                    XCTAssertNotNil(try view.find(ChangeEmailView.self).actualView().proceedInWorkflowStorage?(.args(CustomObj())))
                 }
             }
         ].compactMap { $0 }, timeout: TestConstant.timeout)

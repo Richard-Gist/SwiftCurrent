@@ -13,4 +13,12 @@ extension Image {
     static var logo: Image {
         Image("swiftcurrent-logo")
     }
+
+    static var account: Image {
+        Image(systemName: "envelope.fill")
+    }
+    
+    static var password: Image {
+        Image(systemName: "lock.fill")
+    }
 }

@@ -33,7 +33,7 @@ struct LoginView: View, FlowRepresentable {
 
                         VStack(spacing: 15) {
                             HStack(spacing: 15) {
-                                Image(systemName: "envelope.fill")
+                                Image.account
                                     .foregroundColor(.icon)
 
                                 TextField("Email Address", text: $email)

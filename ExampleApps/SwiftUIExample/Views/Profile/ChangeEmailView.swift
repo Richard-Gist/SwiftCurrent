@@ -1,5 +1,5 @@
 //
-//  ChangeUsernameView.swift
+//  ChangeEmailView.swift
 //  SwiftUIExample
 //
 //  Created by Tyler Thompson on 7/15/21.
@@ -9,25 +9,26 @@
 import SwiftUI
 import SwiftCurrent
 
-struct ChangeUsernameView: View, FlowRepresentable {
+struct ChangeEmailView: View, FlowRepresentable {
     typealias WorkflowOutput = String
 
-    @State private var currentUsername: String
+    @State private var currentEmail: String
 
     let inspection = Inspection<Self>() // ViewInspector
     weak var _workflowPointer: AnyFlowRepresentable?
 
-    init(with username: String) {
-        _currentUsername = State(initialValue: username)
+    init(with email: String) {
+        _currentEmail = State(initialValue: email)
     }
 
     var body: some View {
         VStack {
             HStack {
-                Image(systemName: "person.fill")
+                Image.account
                     .foregroundColor(.icon)
-                Text("New username: ")
-                TextField("\(currentUsername)", text: $currentUsername)
+                Text("New email: ")
+                TextField("\(currentEmail)", text: $currentEmail)
+                    .keyboardType(.emailAddress)
                 Spacer()
             }
             .textEntryStyle()
@@ -35,7 +36,7 @@ struct ChangeUsernameView: View, FlowRepresentable {
 
             Button {
                 withAnimation {
-                    proceedInWorkflow(currentUsername)
+                    proceedInWorkflow(currentEmail)
                 }
             } label: {
                 Text("SAVE")
@@ -47,9 +48,9 @@ struct ChangeUsernameView: View, FlowRepresentable {
 }
 
 
-struct ChangeUsernameView_Previews: PreviewProvider {
+struct ChangeEmailView_Previews: PreviewProvider {
     static var previews: some View {
-        ChangeUsernameView(with: "Username input")
+        ChangeEmailView(with: "Email input")
             .preferredColorScheme(.dark)
             .background(Color.primaryBackground)
     }
