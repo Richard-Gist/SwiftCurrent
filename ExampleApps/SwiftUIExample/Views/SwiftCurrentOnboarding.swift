@@ -22,42 +22,49 @@ struct SwiftCurrentOnboarding: View, PassthroughFlowRepresentable {
 
             VStack(spacing: 50) {
                 HStack {
-                    Image.password
+                    Image(systemName: "point.topleft.down.curvedto.point.bottomright.up")
                         .resizable()
+                        .scaledToFit()
                         .frame(width: 100, height: 100)
                     VStack(alignment: .leading) {
-                        Text("Fake it till you make it!")
+                        Text("Define your app in workflows!")
                             .font(.title2)
                             .fontWeight(.bold)
-                        Text("Foo")
+                        Text("Create high level descriptions of the workflows in your application, views remain ignorant of the context they are launched in, what preceded them, or what comes next.")
                     }
+                    Spacer()
                 }
 
                 HStack {
-                    Image.password
+                    Image(systemName: "arrow.triangle.swap")
                         .resizable()
+                        .scaledToFit()
                         .frame(width: 100, height: 100)
                     VStack(alignment: .leading) {
-                        Text("Fake it till you make it! I thought this")
+                        Text("Optionally skip screens.")
                             .font(.title2)
                             .fontWeight(.bold)
-                        Text("This screen will only appear once yo and only")
+                        Text("This screen will only appear once, after that even though the workflow hasn't changed, it will continually skip.")
                             .font(.subheadline)
                     }
+                    Spacer()
                 }
 
                 HStack {
-                    Image.password
+                    Image(systemName: "arrow.triangle.branch")
                         .resizable()
+                        .scaledToFit()
                         .frame(width: 100, height: 100)
                     VStack(alignment: .leading) {
-                        Text("Fake it till you make it!")
+                        Text("Compose workflows together")
                             .font(.title2)
                             .fontWeight(.bold)
-                        Text("Foo")
+                        Text("Workflows are highly composable. If you want to create branching flows it's as simple as defining new workflows and launching them.")
                     }
+                    Spacer()
                 }
             }
+            .fixedSize(horizontal: false, vertical: true)
             .padding()
 
             Spacer()
