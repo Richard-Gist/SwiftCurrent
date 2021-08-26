@@ -10,6 +10,7 @@
 		CA0536F426A0887800BF8FC5 /* ProfileFeatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0536F326A0887800BF8FC5 /* ProfileFeatureView.swift */; };
 		CA0536F626A0888200BF8FC5 /* ProfileFeatureOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0536F526A0888200BF8FC5 /* ProfileFeatureOnboardingView.swift */; };
 		CA0536FB26A0919900BF8FC5 /* AccountInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0536FA26A0919900BF8FC5 /* AccountInformationView.swift */; };
+		CA21A8DF26D81C02007C7C39 /* SwiftCurrentOnboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA21A8DE26D81C02007C7C39 /* SwiftCurrentOnboarding.swift */; };
 		CA238D1426A1153B000A36EC /* ContentViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA238D1326A1153B000A36EC /* ContentViewTests.swift */; };
 		CA4A6F2026CDAEE600BE3E74 /* TestEventReceiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4A6F1F26CDAEE600BE3E74 /* TestEventReceiver.swift */; };
 		CA4B40B926A09E5800B18626 /* ChangeEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4B40B826A09E5800B18626 /* ChangeEmailView.swift */; };
@@ -86,6 +87,7 @@
 		CA0536F326A0887800BF8FC5 /* ProfileFeatureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFeatureView.swift; sourceTree = "<group>"; };
 		CA0536F526A0888200BF8FC5 /* ProfileFeatureOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFeatureOnboardingView.swift; sourceTree = "<group>"; };
 		CA0536FA26A0919900BF8FC5 /* AccountInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountInformationView.swift; sourceTree = "<group>"; };
+		CA21A8DE26D81C02007C7C39 /* SwiftCurrentOnboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftCurrentOnboarding.swift; sourceTree = "<group>"; };
 		CA238D1326A1153B000A36EC /* ContentViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewTests.swift; sourceTree = "<group>"; };
 		CA4A6F1F26CDAEE600BE3E74 /* TestEventReceiver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestEventReceiver.swift; sourceTree = "<group>"; };
 		CA4B40B826A09E5800B18626 /* ChangeEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeEmailView.swift; sourceTree = "<group>"; };
@@ -278,6 +280,7 @@
 				CAC34B7126A07FE90039A373 /* ContentView.swift */,
 				CAC34B7226A07FE90039A373 /* MapFeatureView.swift */,
 				CA7B82A426A2061B005AA87D /* MFAView.swift */,
+				CA21A8DE26D81C02007C7C39 /* SwiftCurrentOnboarding.swift */,
 			);
 			path = Views;
 			sourceTree = SOURCE_ROOT;
@@ -517,6 +520,7 @@
 				CA6FB0DE26C6AD5200FB3285 /* UIKitInteropProgrammaticViewController.swift in Sources */,
 				D7F30AE026D6B93100E0F62D /* Images.swift in Sources */,
 				CA7B821026A123F6005AA87D /* InspectableSheet.swift in Sources */,
+				CA21A8DF26D81C02007C7C39 /* SwiftCurrentOnboarding.swift in Sources */,
 				CAD0269726A0AEE00075B818 /* ChangePasswordView.swift in Sources */,
 				CAD026AC26A0C83B0075B818 /* Inspection.swift in Sources */,
 				CAC7499026D6B8540001BB39 /* SignUpView.swift in Sources */,
