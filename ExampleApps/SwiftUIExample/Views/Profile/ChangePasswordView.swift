@@ -31,20 +31,38 @@ struct ChangePasswordView: View, FlowRepresentable {
         VStack {
             if !errors.isEmpty {
                 Text(errors.joined(separator: "\n")).foregroundColor(Color.red)
+                    .transition(.scale)
             }
-            TextField("Old Password", text: $oldPassword)
-                .autocapitalization(.none)
-                .disableAutocorrection(true)
-                .textEntryStyle()
-            TextField("New Password", text: $newPassword)
-                .autocapitalization(.none)
-                .disableAutocorrection(true)
-                .textEntryStyle()
-            TextField("Confirm New Password", text: $confirmNewPassword)
-                .autocapitalization(.none)
-                .disableAutocorrection(true)
-                .textEntryStyle()
-            Button("Save") {
+
+            HStack {
+                Image(systemName: "lock")
+                TextField("Old Password", text: $oldPassword)
+                    .autocapitalization(.none)
+                    .disableAutocorrection(true)
+                Spacer()
+            }
+            .textEntryStyle()
+
+            HStack {
+                Image(systemName: "lock")
+                TextField("New Password", text: $newPassword)
+                    .autocapitalization(.none)
+                    .disableAutocorrection(true)
+                Spacer()
+            }
+            .textEntryStyle()
+
+            HStack {
+                Image(systemName: "lock.fill")
+                TextField("Confirm New Password", text: $confirmNewPassword)
+                    .autocapitalization(.none)
+                    .disableAutocorrection(true)
+                Spacer()
+            }
+            .textEntryStyle()
+            .padding(.bottom)
+
+            Button {
                 submitted = true
                 validatePassword(newPassword)
                 if errors.isEmpty {
@@ -52,6 +70,9 @@ struct ChangePasswordView: View, FlowRepresentable {
                         proceedInWorkflow(newPassword)
                     }
                 }
+            } label: {
+                Text("SAVE")
+                    .primaryButtonStyle()
             }
         }
         .onChange(of: oldPassword, perform: validateOldPassword)
@@ -61,25 +82,38 @@ struct ChangePasswordView: View, FlowRepresentable {
     }
 
     private func validateOldPassword(_ password: String) {
-        errors.removeAll()
-        guard submitted else { return }
-        if password != currentPassword {
-            errors.append("Old password does not match records")
+        withAnimation {
+            errors.removeAll()
+            guard submitted else { return }
+            if password != currentPassword {
+                errors.append("Old password does not match records")
+            }
         }
     }
 
     private func validatePassword(_ password: String) {
         guard submitted else { return }
-        validateOldPassword(oldPassword)
-        switch password {
+        withAnimation {
+            validateOldPassword(oldPassword)
+            switch password {
             case _ where !password.contains { $0.isUppercase }:
                 errors.append("Password must contain at least one uppercase character")
             case _ where !password.contains { $0.isNumber }:
                 errors.append("Password must contain at least one number")
             default: break
+            }
+
+            if newPassword != confirmNewPassword {
+                errors.append("New password and confirmation password do not match")
+            }
         }
-        if newPassword != confirmNewPassword {
-            errors.append("New password and confirmation password do not match")
-        }
+    }
+}
+
+struct ChangePasswordView_Previews: PreviewProvider {
+    static var previews: some View {
+        ChangePasswordView(with: "Username input")
+            .preferredColorScheme(.dark)
+            .background(Color.primaryBackground)
     }
 }

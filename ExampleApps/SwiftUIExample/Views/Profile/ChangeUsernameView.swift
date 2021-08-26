@@ -47,7 +47,7 @@ struct ChangeUsernameView: View, FlowRepresentable {
 }
 
 
-struct temp: PreviewProvider {
+struct ChangeUsernameView_Previews: PreviewProvider {
     static var previews: some View {
         ChangeUsernameView(with: "Username input")
             .preferredColorScheme(.dark)
