@@ -17,6 +17,7 @@ struct LoginView: View, FlowRepresentable {
     @State var showSignUp = false
     @State var showPassword = false
     @State var isLoggedIn = false
+
     var body: some View {
         GeometryReader { _ in
             VStack(spacing: 40) {

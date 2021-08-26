@@ -7,9 +7,11 @@
 //  Copyright © 2021 WWT and Tyler Thompson. All rights reserved.
 
 import SwiftUI
+import SwiftCurrent
 import SwiftCurrent_SwiftUI
 
-struct ContentView: View {
+struct ContentView: View, FlowRepresentable {
+    weak var _workflowPointer: AnyFlowRepresentable?
     let inspection = Inspection<Self>() // ViewInspector
     enum Tab {
         case map

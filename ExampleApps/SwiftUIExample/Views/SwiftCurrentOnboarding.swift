@@ -7,25 +7,65 @@
 //
 
 import SwiftUI
+import SwiftCurrent
 
-struct SwiftCurrentOnboarding: View {
+struct SwiftCurrentOnboarding: View, PassthroughFlowRepresentable {
+    weak var _workflowPointer: AnyFlowRepresentable?
     var body: some View {
         VStack {
+            Spacer()
+
             Image.socialMediaIcon
                 .resizable()
                 .scaledToFit()
                 .padding()
 
-            Spacer()
+            VStack(spacing: 50) {
+                HStack {
+                    Image.password
+                        .resizable()
+                        .frame(width: 100, height: 100)
+                    VStack(alignment: .leading) {
+                        Text("Fake it till you make it!")
+                            .font(.title2)
+                            .fontWeight(.bold)
+                        Text("Foo")
+                    }
+                }
 
-            VStack {
-                Text("Because we r cul")
+                HStack {
+                    Image.password
+                        .resizable()
+                        .frame(width: 100, height: 100)
+                    VStack(alignment: .leading) {
+                        Text("Fake it till you make it! I thought this")
+                            .font(.title2)
+                            .fontWeight(.bold)
+                        Text("This screen will only appear once yo and only")
+                            .font(.subheadline)
+                    }
+                }
+
+                HStack {
+                    Image.password
+                        .resizable()
+                        .frame(width: 100, height: 100)
+                    VStack(alignment: .leading) {
+                        Text("Fake it till you make it!")
+                            .font(.title2)
+                            .fontWeight(.bold)
+                        Text("Foo")
+                    }
+                }
             }
+            .padding()
 
             Spacer()
 
             Button {
-//                showSignUp = true
+                withAnimation {
+                    proceedInWorkflow()
+                }
             } label: {
                 Text("Check It Out!")
                     .primaryButtonStyle()

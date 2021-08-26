@@ -8,6 +8,7 @@
 
 import SwiftUI
 import Swinject
+import SwiftCurrent_SwiftUI
 
 @main
 struct SwiftUIExampleApp: App {
@@ -17,8 +18,13 @@ struct SwiftUIExampleApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .preferredColorScheme(.dark)
+            WorkflowLauncher(isLaunched: .constant(true)) {
+                thenProceed(with: SwiftCurrentOnboarding.self) {
+                    thenProceed(with: ContentView.self)
+                        .applyModifiers { $0.transition(.slide) }
+                }.applyModifiers { $0.transition(.slide) }
+            }
+            .preferredColorScheme(.dark)
         }
     }
 }
