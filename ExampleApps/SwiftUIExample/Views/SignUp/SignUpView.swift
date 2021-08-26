@@ -42,9 +42,11 @@ struct SignUp: View, FlowRepresentable {
                         }
                         if showPassword {
                             TextField("Password", text: $password)
+                                .autocapitalization(.none)
                                 .disableAutocorrection(true)
                         } else {
                             SecureField("Password", text: $password)
+                                .autocapitalization(.none)
                                 .disableAutocorrection(true)
                         }
                     }
@@ -59,9 +61,11 @@ struct SignUp: View, FlowRepresentable {
                         }
                         if showConfirmPassword {
                             TextField("Confirm Password", text: $confirmPassword)
+                                .autocapitalization(.none)
                                 .disableAutocorrection(true)
                         } else {
                             SecureField("Confirm Password", text: $confirmPassword)
+                                .autocapitalization(.none)
                                 .disableAutocorrection(true)
                         }
                     }

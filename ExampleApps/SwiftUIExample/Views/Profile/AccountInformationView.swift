@@ -21,7 +21,7 @@ struct AccountInformationView: View, FlowRepresentable {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 25) { // swiftlint:disable:this closure_body_length
-            HStack {
+            HStack(spacing: 15) {
                 if !emailWorkflowLaunched {
                     HStack {
                         Image.account
@@ -56,7 +56,7 @@ struct AccountInformationView: View, FlowRepresentable {
             }
 
             if !passwordWorkflowLaunched {
-                HStack {
+                HStack(spacing: 15) {
                     Image.password
                         .foregroundColor(.icon)
                     Text("Password: ")

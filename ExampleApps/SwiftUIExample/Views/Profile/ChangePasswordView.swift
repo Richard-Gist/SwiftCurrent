@@ -11,9 +11,12 @@ import SwiftCurrent
 
 struct ChangePasswordView: View, FlowRepresentable {
     typealias WorkflowOutput = String
-    @State private var oldPassword: String = ""
-    @State private var newPassword: String = ""
-    @State private var confirmNewPassword: String = ""
+    @State private var oldPassword = ""
+    @State private var showOldPassword = false
+    @State private var newPassword = ""
+    @State private var showNewPassword = false
+    @State private var confirmNewPassword = ""
+    @State private var showConfirmNewPassword = false
     @State private var submitted = false
     @State private var errors = [String]()
 
@@ -34,33 +37,60 @@ struct ChangePasswordView: View, FlowRepresentable {
                     .transition(.scale)
             }
 
-            HStack {
-                Image(systemName: "lock")
-                    .foregroundColor(.icon)
-                TextField("Old Password", text: $oldPassword)
-                    .autocapitalization(.none)
-                    .disableAutocorrection(true)
-                Spacer()
+            HStack(spacing: 15) {
+                Button {
+                    showOldPassword.toggle()
+                } label: {
+                    Image(systemName: showOldPassword ? "eye.fill" : "eye.slash.fill")
+                        .foregroundColor(.icon)
+                }
+                if showOldPassword {
+                    TextField("Old Password", text: $oldPassword)
+                        .autocapitalization(.none)
+                        .disableAutocorrection(true)
+                } else {
+                    SecureField("Old Password", text: $oldPassword)
+                        .autocapitalization(.none)
+                        .disableAutocorrection(true)
+                }
             }
             .textEntryStyle()
 
-            HStack {
-                Image.password
-                    .foregroundColor(.icon)
-                TextField("New Password", text: $newPassword)
-                    .autocapitalization(.none)
-                    .disableAutocorrection(true)
-                Spacer()
+            HStack(spacing: 15) {
+                Button {
+                    showNewPassword.toggle()
+                } label: {
+                    Image(systemName: showNewPassword ? "eye.fill" : "eye.slash.fill")
+                        .foregroundColor(.icon)
+                }
+                if showNewPassword {
+                    TextField("New Password", text: $newPassword)
+                        .autocapitalization(.none)
+                        .disableAutocorrection(true)
+                } else {
+                    SecureField("New Password", text: $newPassword)
+                        .autocapitalization(.none)
+                        .disableAutocorrection(true)
+                }
             }
             .textEntryStyle()
 
-            HStack {
-                Image.password
-                    .foregroundColor(.icon)
-                TextField("Confirm New Password", text: $confirmNewPassword)
-                    .autocapitalization(.none)
-                    .disableAutocorrection(true)
-                Spacer()
+            HStack(spacing: 15) {
+                Button {
+                    showConfirmNewPassword.toggle()
+                } label: {
+                    Image(systemName: showConfirmNewPassword ? "eye.fill" : "eye.slash.fill")
+                        .foregroundColor(.icon)
+                }
+                if showConfirmNewPassword {
+                    TextField("Confirm New Password", text: $confirmNewPassword)
+                        .autocapitalization(.none)
+                        .disableAutocorrection(true)
+                } else {
+                    SecureField("Confirm New Password", text: $confirmNewPassword)
+                        .autocapitalization(.none)
+                        .disableAutocorrection(true)
+                }
             }
             .textEntryStyle()
             .padding(.bottom)
