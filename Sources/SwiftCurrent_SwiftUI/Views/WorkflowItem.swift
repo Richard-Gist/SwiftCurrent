@@ -52,7 +52,7 @@ public struct WorkflowItem<F: FlowRepresentable & View, Wrapped: View & SwiftUIW
                 content.navLink(to: nextView, isActive: $isActive)
             } else if wrapped?.workflowLaunchStyle == .modal {
                 content.sheet(isPresented: $isActive) { nextView }
-            } else if let body = model.body?.extractErasedView() as? Content, elementRef == nil || elementRef === model.body, launchStyle == .default {
+            } else if let body = model.body?.extractErasedView() as? Content, elementRef == nil || elementRef === model.body, launchStyle != .navigationLink {
                 content ?? body
             } else {
                 nextView
