@@ -1,8 +1,9 @@
+//  swiftlint:disable:this file_name
+//  NavigationWrapper.swift
+//  SwiftCurrent_SwiftUI
 //
-//  File.swift
-//  
-//
-//  Created by Tyler Thompson on 8/25/21.
+//  Created by Tyler Thompson on 8/27/21.
+//  Copyright © 2021 WWT and Tyler Thompson. All rights reserved.
 //
 
 import SwiftUI

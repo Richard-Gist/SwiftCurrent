@@ -42,13 +42,14 @@ import SwiftCurrent
 /// ```
 @available(iOS 14.0, macOS 11, tvOS 14.0, watchOS 7.0, *)
 public struct WorkflowLauncher<Content: View>: View {
-    @Binding var isLaunched: Bool
     @State private var content: Content
-    @StateObject private var model: WorkflowViewModel
-    @StateObject private var launcher: Launcher
     @State private var onFinish = [(AnyWorkflow.PassedArgs) -> Void]()
     @State private var onAbandon = [() -> Void]()
     @State private var shouldEmbedInNavView = false
+    @Binding private var isLaunched: Bool
+
+    @StateObject private var model: WorkflowViewModel
+    @StateObject private var launcher: Launcher
 
     let inspection = Inspection<Self>()
 
@@ -58,26 +59,21 @@ public struct WorkflowLauncher<Content: View>: View {
                 if shouldEmbedInNavView {
                     NavigationView {
                         workflowContent
-                    }
+                    }.navigationViewStyle(StackNavigationViewStyle())
                 } else {
                     workflowContent
                 }
             }
         }
-        .onChange(of: isLaunched) {
-            if $0 == false { resetWorkflow() }
-        }
+        .onChange(of: isLaunched) { if $0 == false { resetWorkflow() } }
     }
 
-    var workflowContent: some View {
+    private var workflowContent: some View {
         content
             .environmentObject(model)
             .environmentObject(launcher)
             .onReceive(model.onFinishPublisher, perform: _onFinish)
             .onReceive(model.onAbandonPublisher) { onAbandon.forEach { $0() } }
-            .onChange(of: isLaunched) {
-                if $0 == false { resetWorkflow() }
-            }
             .onReceive(inspection.notice) { inspection.visit(self, $0) }
     }
 
@@ -135,12 +131,13 @@ public struct WorkflowLauncher<Content: View>: View {
         _launcher = current._launcher
         _content = current._content
         _isLaunched = current._isLaunched
+        _shouldEmbedInNavView = State(initialValue: shouldEmbedInNavView)
         _onFinish = State(initialValue: onFinish)
         _onAbandon = State(initialValue: onAbandon)
-        _shouldEmbedInNavView = State(initialValue: shouldEmbedInNavView)
     }
 
     private init<F, W, C>(isLaunched: Binding<Bool>, startingArgs: AnyWorkflow.PassedArgs, content: Content) where Content == WorkflowItem<F, W, C> {
+        _isLaunched = isLaunched
         let wf = AnyWorkflow.empty
         content.modify(workflow: wf)
         _isLaunched = isLaunched
@@ -152,16 +149,16 @@ public struct WorkflowLauncher<Content: View>: View {
         _content = State(wrappedValue: content)
     }
 
-    private func _onFinish(_ args: AnyWorkflow.PassedArgs?) {
-        guard let args = args else { return }
-        onFinish.forEach { $0(args) }
-    }
-
     private func resetWorkflow() {
         launcher.workflow.launch(withOrchestrationResponder: model, passedArgs: launcher.launchArgs)
     }
 
     private func ViewBuilder<V: View>(@ViewBuilder builder: () -> V) -> some View { builder() }
+
+    private func _onFinish(_ args: AnyWorkflow.PassedArgs?) {
+        guard let args = args else { return }
+        onFinish.forEach { $0(args) }
+    }
 
     /// Adds an action to perform when this `Workflow` has finished.
     public func onFinish(closure: @escaping (AnyWorkflow.PassedArgs) -> Void) -> Self {

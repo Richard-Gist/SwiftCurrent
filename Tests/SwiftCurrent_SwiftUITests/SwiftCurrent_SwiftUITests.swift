@@ -15,6 +15,10 @@ import SwiftCurrent
 
 @available(iOS 14.0, macOS 11, tvOS 14.0, watchOS 7.0, *)
 final class SwiftCurrent_SwiftUIConsumerTests: XCTestCase, View {
+    override func tearDownWithError() throws {
+        removeQueuedExpectations()
+    }
+
     func testWorkflowCanBeFollowed() throws {
         struct FR1: View, FlowRepresentable, Inspectable {
             var _workflowPointer: AnyFlowRepresentable?
@@ -327,18 +331,18 @@ final class SwiftCurrent_SwiftUIConsumerTests: XCTestCase, View {
                     }
                 }
             }
-        ).inspection.inspect { viewUnderTest in
-            XCTAssertNoThrow(try viewUnderTest.find(FR1.self).actualView().proceedInWorkflow())
-            try viewUnderTest.actualView().inspectWrapped { viewUnderTest in
-                XCTAssertNoThrow(try viewUnderTest.find(FR2.self).actualView().proceedInWorkflow())
-                try viewUnderTest.actualView().inspectWrapped { viewUnderTest in
-                    XCTAssertNoThrow(try viewUnderTest.find(FR3.self).actualView().proceedInWorkflow())
-                    try viewUnderTest.actualView().inspectWrapped { viewUnderTest in
-                        XCTAssertNoThrow(try viewUnderTest.find(FR2.self).actualView().proceedInWorkflow())
+        ).inspection.inspect { fr1 in
+            XCTAssertNoThrow(try fr1.find(FR1.self).actualView().proceedInWorkflow())
+            try fr1.actualView().inspectWrapped { fr2 in
+                XCTAssertNoThrow(try fr2.find(FR2.self).actualView().proceedInWorkflow())
+                try fr2.actualView().inspectWrapped { fr3 in
+                    XCTAssertNoThrow(try fr3.find(FR3.self).actualView().proceedInWorkflow())
+                    try fr3.actualView().inspectWrapped { fr4 in
+                        XCTAssertNoThrow(try fr4.find(FR2.self).actualView().proceedInWorkflow())
                     }
                 }
             }
-            XCTAssertThrowsError(try viewUnderTest.find(ViewType.Text.self, skipFound: 1))
+            XCTAssertThrowsError(try fr1.find(ViewType.Text.self, skipFound: 1))
         }
 
         wait(for: [expectViewLoaded], timeout: TestConstant.timeout)
@@ -682,7 +686,7 @@ final class SwiftCurrent_SwiftUIConsumerTests: XCTestCase, View {
         let content = try XCTUnwrap(Mirror(reflecting: workflowView).descendant("_content") as? WorkflowViewContent)
 
         // Note: Only add to these exceptions if you are *certain* the property should not be @State. Err on the side of the property being @State
-        let exceptions = ["_model", "_launcher", "_location", "_value", "inspection"]
+        let exceptions = ["_model", "_launcher", "_location", "_value", "inspection", "_presentation"]
 
         let mirror = Mirror(reflecting: content.wrappedValue)
 
@@ -692,6 +696,40 @@ final class SwiftCurrent_SwiftUIConsumerTests: XCTestCase, View {
             guard let label = $0.label, !exceptions.contains(label) else { return }
             XCTAssert($0.value is StateIdentifiable, "Property named: \(label) was note @State")
         }
+    }
+
+    func testWorkflowCanHaveADelayedLaunch() throws {
+        struct FR1: View, FlowRepresentable, Inspectable {
+            weak var _workflowPointer: AnyFlowRepresentable?
+
+            var body: some View {
+                Button("Proceed") { proceedInWorkflow() }
+            }
+        }
+
+        struct Wrapper: View, Inspectable {
+            @State var showingWorkflow = false
+            let inspection = Inspection<Self>()
+            var body: some View {
+                VStack {
+                    Button("") { showingWorkflow = true }
+                    WorkflowLauncher(isLaunched: $showingWorkflow) {
+                        thenProceed(with: FR1.self)
+                    }
+                }
+                .onReceive(inspection.notice) { inspection.visit(self, $0) }
+            }
+        }
+
+        let exp = ViewHosting.loadView(Wrapper()).inspection.inspect { view in
+            let stack = try view.vStack()
+            let launcher = try stack.view(WorkflowLauncher<WorkflowItem<FR1, Never, FR1>>.self, 1)
+            XCTAssertThrowsError(try launcher.view(WorkflowItem<FR1, Never, FR1>.self))
+            XCTAssertNoThrow(try stack.button(0).tap())
+            try launcher.view(WorkflowItem<FR1, Never, FR1>.self)
+        }
+
+        wait(for: [exp], timeout: TestConstant.timeout)
     }
 }
 
