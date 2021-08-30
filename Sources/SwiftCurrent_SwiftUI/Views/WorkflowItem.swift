@@ -52,7 +52,7 @@ public struct WorkflowItem<F: FlowRepresentable & View, Wrapped: View & SwiftUIW
                 content.navLink(to: nextView, isActive: $isActive)
             } else if wrapped?.workflowLaunchStyle == .modal {
                 content.sheet(isPresented: $isActive) { nextView }
-            } else if let body = model.body?.extractErasedView() as? Content, elementRef === model.body, launchStyle == .default {
+            } else if let body = model.body?.extractErasedView() as? Content, elementRef == nil || elementRef === model.body, launchStyle == .default {
                 content ?? body
             } else {
                 nextView
@@ -178,6 +178,7 @@ public struct WorkflowItem<F: FlowRepresentable & View, Wrapped: View & SwiftUIW
             persistence = element?.value.metadata.persistence ?? .default
         } else if persistence == .removedAfterProceeding {
             content = nil
+            elementRef = nil
         }
     }
 }
