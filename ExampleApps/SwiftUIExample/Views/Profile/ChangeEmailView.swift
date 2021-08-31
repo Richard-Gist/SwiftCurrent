@@ -23,24 +23,13 @@ struct ChangeEmailView: View, FlowRepresentable {
 
     var body: some View {
         VStack {
-            HStack {
-                Image.account
-                    .foregroundColor(.icon)
-                Text("New email: ")
-                TextField("\(currentEmail)", text: $currentEmail)
-                    .keyboardType(.emailAddress)
-                Spacer()
-            }
-            .textEntryStyle()
-            .padding(.bottom)
+            PrimaryTextField(label: "New email", placeholder: currentEmail, image: Image.account, text: $currentEmail)
+                .padding(.bottom)
 
-            Button {
+            PrimaryButton(title: "SAVE") {
                 withAnimation {
                     proceedInWorkflow(currentEmail)
                 }
-            } label: {
-                Text("SAVE")
-                    .primaryButtonStyle()
             }
         }
         .onReceive(inspection.notice) { inspection.visit(self, $0) } // ViewInspector

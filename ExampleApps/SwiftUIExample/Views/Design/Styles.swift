@@ -46,3 +46,11 @@ extension View {
             .clipShape(Capsule())
     }
 }
+
+extension Image {
+    func iconStyle() -> some View {
+        resizable()
+        .scaledToFit()
+        .frame(width: 20, height: 20)
+    }
+}

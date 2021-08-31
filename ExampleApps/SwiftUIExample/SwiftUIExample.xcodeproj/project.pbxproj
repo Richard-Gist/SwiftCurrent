@@ -14,6 +14,10 @@
 		CA238D1426A1153B000A36EC /* ContentViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA238D1326A1153B000A36EC /* ContentViewTests.swift */; };
 		CA4A6F2026CDAEE600BE3E74 /* TestEventReceiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4A6F1F26CDAEE600BE3E74 /* TestEventReceiver.swift */; };
 		CA4B40B926A09E5800B18626 /* ChangeEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4B40B826A09E5800B18626 /* ChangeEmailView.swift */; };
+		CA63BEF126DDAFC200C8DF39 /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63BEF026DDAFC200C8DF39 /* PrimaryButton.swift */; };
+		CA63BEF326DDB07C00C8DF39 /* SecondaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63BEF226DDB07C00C8DF39 /* SecondaryButton.swift */; };
+		CA63BEF526DDB0D200C8DF39 /* PasswordField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63BEF426DDB0D200C8DF39 /* PasswordField.swift */; };
+		CA63BEF726DDB33A00C8DF39 /* PrimaryTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63BEF626DDB33A00C8DF39 /* PrimaryTextField.swift */; };
 		CA6FB0DE26C6AD5200FB3285 /* UIKitInteropProgrammaticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6FB0DD26C6AD5200FB3285 /* UIKitInteropProgrammaticViewController.swift */; };
 		CA6FB0E026C6AD7900FB3285 /* SwiftCurrent_UIKit in Frameworks */ = {isa = PBXBuildFile; productRef = CA6FB0DF26C6AD7900FB3285 /* SwiftCurrent_UIKit */; };
 		CA6FB0E326C6AD9E00FB3285 /* UIKitInterop.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA6FB0E126C6AD9E00FB3285 /* UIKitInterop.storyboard */; };
@@ -91,6 +95,10 @@
 		CA238D1326A1153B000A36EC /* ContentViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewTests.swift; sourceTree = "<group>"; };
 		CA4A6F1F26CDAEE600BE3E74 /* TestEventReceiver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestEventReceiver.swift; sourceTree = "<group>"; };
 		CA4B40B826A09E5800B18626 /* ChangeEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeEmailView.swift; sourceTree = "<group>"; };
+		CA63BEF026DDAFC200C8DF39 /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
+		CA63BEF226DDB07C00C8DF39 /* SecondaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryButton.swift; sourceTree = "<group>"; };
+		CA63BEF426DDB0D200C8DF39 /* PasswordField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordField.swift; sourceTree = "<group>"; };
+		CA63BEF626DDB33A00C8DF39 /* PrimaryTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryTextField.swift; sourceTree = "<group>"; };
 		CA6FB0DD26C6AD5200FB3285 /* UIKitInteropProgrammaticViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKitInteropProgrammaticViewController.swift; sourceTree = "<group>"; };
 		CA6FB0E126C6AD9E00FB3285 /* UIKitInterop.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UIKitInterop.storyboard; sourceTree = "<group>"; };
 		CA6FB0E226C6AD9E00FB3285 /* UIKitInteropTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKitInteropTests.swift; sourceTree = "<group>"; };
@@ -388,6 +396,10 @@
 				D7F30ADD26D6ADB400E0F62D /* Colors.swift */,
 				D7F30ADF26D6B93100E0F62D /* Images.swift */,
 				D7F30AE126D6BA8A00E0F62D /* Styles.swift */,
+				CA63BEF026DDAFC200C8DF39 /* PrimaryButton.swift */,
+				CA63BEF226DDB07C00C8DF39 /* SecondaryButton.swift */,
+				CA63BEF426DDB0D200C8DF39 /* PasswordField.swift */,
+				CA63BEF626DDB33A00C8DF39 /* PrimaryTextField.swift */,
 			);
 			path = Design;
 			sourceTree = "<group>";
@@ -527,12 +539,16 @@
 				D7F30AE226D6BA8A00E0F62D /* Styles.swift in Sources */,
 				CAD0269F26A0BE810075B818 /* ContainerExtensions.swift in Sources */,
 				CA0536FB26A0919900BF8FC5 /* AccountInformationView.swift in Sources */,
+				CA63BEF726DDB33A00C8DF39 /* PrimaryTextField.swift in Sources */,
 				CAD026A126A0BE9A0075B818 /* DependencyInjected.swift in Sources */,
+				CA63BEF326DDB07C00C8DF39 /* SecondaryButton.swift in Sources */,
+				CA63BEF126DDAFC200C8DF39 /* PrimaryButton.swift in Sources */,
 				CAC34B7626A07FE90039A373 /* ContentView.swift in Sources */,
 				CAC34B7726A07FE90039A373 /* MapFeatureView.swift in Sources */,
 				CAC34B7526A07FE90039A373 /* MapFeatureOnboardingView.swift in Sources */,
 				CA7B82A526A2061B005AA87D /* MFAView.swift in Sources */,
 				D7F30ADB26D6A59600E0F62D /* LoginView.swift in Sources */,
+				CA63BEF526DDB0D200C8DF39 /* PasswordField.swift in Sources */,
 				CAC34B7326A07FE90039A373 /* QRScannerFeatureView.swift in Sources */,
 				CAC34B7426A07FE90039A373 /* QRScannerFeatureOnboardingView.swift in Sources */,
 			);

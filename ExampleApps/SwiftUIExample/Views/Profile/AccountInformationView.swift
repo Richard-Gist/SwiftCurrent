@@ -23,8 +23,9 @@ struct AccountInformationView: View, FlowRepresentable {
         VStack(alignment: .leading, spacing: 25) { // swiftlint:disable:this closure_body_length
             HStack(spacing: 15) {
                 if !emailWorkflowLaunched {
-                    HStack {
+                    HStack(spacing: 15) {
                         Image.account
+                            .iconStyle()
                             .foregroundColor(.icon)
                         Text("Email: ")
                         Text(email)
@@ -35,6 +36,7 @@ struct AccountInformationView: View, FlowRepresentable {
                             }
                         } label: {
                             Image(systemName: "pencil")
+                                .iconStyle()
                                 .foregroundColor(.icon)
                         }
                     }
@@ -58,6 +60,7 @@ struct AccountInformationView: View, FlowRepresentable {
             if !passwordWorkflowLaunched {
                 HStack(spacing: 15) {
                     Image.password
+                        .iconStyle()
                         .foregroundColor(.icon)
                     Text("Password: ")
                     SecureField(text: $password) { EmptyView() }.disabled(true)
@@ -68,6 +71,7 @@ struct AccountInformationView: View, FlowRepresentable {
                         }
                     } label: {
                         Image(systemName: "pencil")
+                            .iconStyle()
                             .foregroundColor(.icon)
                     }
                 }

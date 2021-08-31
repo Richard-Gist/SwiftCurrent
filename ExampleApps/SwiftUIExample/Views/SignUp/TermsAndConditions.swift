@@ -46,19 +46,9 @@ struct TermsAndConditions: View, PassthroughFlowRepresentable {
             .padding(.bottom)
 
             HStack {
-                Button {
-                    workflow?.abandon()
-                } label: {
-                    Text("Decline")
-                        .secondaryButtonStyle()
-                }
+                SecondaryButton(title: "Decline") { workflow?.abandon() }
 
-                Button {
-                    proceedInWorkflow()
-                } label: {
-                    Text("Accept")
-                        .primaryButtonStyle()
-                }
+                PrimaryButton(title: "Accept", action: proceedInWorkflow)
             }
         }
         .navigationTitle("Terms of Service")

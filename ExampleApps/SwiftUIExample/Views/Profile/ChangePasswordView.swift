@@ -37,65 +37,14 @@ struct ChangePasswordView: View, FlowRepresentable {
                     .transition(.scale)
             }
 
-            HStack(spacing: 15) {
-                Button {
-                    showOldPassword.toggle()
-                } label: {
-                    Image(systemName: showOldPassword ? "eye.fill" : "eye.slash.fill")
-                        .foregroundColor(.icon)
-                }
-                if showOldPassword {
-                    TextField("Old Password", text: $oldPassword)
-                        .autocapitalization(.none)
-                        .disableAutocorrection(true)
-                } else {
-                    SecureField("Old Password", text: $oldPassword)
-                        .autocapitalization(.none)
-                        .disableAutocorrection(true)
-                }
-            }
-            .textEntryStyle()
+            PasswordField(placeholder: "Old Password", showPassword: $showOldPassword, password: $oldPassword)
 
-            HStack(spacing: 15) {
-                Button {
-                    showNewPassword.toggle()
-                } label: {
-                    Image(systemName: showNewPassword ? "eye.fill" : "eye.slash.fill")
-                        .foregroundColor(.icon)
-                }
-                if showNewPassword {
-                    TextField("New Password", text: $newPassword)
-                        .autocapitalization(.none)
-                        .disableAutocorrection(true)
-                } else {
-                    SecureField("New Password", text: $newPassword)
-                        .autocapitalization(.none)
-                        .disableAutocorrection(true)
-                }
-            }
-            .textEntryStyle()
+            PasswordField(placeholder: "New Password", showPassword: $showNewPassword, password: $newPassword)
 
-            HStack(spacing: 15) {
-                Button {
-                    showConfirmNewPassword.toggle()
-                } label: {
-                    Image(systemName: showConfirmNewPassword ? "eye.fill" : "eye.slash.fill")
-                        .foregroundColor(.icon)
-                }
-                if showConfirmNewPassword {
-                    TextField("Confirm New Password", text: $confirmNewPassword)
-                        .autocapitalization(.none)
-                        .disableAutocorrection(true)
-                } else {
-                    SecureField("Confirm New Password", text: $confirmNewPassword)
-                        .autocapitalization(.none)
-                        .disableAutocorrection(true)
-                }
-            }
-            .textEntryStyle()
-            .padding(.bottom)
+            PasswordField(placeholder: "Confirm New Password", showPassword: $showConfirmNewPassword, password: $confirmNewPassword)
+                .padding(.bottom)
 
-            Button {
+            PrimaryButton(title: "SAVE") {
                 submitted = true
                 validatePassword(newPassword)
                 if errors.isEmpty {
@@ -103,9 +52,6 @@ struct ChangePasswordView: View, FlowRepresentable {
                         proceedInWorkflow(newPassword)
                     }
                 }
-            } label: {
-                Text("SAVE")
-                    .primaryButtonStyle()
             }
         }
         .onChange(of: oldPassword, perform: validateOldPassword)

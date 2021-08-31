@@ -24,64 +24,19 @@ struct SignUp: View, FlowRepresentable {
                     .multilineTextAlignment(.center)
 
                 VStack(spacing: 15) {
-                    HStack(spacing: 15) {
-                        Image(systemName: "envelope.fill")
-                            .foregroundColor(.icon)
+                    PrimaryTextField(placeholder: "Email Address", image: Image.account, text: $email)
+                        .keyboardType(.emailAddress)
 
-                        TextField("Email Address", text: $email)
-                            .keyboardType(.emailAddress)
-                    }
-                    .textEntryStyle()
+                    PasswordField(showPassword: $showPassword, password: $password)
 
-                    HStack(spacing: 15) {
-                        Button {
-                            showPassword.toggle()
-                        } label: {
-                            Image(systemName: showPassword ? "eye.fill" : "eye.slash.fill")
-                                .foregroundColor(.icon)
-                        }
-                        if showPassword {
-                            TextField("Password", text: $password)
-                                .autocapitalization(.none)
-                                .disableAutocorrection(true)
-                        } else {
-                            SecureField("Password", text: $password)
-                                .autocapitalization(.none)
-                                .disableAutocorrection(true)
-                        }
-                    }
-                    .textEntryStyle()
-
-                    HStack(spacing: 15) {
-                        Button {
-                            showConfirmPassword.toggle()
-                        } label: {
-                            Image(systemName: showConfirmPassword ? "eye.fill" : "eye.slash.fill")
-                                .foregroundColor(.icon)
-                        }
-                        if showConfirmPassword {
-                            TextField("Confirm Password", text: $confirmPassword)
-                                .autocapitalization(.none)
-                                .disableAutocorrection(true)
-                        } else {
-                            SecureField("Confirm Password", text: $confirmPassword)
-                                .autocapitalization(.none)
-                                .disableAutocorrection(true)
-                        }
-                    }
-                    .textEntryStyle()
+                    PasswordField(placeholder: "Confirm Password", showPassword: $showConfirmPassword, password: $confirmPassword)
                 }
 
                 HStack {
                     Spacer(minLength: 0)
                 }
 
-                Button {
-                    proceedInWorkflow()
-                } label: {
-                    Text("Next")
-                        .primaryButtonStyle()
-                }
+                PrimaryButton(title: "Next", action: proceedInWorkflow)
             }
             .padding()
             .padding(.bottom, 5)

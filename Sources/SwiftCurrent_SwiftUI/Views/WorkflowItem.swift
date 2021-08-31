@@ -92,7 +92,7 @@ public struct WorkflowItem<F: FlowRepresentable & View, Wrapped: View & SwiftUIW
         _metadata = State(initialValue: metadata)
     }
 
-    public init(_ item: F.Type) where Wrapped == Never, Content == F, Content: FlowRepresentable & View {
+    public init(_ item: F.Type) where Wrapped == Never, Content == F {
         let metadata = FlowRepresentableMetadata(Content.self,
                                                  launchStyle: .new,
                                                  flowPersistence: flowPersistenceClosure,
@@ -100,7 +100,7 @@ public struct WorkflowItem<F: FlowRepresentable & View, Wrapped: View & SwiftUIW
         _metadata = State(initialValue: metadata)
     }
 
-    init(_ item: F.Type, wrapped: () -> Wrapped) where Content == F, Content: FlowRepresentable & View {
+    init(_ item: F.Type, wrapped: () -> Wrapped) where Content == F {
         let metadata = FlowRepresentableMetadata(Content.self,
                                                  launchStyle: .new,
                                                  flowPersistence: flowPersistenceClosure,
@@ -158,7 +158,7 @@ public struct WorkflowItem<F: FlowRepresentable & View, Wrapped: View & SwiftUIW
     }
 
     private func activateIfNeeded(element: AnyWorkflow.Element?) {
-        if elementRef != nil, elementRef === element?.previouslyLoadedElement {
+        if elementRef ==== element?.previouslyLoadedElement {
             isActive = true
         }
     }
@@ -251,3 +251,10 @@ extension WorkflowItem {
     }
 }
 // swiftlint:enable line_length
+
+infix operator ====
+
+func ====(lhs: AnyObject?, rhs: AnyObject?) -> Bool {
+    guard let lhs = lhs, let rhs = rhs else { return false }
+    return lhs === rhs
+}

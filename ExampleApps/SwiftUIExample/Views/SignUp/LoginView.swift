@@ -33,37 +33,15 @@ struct LoginView: View, FlowRepresentable {
                             .titleStyle()
 
                         VStack(spacing: 15) {
-                            HStack(spacing: 15) {
-                                Image.account
-                                    .foregroundColor(.icon)
+                            PrimaryTextField(placeholder: "Email Address", image: Image.account, text: $email)
+                                .keyboardType(.emailAddress)
 
-                                TextField("Email Address", text: $email)
-                                    .keyboardType(.emailAddress)
-                            }
-                            .textEntryStyle()
-
-                            HStack(spacing: 15) {
-                                Button {
-                                    showPassword.toggle()
-                                } label: {
-                                    Image(systemName: showPassword ? "eye.fill" : "eye.slash.fill")
-                                        .foregroundColor(.icon)
-                                }
-                                if showPassword {
-                                    TextField("Password", text: $password)
-                                        .disableAutocorrection(true)
-                                } else {
-                                    SecureField("Password", text: $password)
-                                        .disableAutocorrection(true)
-                                }
-                            }
-                            .textEntryStyle()
+                            PasswordField(showPassword: $showPassword, password: $password)
                         }
 
                         HStack {
                             Spacer(minLength: 0)
                         }
-
                     }
                     .padding()
                     .padding(.bottom, 25)
@@ -71,13 +49,8 @@ struct LoginView: View, FlowRepresentable {
                     .cornerRadius(35)
                     .padding(.horizontal, 20)
 
-                    Button {
-                        proceedInWorkflow()
-                    } label: {
-                        Text("LOGIN")
-                            .primaryButtonStyle()
-                    }
-                    .offset(y: 25)
+                    PrimaryButton(title: "LOGIN", action: proceedInWorkflow)
+                        .offset(y: 25)
                 }
                 .padding(.bottom, 27)
 
@@ -95,11 +68,8 @@ struct LoginView: View, FlowRepresentable {
                 }
                 .padding(.horizontal)
 
-                Button {
+                SecondaryButton(title: "Sign Up") {
                     showSignUp = true
-                } label: {
-                    Text("Sign Up")
-                        .secondaryButtonStyle()
                 }
             }
         }

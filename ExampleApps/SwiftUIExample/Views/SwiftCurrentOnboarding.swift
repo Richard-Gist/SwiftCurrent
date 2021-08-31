@@ -102,14 +102,11 @@ struct SwiftCurrentOnboarding: View, PassthroughFlowRepresentable {
                 .padding()
                 
             }
-            
-            Button {
+
+            PrimaryButton(title: "Check It Out!") {
                 withAnimation {
                     proceedInWorkflow()
                 }
-            } label: {
-                Text("Check It Out!")
-                    .primaryButtonStyle()
             }
         }
     }
