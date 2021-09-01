@@ -32,8 +32,8 @@ extension LaunchStyle {
             case navigationLink
 
             /**
-            Indicates a `FlowRepresentable` should be wrapped in a Sheet.
-            - Important: You are responsible for supplying a Sheet.
+            Indicates a `FlowRepresentable` should be presented modally.
+            - Important: Will not effect the first item in a Workflow.
             */
             case modal
 

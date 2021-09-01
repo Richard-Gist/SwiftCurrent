@@ -28,7 +28,7 @@ import UIKit
   ```
  */
 @available(iOS 14.0, macOS 11, tvOS 14.0, watchOS 7.0, *)
-public struct WorkflowItem<F: FlowRepresentable & View, Wrapped: View & SwiftUIWorkflowPresentable, Content: View>: View {
+public struct WorkflowItem<F: FlowRepresentable & View, Wrapped: View, Content: View>: View {
     // These need to be state variables to survive SwiftUI re-rendering. Change under penalty of torture BY the codebase you modified.
     @State private var content: Content?
     @State private var wrapped: Wrapped?
@@ -50,8 +50,8 @@ public struct WorkflowItem<F: FlowRepresentable & View, Wrapped: View & SwiftUIW
         ViewBuilder {
             if launchStyle == .navigationLink, let content = content {
                 content.navLink(to: nextView, isActive: $isActive)
-            } else if wrapped?.workflowLaunchStyle == .modal {
-                content.sheet(isPresented: $isActive) { nextView }
+            } else if (wrapped as? WorkflowItemPresentable)?.workflowLaunchStyle == .modal, let content = content {
+                content.testableSheet(isPresented: $isActive) { nextView }
             } else if let body = model.body?.extractErasedView() as? Content, elementRef == nil || elementRef === model.body, launchStyle != .navigationLink {
                 content ?? body
             } else {
@@ -184,17 +184,17 @@ public struct WorkflowItem<F: FlowRepresentable & View, Wrapped: View & SwiftUIW
 }
 
 @available(iOS 14.0, macOS 11, tvOS 14.0, watchOS 7.0, *)
-extension WorkflowItem: WorkflowModifier {
-    func modify(workflow: AnyWorkflow) {
-        workflow.append(metadata)
-        (wrapped as? WorkflowModifier)?.modify(workflow: workflow)
+extension WorkflowItem: WorkflowItemPresentable {
+    var workflowLaunchStyle: LaunchStyle.SwiftUI.PresentationType {
+        launchStyle
     }
 }
 
 @available(iOS 14.0, macOS 11, tvOS 14.0, watchOS 7.0, *)
-extension WorkflowItem: SwiftUIWorkflowPresentable {
-    public var workflowLaunchStyle: LaunchStyle.SwiftUI.PresentationType {
-        launchStyle
+extension WorkflowItem: WorkflowModifier {
+    func modify(workflow: AnyWorkflow) {
+        workflow.append(metadata)
+        (wrapped as? WorkflowModifier)?.modify(workflow: workflow)
     }
 }
 
