@@ -33,7 +33,9 @@ struct BenefitView: View {
 }
 
 struct SwiftCurrentOnboarding: View, PassthroughFlowRepresentable {
+    @AppStorage("OnboardedToSwiftCurrent", store: .fromDI) private var onboardedToSwiftCurrent = false
     weak var _workflowPointer: AnyFlowRepresentable?
+
     var body: some View {
         VStack {
             Image.socialMediaIcon
@@ -124,10 +126,15 @@ struct SwiftCurrentOnboarding: View, PassthroughFlowRepresentable {
 
             PrimaryButton(title: "Check It Out!") {
                 withAnimation {
+                    onboardedToSwiftCurrent = true
                     proceedInWorkflow()
                 }
             }
         }
+    }
+
+    func shouldLoad() -> Bool {
+        !onboardedToSwiftCurrent
     }
 }
 
