@@ -9,29 +9,6 @@
 import SwiftUI
 import SwiftCurrent
 
-struct BenefitView: View {
-    let image: String
-    let title: String
-    let description: String
-
-    var body: some View {
-        HStack {
-            Image(systemName: image)
-                .resizable()
-                .scaledToFit()
-                .frame(width: 80, height: 80)
-                .foregroundColor(Color.icon)
-            VStack(alignment: .leading) {
-                Text(title)
-                    .font(.title2)
-                    .fontWeight(.bold)
-                Text(description)
-            }
-            Spacer()
-        }
-    }
-}
-
 struct SwiftCurrentOnboarding: View, PassthroughFlowRepresentable {
     @AppStorage("OnboardedToSwiftCurrent", store: .fromDI) private var onboardedToSwiftCurrent = false
     weak var _workflowPointer: AnyFlowRepresentable?
@@ -42,12 +19,9 @@ struct SwiftCurrentOnboarding: View, PassthroughFlowRepresentable {
                 .resizable()
                 .scaledToFit()
                 .padding(.horizontal)
-            Text("Value added text thing")
-                .titleStyle()
-            
             ScrollView {
-                VStack(spacing: 50) {
-                    Section("General") {
+                LazyVStack(spacing: 50, pinnedViews: [.sectionHeaders]) {
+                    Section(header: SectionHeader(title: "General Features")) {
                         BenefitView(image: "point.topleft.down.curvedto.point.bottomright.up",
                                     title: "Isolate your views",
                                     description: "Define your app in workflows so that views remain ignorant of the flow they're in.")
@@ -67,7 +41,7 @@ struct SwiftCurrentOnboarding: View, PassthroughFlowRepresentable {
                                     title: "Conditional flows",
                                     description: "Make your flows robust and handle ever changing designs. Need a screen sometimes, need a flow for person a and another for person b? We got you covered.")
                     }
-                    Section("UI Stuff") {
+                    Section(header: SectionHeader(title: "UI Stuff")) {
                         BenefitView(image: "square.stack.3d.down.right",
                                     title: "Manage your view stacks",
                                     description: "[Needs more modals] Workflows can contextually set up navigation views and modals for you.")
@@ -85,7 +59,7 @@ struct SwiftCurrentOnboarding: View, PassthroughFlowRepresentable {
                                     description: "View reuse is so easy when you can drop a view anywhere.")
 
                     }
-                    Section("SwiftUI") {
+                    Section(header: SectionHeader(title: "SwiftUI")) {
                         BenefitView(image: "rectangle.3.offgrid",
                                     title: "View swapping",
                                     description: "We make views in your views smarter, so you can get the most with the real estate you got.")
@@ -96,7 +70,7 @@ struct SwiftCurrentOnboarding: View, PassthroughFlowRepresentable {
                                     title: "Animation Friendly",
                                     description: "No AnyViews here, so your animations work how you want them to.")
                     }
-                    Section("Design Philosphy") {
+                    Section(header: SectionHeader(title: "Design Philosphy")) {
                         BenefitView(image: "person.fill.checkmark",
                                     title: "Clear and deliberate API",
                                     description: "The library was built with developers in mind, and making an explicit and clear API. We hope you find it as fun to use as we do")
@@ -122,7 +96,7 @@ struct SwiftCurrentOnboarding: View, PassthroughFlowRepresentable {
                 }
                 .fixedSize(horizontal: false, vertical: true)
                 .padding()
-            }
+            }.listStyle(GroupedListStyle())
 
             PrimaryButton(title: "Check It Out!") {
                 withAnimation {
@@ -135,6 +109,43 @@ struct SwiftCurrentOnboarding: View, PassthroughFlowRepresentable {
 
     func shouldLoad() -> Bool {
         !onboardedToSwiftCurrent
+    }
+}
+
+extension SwiftCurrentOnboarding {
+    struct BenefitView: View {
+        let image: String
+        let title: String
+        let description: String
+
+        var body: some View {
+            HStack {
+                Image(systemName: image)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 80, height: 80)
+                    .foregroundColor(Color.icon)
+                VStack(alignment: .leading) {
+                    Text(title)
+                        .font(.title2)
+                        .fontWeight(.bold)
+                    Text(description)
+                }
+                Spacer()
+            }
+        }
+    }
+
+    struct SectionHeader: View {
+        let title: String
+
+        var body: some View {
+            HStack {
+                Spacer()
+                Text(title).titleStyle()
+                Spacer()
+            }.background(Color.black.opacity(0.8))
+        }
     }
 }
 
