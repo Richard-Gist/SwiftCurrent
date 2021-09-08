@@ -88,7 +88,7 @@ struct SwiftCurrentOnboarding: View, PassthroughFlowRepresentable {
                                         title: "Views not screens",
                                         description: "In SwiftUI, workflows can be just a view on your screen. You can even have multiple workflows on the same screen.")
                             BenefitView(image: "circle.grid.cross.left.fill",
-                                        title: "Choices",
+                                        title: "You do you",
                                         description: "We value your ability to choose. We checked our assumptions when designing so you could do the most, with the best.")
                         }
                         Group {
