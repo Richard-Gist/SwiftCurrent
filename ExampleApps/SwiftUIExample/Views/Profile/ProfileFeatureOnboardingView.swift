@@ -13,7 +13,6 @@ import Swinject
 struct ProfileFeatureOnboardingView: View, FlowRepresentable {
     @AppStorage("OnboardedToProfileFeature", store: .fromDI) private var onboardedToProfileFeature = false
 
-    let inspection = Inspection<Self>() // ViewInspector
     weak var _workflowPointer: AnyFlowRepresentable?
     private let previewImage = Image.profileOnboarding
     private let previewAccent = Color.icon
@@ -42,7 +41,7 @@ struct ProfileFeatureOnboardingView: View, FlowRepresentable {
                 onboardedToProfileFeature = true
                 proceedInWorkflow()
             }
-        }.onReceive(inspection.notice) { inspection.visit(self, $0) } // ViewInspector
+        }
     }
 
     func shouldLoad() -> Bool {

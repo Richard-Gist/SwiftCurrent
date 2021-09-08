@@ -12,7 +12,6 @@ import SwiftCurrent_SwiftUI
 
 struct ContentView: View, FlowRepresentable {
     weak var _workflowPointer: AnyFlowRepresentable?
-    let inspection = Inspection<Self>() // ViewInspector
     enum Tab {
         case map
         case qr
@@ -51,7 +50,6 @@ struct ContentView: View, FlowRepresentable {
             }
             .tag(Tab.profile)
         }
-        .onReceive(inspection.notice) { inspection.visit(self, $0) } // ViewInspector
     }
 }
 
