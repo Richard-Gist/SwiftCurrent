@@ -35,7 +35,7 @@ struct SwiftCurrentOnboarding: View, PassthroughFlowRepresentable {
                     Section(header: SectionHeader(title: "Our Library")) {
                         BenefitView(image: "point.topleft.down.curvedto.point.bottomright.up",
                                     title: "Isolates your views",
-                                    description: "Define your app in workflows so that views remain ignorant of the flow they're in.")
+                                    description: "You can design your views so that they are unaware of the view that will come next.")
                         BenefitView(image: "arrow.up.arrow.down",
                                     title: "Easily reorders views",
                                     description: "Changing view order is as easy as ⌘+⌥+[ (moving the line up or down)")
