@@ -30,7 +30,7 @@ struct SwiftCurrentOnboarding: View, PassthroughFlowRepresentable {
                                     description: "We tell you at compile time everything we can so you know things will work.")
                         BenefitView(image: "keyboard",
                                     title: "Minimal Boilerplate",
-                                    description: "We extensively take care of the boilerplate. If there's any you have to deal with, how to purge it is on our minds.")
+                                    description: "We have hidden this as much as possible. We hate it as much as you do and are constantly working on cutting the cruft.")
                     }
                     Section(header: SectionHeader(title: "Our Library")) {
                         BenefitView(image: "point.topleft.down.curvedto.point.bottomright.up",
