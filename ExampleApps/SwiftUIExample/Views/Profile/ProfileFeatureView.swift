@@ -15,16 +15,17 @@ struct ProfileFeatureView: View, FlowRepresentable {
 
     var body: some View {
         VStack {
-            Image(systemName: "person.fill.questionmark")
-                .renderingMode(.template)
+            Image.wwtLogo
                 .resizable()
+                .scaledToFit()
                 .frame(width: 150, height: 150)
                 .padding(35)
                 .background(
-                    Circle().stroke(Color.white, lineWidth: 4)
-                        .shadow(radius: 7)
+                    Circle().stroke(Color.icon, lineWidth: 4)
+                        .shadow(color: .icon, radius: 7)
                 )
                 .padding()
+                .frame(width: 300, height: 300)
             ScrollView {
                     Divider()
 

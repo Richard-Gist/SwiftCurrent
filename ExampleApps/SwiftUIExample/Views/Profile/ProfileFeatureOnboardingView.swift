@@ -15,21 +15,26 @@ struct ProfileFeatureOnboardingView: View, FlowRepresentable {
 
     let inspection = Inspection<Self>() // ViewInspector
     weak var _workflowPointer: AnyFlowRepresentable?
+    private let previewImage = Image.profileOnboarding
+    private let previewAccent = Color.icon
+    private let featureTitle = "Welcome to our new profile management feature!"
+    private let featureSummary = "You can update your username and password here."
 
     var body: some View {
         VStack {
             VStack {
-                Spacer()
-                Image.profileOnboarding
+                previewImage
                     .resizable()
                     .scaledToFit()
+                    .shadow(color: previewAccent, radius: 5)
                     .padding()
-                    .background(Color.blue)
 
-                Text("Welcome to our new profile management feature!")
+                Text(featureTitle)
                     .titleStyle()
-                Text("You can update your username and password here.")
+                    .multilineTextAlignment(.center)
+                Text(featureSummary)
                     .font(.body)
+                    .multilineTextAlignment(.center)
                     .padding(.bottom)
                 Spacer()
             }

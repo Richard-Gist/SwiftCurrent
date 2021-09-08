@@ -12,7 +12,7 @@ import SwiftCurrent_SwiftUI
 
 struct AccountInformationView: View, FlowRepresentable {
     @State var password = "supersecure"
-    @State private var email = "change@me.com"
+    @State private var email = "SwiftCurrent@wwt.com"
     @State private var emailWorkflowLaunched = false
     @State private var passwordWorkflowLaunched = false
 

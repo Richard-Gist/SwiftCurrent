@@ -29,4 +29,8 @@ extension Image {
     static var profileOnboarding: Image {
         Image("profile-screenshot")
     }
+
+    static var wwtLogo: Image {
+        Image("wwt-logo")
+    }
 }
