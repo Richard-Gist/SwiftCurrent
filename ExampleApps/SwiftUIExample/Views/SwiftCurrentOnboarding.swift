@@ -71,7 +71,7 @@ struct SwiftCurrentOnboarding: View, PassthroughFlowRepresentable {
                                         description: "Workflows can contextually set up navigation views and modals for you. Check out our sample app for more details.")
                             BenefitView(image: "arrow.uturn.left.circle",
                                         title: "Reuse views between workflows",
-                                        description: "Sometimes, you need to use the same view to collect data but send it to a new place. Using SwiftCurrent, you won't have to change anything about your view code, and you can just put it in a new workflow.")
+                                        description: "Sometimes, you need to use the same view to collect data but pass it to a different workflow. Using SwiftCurrent, you won't have to change anything about your view code.")
                             BenefitView(image: "iphone.badge.play",
                                         title: "Preview friendly",
                                         description: "SwiftCurrent ties into the SwiftUI ecosystem, so your previews can render your workflows without having to run the app.")
