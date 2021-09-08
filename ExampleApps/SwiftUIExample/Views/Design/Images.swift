@@ -25,4 +25,8 @@ extension Image {
     static var socialMediaIcon: Image {
         Image("swiftcurrent-logo-subtext")
     }
+
+    static var profileOnboarding: Image {
+        Image("profile-screenshot")
+    }
 }

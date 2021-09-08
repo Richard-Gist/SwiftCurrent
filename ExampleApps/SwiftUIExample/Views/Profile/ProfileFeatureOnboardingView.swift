@@ -18,8 +18,22 @@ struct ProfileFeatureOnboardingView: View, FlowRepresentable {
 
     var body: some View {
         VStack {
-            Text("Learn about our awesome profile feature!")
-            Button("Continue") {
+            VStack {
+                Spacer()
+                Image.profileOnboarding
+                    .resizable()
+                    .scaledToFit()
+                    .padding()
+                    .background(Color.blue)
+
+                Text("Welcome to our new profile management feature!")
+                    .titleStyle()
+                Text("You can update your username and password here.")
+                    .font(.body)
+                    .padding(.bottom)
+                Spacer()
+            }
+            PrimaryButton(title: "Continue") {
                 onboardedToProfileFeature = true
                 proceedInWorkflow()
             }
@@ -28,5 +42,12 @@ struct ProfileFeatureOnboardingView: View, FlowRepresentable {
 
     func shouldLoad() -> Bool {
         !onboardedToProfileFeature
+    }
+}
+
+struct FeatureValue_Previews: PreviewProvider {
+    static var previews: some View {
+        ProfileFeatureOnboardingView()
+            .preferredColorScheme(.dark)
     }
 }
