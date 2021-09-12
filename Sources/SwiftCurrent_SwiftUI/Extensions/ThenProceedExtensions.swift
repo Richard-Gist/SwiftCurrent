@@ -22,6 +22,27 @@ private func verifyWorkflowIsWellFormed<LHS: FlowRepresentable, RHS: FlowReprese
 
 @available(iOS 14.0, macOS 11, tvOS 14.0, watchOS 7.0, *)
 extension View {
+
+    /**
+     Adds an item to the workflow; enforces the `FlowRepresentable.WorkflowOutput` of the previous item matches the args that will be passed forward.
+     - Parameter with: a `FlowRepresentable` type that should be presented.
+     - Returns: a new `WorkflowItem` with the additional `FlowRepresentable` item.
+     */
+    public func thenProceed2<FR: FlowRepresentable & View>(with: FR.Type) -> some WorkflowView {
+        WorkflowItem(FR.self)
+    }
+
+    /**
+     Adds an item to the workflow; enforces the `FlowRepresentable.WorkflowOutput` of the previous item matches the args that will be passed forward.
+     - Parameter with: a `FlowRepresentable` type that should be presented.
+     - Parameter nextItem: a closure returning the next item in the `Workflow`.
+     - Returns: a new `WorkflowItem` with the additional `FlowRepresentable` item.
+     */
+    public func thenProceed2<FR: FlowRepresentable & View, Wrapped: WorkflowView>(with: FR.Type, nextItem: () -> Wrapped) -> some WorkflowView {
+        verifyWorkflowIsWellFormed(FR.self, Wrapped.FlowRep.self)
+        return WorkflowItem(FR.self) { nextItem() }
+    }
+
     /**
      Adds an item to the workflow; enforces the `FlowRepresentable.WorkflowOutput` of the previous item matches the args that will be passed forward.
      - Parameter with: a `FlowRepresentable` type that should be presented.

@@ -47,7 +47,7 @@ final class GenericConstraintTests: XCTestCase, View {
         }
 
         let workflowView = WorkflowLauncher(isLaunched: .constant(true)) {
-            thenProceed(with: FR1.self).persistence(.persistWhenSkipped)
+            thenProceed2(with: FR1.self).persistence(.persistWhenSkipped)
         }
 
         let expectViewLoaded = ViewHosting.loadView(workflowView).inspection.inspect { view in
@@ -2410,14 +2410,15 @@ final class GenericConstraintTests: XCTestCase, View {
         let expectedArgs = UUID().uuidString
 
         let workflowView = WorkflowLauncher(isLaunched: .constant(true), startingArgs: expectedArgs) {
-            thenProceed(with: FR0.self) {
-                thenProceed(with: FR1.self) {
-                    thenProceed(with: FR2.self).persistence(.persistWhenSkipped)
+            thenProceed2(with: FR0.self) {
+                thenProceed2(with: FR1.self) {
+                    thenProceed2(with: FR2.self).persistence(.persistWhenSkipped)
                 }
             }
         }
-        let expectViewLoaded = ViewHosting.loadView(workflowView).inspection.inspect { view in
+        let expectViewLoaded = ViewHosting.loadView2(workflowView).inspection.inspect { view in
             XCTAssertNoThrow(try view.find(FR0.self).actualView().proceedInWorkflow())
+            let v = try view.actualView()
             try view.actualView().inspectWrapped { view in
                 XCTAssertNoThrow(try view.find(FR1.self).actualView().proceedInWorkflow(expectedArgs))
                 try view.actualView().inspectWrapped { view in

@@ -45,6 +45,30 @@ extension ViewHosting {
         return workflowItem
     }
 
+    static func loadView2<WV>(_ view: WorkflowLauncher<WV>) -> some InspectableWorkflowView {
+        var workflowItem: WorkflowItem<WV.FlowRep, WV.Wrapped, WV.Content>!
+        let exp = view.inspection.inspect {
+            do {
+                workflowItem = try $0.view(WorkflowItem<WV.FlowRep, WV.Wrapped, WV.Content>.self).actualView()
+            } catch {
+                XCTFail(error.localizedDescription)
+            }
+        }
+
+        Self.host(view: view)
+
+        XCTWaiter().wait(for: [exp], timeout: TestConstant.timeout)
+        XCTAssertNotNil(workflowItem)
+        let model = Mirror(reflecting: view).descendant("_model") as? StateObject<WorkflowViewModel>
+        let launcher = Mirror(reflecting: view).descendant("_launcher") as? StateObject<Launcher>
+        XCTAssertNotNil(model)
+        XCTAssertNotNil(launcher)
+        defer {
+            Self.host(view: workflowItem.environmentObject(model!.wrappedValue).environmentObject(launcher!.wrappedValue))
+        }
+        return workflowItem
+    }
+
     static func loadView<F, W, C>(_ view: WorkflowItem<F, W, C>, model: WorkflowViewModel, launcher: Launcher) -> WorkflowItem<F, W, C> {
         defer {
             Self.host(view: view.environmentObject(model).environmentObject(launcher))
@@ -52,3 +76,12 @@ extension ViewHosting {
         return view
     }
 }
+
+@available(iOS 14.0, macOS 11, tvOS 14.0, watchOS 7.0, *)
+protocol InspectableWorkflowView: WorkflowView, Inspectable where Emmisary: InspectionEmissary, Emmisary.V == Self {
+    associatedtype Emmisary
+    var inspection: Emmisary { get }
+}
+
+@available(iOS 14.0, macOS 11, tvOS 14.0, watchOS 7.0, *)
+extension WorkflowItem: InspectableWorkflowView { }

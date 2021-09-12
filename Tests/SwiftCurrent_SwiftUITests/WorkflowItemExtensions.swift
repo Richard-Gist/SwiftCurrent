@@ -32,5 +32,11 @@ extension WorkflowItem {
     @discardableResult func inspect(model: WorkflowViewModel, launcher: Launcher, function: String = #function, file: StaticString = #file, line: UInt = #line, inspection: @escaping (InspectableView<ViewType.View<Self>>) throws -> Void) throws -> XCTestExpectation {
         try ViewHosting.loadView(self, model: model, launcher: launcher).inspect(function: function, file: file, line: line, inspection: inspection)
     }
+}
 
+@available(iOS 14.0, macOS 11, tvOS 14.0, watchOS 7.0, *)
+extension InspectableWorkflowView {
+    @discardableResult func inspectWrapped(function: String = #function, file: StaticString = #file, line: UInt = #line, inspection: @escaping (InspectableView<ViewType.View<Wrapped>>) throws -> Void) throws -> XCTestExpectation where Wrapped: InspectableWorkflowView {
+        try (self as! WorkflowItem<FlowRep, Wrapped, Content>).inspectWrapped(function: function, file: file, line: line, inspection: inspection)
+    }
 }
