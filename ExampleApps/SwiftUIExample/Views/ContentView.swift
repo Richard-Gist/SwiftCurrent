@@ -8,51 +8,52 @@
 
 import SwiftUI
 import SwiftCurrent_SwiftUI
+import SwiftCurrent
 
 struct ContentView: View {
-    let inspection = Inspection<Self>() // ViewInspector
-    enum Tab {
-        case map
-        case qr
-        case profile
-    }
-    @State var selectedTab: Tab = .map
     var body: some View {
-        TabView(selection: $selectedTab) {
-            // NOTE: Using constant here guarantees the workflow cannot abandon, it stays launched forever.
-            WorkflowLauncher(isLaunched: .constant(true)) {
-                thenProceed(with: MapFeatureOnboardingView.self) {
-                    thenProceed(with: MapFeatureView.self)
-                }
-            }.tabItem {
-                Label("Map", systemImage: "map")
-            }
-            .tag(Tab.map)
-
-            WorkflowLauncher(isLaunched: .constant(true)) {
-                thenProceed(with: QRScannerFeatureOnboardingView.self) {
-                    thenProceed(with: QRScannerFeatureView.self)
-                }
-            }.tabItem {
-                Label("QR Scanner", systemImage: "camera")
-            }
-            .tag(Tab.qr)
-
-            WorkflowLauncher(isLaunched: .constant(true)) {
-                thenProceed(with: ProfileFeatureOnboardingView.self) {
-                    thenProceed(with: ProfileFeatureView.self)
-                }
-            }.tabItem {
-                Label("Profile", systemImage: "person.crop.circle")
-            }
-            .tag(Tab.profile)
-        }
-        .onReceive(inspection.notice) { inspection.visit(self, $0) } // ViewInspector
+        WorkflowLauncher(isLaunched: .constant(true)) {
+            thenProceed(with: FRR1.self) {
+                thenProceed(with: FRR2.self) {
+                    thenProceed(with: FRR3.self)
+                }.presentationType(.navigationLink)
+                    .persistence(.persistWhenSkipped)
+            }.presentationType(.navigationLink)
+                .persistence(.persistWhenSkipped)
+        }.embedInNavigationView()
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
+struct FRR1: View, FlowRepresentable {
+    weak var _workflowPointer: AnyFlowRepresentable?
+    var body: some View {
+        VStack {
+            Text("This is \(String(describing: Self.self))")
+            Button("Navigate forward") { proceedInWorkflow() }
+        }
+    }
+
+    func shouldLoad() -> Bool { false }
+}
+
+struct FRR2: View, FlowRepresentable {
+    weak var _workflowPointer: AnyFlowRepresentable?
+    var body: some View {
+        VStack {
+            Text("This is \(String(describing: Self.self))")
+            Button("Navigate forward") { proceedInWorkflow() }
+        }
+    }
+
+    func shouldLoad() -> Bool { false }
+}
+
+struct FRR3: View, FlowRepresentable {
+    weak var _workflowPointer: AnyFlowRepresentable?
+    var body: some View {
+        VStack {
+            Text("This is \(String(describing: Self.self))")
+            Button("Navigate forward") { proceedInWorkflow() }
+        }
     }
 }

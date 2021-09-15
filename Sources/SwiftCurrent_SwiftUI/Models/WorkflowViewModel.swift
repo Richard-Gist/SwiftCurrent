@@ -10,12 +10,30 @@ import SwiftCurrent
 import SwiftUI
 import Combine
 
+class Event {
+    var value: AnyWorkflow.Element
+    var seenBy = [AnyWorkflow.Element]()
+
+    init(value: AnyWorkflow.Element) {
+        self.value = value
+    }
+}
+
 @available(iOS 14.0, macOS 11, tvOS 14.0, watchOS 7.0, *)
 final class WorkflowViewModel: ObservableObject {
     @Published var body: AnyWorkflow.Element?
     let onAbandonPublisher = PassthroughSubject<Void, Never>()
     let onFinishPublisher = CurrentValueSubject<AnyWorkflow.PassedArgs?, Never>(nil)
+    let onProceedPublisher = CurrentValueSubject<AnyWorkflow.Element?, Never>(nil)
     let onBackUpPublisher = PassthroughSubject<AnyWorkflow.Element, Never>()
+
+    var approvers = [AnyWorkflow.Element]()
+    var events = [Event]()
+    func getEvents(for element: AnyWorkflow.Element?) -> [Event] {
+        guard let element = element else { return events }
+        let debugEvents = events.filter { !$0.seenBy.contains(where: { $0 === element }) }
+        return debugEvents
+    }
 
     @Binding var isLaunched: Bool
     private let launchArgs: AnyWorkflow.PassedArgs
@@ -30,11 +48,14 @@ final class WorkflowViewModel: ObservableObject {
 extension WorkflowViewModel: OrchestrationResponder {
     func launch(to destination: AnyWorkflow.Element) {
         onFinishPublisher.send(nil) // We launched, so make sure nobody thinks we finished yet.
+        events.append(Event(value: destination))
         body = destination
     }
 
     func proceed(to destination: AnyWorkflow.Element, from source: AnyWorkflow.Element) {
+        events.append(Event(value: destination))
         body = destination
+        onProceedPublisher.send(destination)
     }
 
     func backUp(from source: AnyWorkflow.Element, to destination: AnyWorkflow.Element) {

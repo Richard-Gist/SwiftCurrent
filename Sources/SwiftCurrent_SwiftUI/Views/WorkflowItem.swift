@@ -27,18 +27,32 @@ import UIKit
             }
   ```
  */
+
+@available(iOS 13.0, *)
+class WorkflowItemHoldyThing<Wrapped, Content>: ObservableObject {
+    var content: Content?
+//    var wrapped: Wrapped?
+//    var metadata: FlowRepresentableMetadata!
+//    var modifierClosure: ((AnyFlowRepresentableView) -> Void)?
+//    var flowPersistenceClosure: (AnyWorkflow.PassedArgs) -> FlowPersistence = { _ in .default }
+//    var launchStyle: LaunchStyle.SwiftUI.PresentationType = .default
+    var persistence: FlowPersistence = .default
+    var elementRef: AnyWorkflow.Element?
+}
+
 @available(iOS 14.0, macOS 11, tvOS 14.0, watchOS 7.0, *)
 public struct WorkflowItem<F: FlowRepresentable & View, Wrapped: View, Content: View>: View {
     // These need to be state variables to survive SwiftUI re-rendering. Change under penalty of torture BY the codebase you modified.
-    @State private var content: Content?
+    @State private var isActive = false
+    @StateObject private var holdyThing = WorkflowItemHoldyThing<Wrapped, Content>()
+//    @State private var content: Content?
     @State private var wrapped: Wrapped?
     @State private var metadata: FlowRepresentableMetadata!
     @State private var modifierClosure: ((AnyFlowRepresentableView) -> Void)?
     @State private var flowPersistenceClosure: (AnyWorkflow.PassedArgs) -> FlowPersistence = { _ in .default }
     @State private var launchStyle: LaunchStyle.SwiftUI.PresentationType = .default
-    @State private var persistence: FlowPersistence = .default
-    @State private var elementRef: AnyWorkflow.Element?
-    @State private var isActive = false
+//    @State private var persistence: FlowPersistence = .default
+//    @State private var elementRef: AnyWorkflow.Element?
     @EnvironmentObject private var model: WorkflowViewModel
     @EnvironmentObject private var launcher: Launcher
     @Environment(\.presentationMode) var presentation
@@ -47,25 +61,41 @@ public struct WorkflowItem<F: FlowRepresentable & View, Wrapped: View, Content: 
 
     public var body: some View {
         ViewBuilder {
-            if launchStyle == .navigationLink, let content = content {
+            if launchStyle == .navigationLink, let content = holdyThing.content {
                 content.navLink(to: nextView, isActive: $isActive)
-            } else if case .modal(let modalStyle) = (wrapped as? WorkflowItemPresentable)?.workflowLaunchStyle, let content = content {
+            } else if case .modal(let modalStyle) = (wrapped as? WorkflowItemPresentable)?.workflowLaunchStyle, let content = holdyThing.content {
                 switch modalStyle {
                     case .sheet: content.testableSheet(isPresented: $isActive) { nextView }
                     #if (os(iOS) || os(tvOS) || os(watchOS) || targetEnvironment(macCatalyst))
                     case .fullScreenCover: content.fullScreenCover(isPresented: $isActive) { nextView }
                     #endif
                 }
-            } else if let body = model.body?.extractErasedView() as? Content, elementRef == nil || elementRef === model.body, launchStyle != .navigationLink {
-                content ?? body
+            } else if let body = model.body?.extractErasedView() as? Content, holdyThing.elementRef == nil || holdyThing.elementRef === model.body, launchStyle != .navigationLink {
+                holdyThing.content ?? body
             } else {
                 nextView
             }
         }
-        .onReceive(model.$body, perform: activateIfNeeded)
-        .onReceive(model.$body, perform: proceedInWorkflow)
+//        .onReceive(model.$body, perform: activateIfNeeded)
+        .onReceive(model.$body, perform: parseEvents)
         .onReceive(model.onBackUpPublisher, perform: backUpInWorkflow)
         .onReceive(inspection.notice) { inspection.visit(self, $0) }
+    }
+
+    func parseEvents(element: AnyWorkflow.Element?) {
+        print("---------------BEGIN for \(F.self)---------------")
+        let events = model.getEvents(for: holdyThing.elementRef)
+        for event in events {
+            print("\(F.self) is processing event for: \(String(describing: event.value.value.instance?.underlyingInstance))")
+            proceedInWorkflow(element: event.value)
+            activateIfNeeded(element: event.value)
+            if let elementRef = holdyThing.elementRef {
+                print("\(F.self) has seen event for: \(String(describing: event.value.value.instance?.underlyingInstance))")
+                event.seenBy.append(elementRef)
+            }
+        }
+
+        print("---------------END---------------")
     }
 
     @ViewBuilder private var nextView: some View {
@@ -160,7 +190,7 @@ public struct WorkflowItem<F: FlowRepresentable & View, Wrapped: View, Content: 
     }
 
     private func activateIfNeeded(element: AnyWorkflow.Element?) {
-        if elementRef != nil, elementRef === element?.previouslyLoadedElement {
+        if holdyThing.elementRef != nil, holdyThing.elementRef === element?.previouslyLoadedElement {
             isActive = true
         }
     }
@@ -168,19 +198,19 @@ public struct WorkflowItem<F: FlowRepresentable & View, Wrapped: View, Content: 
     private func backUpInWorkflow(element: AnyWorkflow.Element?) {
         // We have found no satisfactory way to test this...we haven't even really found unsatisfactory ways to test it.
         // See: https://github.com/nalexn/ViewInspector/issues/131
-        if elementRef === element {
+        if holdyThing.elementRef === element {
             presentation.wrappedValue.dismiss()
         }
     }
 
     private func proceedInWorkflow(element: AnyWorkflow.Element?) {
-        if let body = element?.extractErasedView() as? Content, elementRef === element || elementRef == nil {
-            elementRef = element
-            content = body
-            persistence = element?.value.metadata.persistence ?? .default
-        } else if persistence == .removedAfterProceeding {
-            content = nil
-            elementRef = nil
+        if let body = element?.extractErasedView() as? Content, holdyThing.elementRef === element || holdyThing.elementRef == nil {
+            holdyThing.elementRef = element
+            holdyThing.content = body
+            holdyThing.persistence = element?.value.metadata.persistence ?? .default
+        } else if holdyThing.persistence == .removedAfterProceeding {
+            holdyThing.content = nil
+            holdyThing.elementRef = nil
         }
     }
 }
