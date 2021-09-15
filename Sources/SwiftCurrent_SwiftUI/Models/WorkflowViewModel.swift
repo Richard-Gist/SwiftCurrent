@@ -12,10 +12,18 @@ import Combine
 
 @available(iOS 14.0, macOS 11, tvOS 14.0, watchOS 7.0, *)
 final class WorkflowViewModel: ObservableObject {
-    @Published var body: AnyWorkflow.Element?
+    let onBodyChangePublisher = ReplaySubject<AnyWorkflow.Element?, Never>()
     let onAbandonPublisher = PassthroughSubject<Void, Never>()
     let onFinishPublisher = CurrentValueSubject<AnyWorkflow.PassedArgs?, Never>(nil)
     let onBackUpPublisher = PassthroughSubject<AnyWorkflow.Element, Never>()
+
+    var body: AnyWorkflow.Element? {
+        get {
+            onBodyChangePublisher.lastKnownValue as? AnyWorkflow.Element
+        } set {
+            onBodyChangePublisher.send(newValue)
+        }
+    }
 
     @Binding var isLaunched: Bool
     private let launchArgs: AnyWorkflow.PassedArgs

@@ -17,12 +17,14 @@ extension FlowPersistence {
             /// Indicates a `FlowRepresentable` in a `Workflow` whose `shouldLoad` function returns true, should be removed from the workflow after proceeding forward.
             case removedAfterProceeding
 
+            case persistWhenSkipped
+
             /// Creates a `Persistence` from a `FlowPersistence`, or returns nil if no mapping exists.
             public init?(rawValue: FlowPersistence) {
                 switch rawValue {
                     case .default: self = .default
                     case .removedAfterProceeding: self = .removedAfterProceeding
-                    case .persistWhenSkipped: return nil
+                    case .persistWhenSkipped: self = .persistWhenSkipped
                     default: return nil
                 }
             }
@@ -32,6 +34,7 @@ extension FlowPersistence {
                 switch self {
                     case .default: return .default
                     case .removedAfterProceeding: return .removedAfterProceeding
+                    case .persistWhenSkipped: return .persistWhenSkipped
                 }
             }
         }

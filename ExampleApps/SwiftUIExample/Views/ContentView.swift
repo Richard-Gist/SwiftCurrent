@@ -8,6 +8,7 @@
 
 import SwiftUI
 import SwiftCurrent_SwiftUI
+import SwiftCurrent
 
 struct ContentView: View {
     let inspection = Inspection<Self>() // ViewInspector
@@ -17,38 +18,39 @@ struct ContentView: View {
         case profile
     }
     @State var selectedTab: Tab = .map
+
     var body: some View {
-        TabView(selection: $selectedTab) {
-            // NOTE: Using constant here guarantees the workflow cannot abandon, it stays launched forever.
-            WorkflowLauncher(isLaunched: .constant(true)) {
-                thenProceed(with: MapFeatureOnboardingView.self) {
-                    thenProceed(with: MapFeatureView.self)
+        WorkflowLauncher(isLaunched: .constant(true)) {
+            thenProceed(with: FR1.self) {
+                thenProceed(with: FRR2.self) {
+                    thenProceed(with: FR3.self)
                 }
-            }.tabItem {
-                Label("Map", systemImage: "map")
+                .persistence(.persistWhenSkipped)
+                .presentationType(.navigationLink)
             }
-            .tag(Tab.map)
-
-            WorkflowLauncher(isLaunched: .constant(true)) {
-                thenProceed(with: QRScannerFeatureOnboardingView.self) {
-                    thenProceed(with: QRScannerFeatureView.self)
-                }
-            }.tabItem {
-                Label("QR Scanner", systemImage: "camera")
-            }
-            .tag(Tab.qr)
-
-            WorkflowLauncher(isLaunched: .constant(true)) {
-                thenProceed(with: ProfileFeatureOnboardingView.self) {
-                    thenProceed(with: ProfileFeatureView.self)
-                }
-            }.tabItem {
-                Label("Profile", systemImage: "person.crop.circle")
-            }
-            .tag(Tab.profile)
+            .persistence(.persistWhenSkipped)
+            .presentationType(.navigationLink)
         }
-        .onReceive(inspection.notice) { inspection.visit(self, $0) } // ViewInspector
+        .embedInNavigationView()
     }
+}
+
+struct FRR1: View, FlowRepresentable {
+    weak var _workflowPointer: AnyFlowRepresentable?
+    var body: some View {
+        FR1()
+    }
+
+    func shouldLoad() -> Bool { false }
+}
+
+struct FRR2: View, FlowRepresentable {
+    weak var _workflowPointer: AnyFlowRepresentable?
+    var body: some View {
+        FR2()
+    }
+
+    func shouldLoad() -> Bool { false }
 }
 
 struct ContentView_Previews: PreviewProvider {

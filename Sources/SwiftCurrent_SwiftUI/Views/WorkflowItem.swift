@@ -62,8 +62,8 @@ public struct WorkflowItem<F: FlowRepresentable & View, Wrapped: View, Content: 
                 nextView
             }
         }
-        .onReceive(model.$body, perform: activateIfNeeded)
-        .onReceive(model.$body, perform: proceedInWorkflow)
+        .onReceive(model.onBodyChangePublisher, perform: proceedInWorkflow)
+        .onReceive(model.onBodyChangePublisher, perform: activateIfNeeded)
         .onReceive(model.onBackUpPublisher, perform: backUpInWorkflow)
         .onReceive(inspection.notice) { inspection.visit(self, $0) }
     }
