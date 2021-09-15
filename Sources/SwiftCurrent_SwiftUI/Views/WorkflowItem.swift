@@ -12,6 +12,13 @@ import SwiftCurrent
 import UIKit
 #endif
 
+@available(iOS 14.0, macOS 11, tvOS 14.0, watchOS 7.0, *)
+final class StateBag<Wrapped: View, Content: View>: ObservableObject {
+    var content: Content?
+    var persistence: FlowPersistence = .default
+    var elementRef: AnyWorkflow.Element?
+}
+
 /**
  A concrete type used to modify a `FlowRepresentable` in a workflow.
  ### Discussion
@@ -30,15 +37,16 @@ import UIKit
 @available(iOS 14.0, macOS 11, tvOS 14.0, watchOS 7.0, *)
 public struct WorkflowItem<F: FlowRepresentable & View, Wrapped: View, Content: View>: View {
     // These need to be state variables to survive SwiftUI re-rendering. Change under penalty of torture BY the codebase you modified.
-    @State private var content: Content?
+//    @State private var content: Content?
     @State private var wrapped: Wrapped?
     @State private var metadata: FlowRepresentableMetadata!
     @State private var modifierClosure: ((AnyFlowRepresentableView) -> Void)?
     @State private var flowPersistenceClosure: (AnyWorkflow.PassedArgs) -> FlowPersistence = { _ in .default }
     @State private var launchStyle: LaunchStyle.SwiftUI.PresentationType = .default
-    @State private var persistence: FlowPersistence = .default
-    @State private var elementRef: AnyWorkflow.Element?
+//    @State private var persistence: FlowPersistence = .default
+//    @State private var elementRef: AnyWorkflow.Element?
     @State private var isActive = false
+    @StateObject private var stateBag = StateBag<Wrapped, Content>()
     @EnvironmentObject private var model: WorkflowViewModel
     @EnvironmentObject private var launcher: Launcher
     @Environment(\.presentationMode) var presentation
@@ -47,20 +55,24 @@ public struct WorkflowItem<F: FlowRepresentable & View, Wrapped: View, Content: 
 
     public var body: some View {
         ViewBuilder {
-            if launchStyle == .navigationLink, let content = content {
+            if launchStyle == .navigationLink, let content = stateBag.content {
                 content.navLink(to: nextView, isActive: $isActive)
-            } else if case .modal(let modalStyle) = (wrapped as? WorkflowItemPresentable)?.workflowLaunchStyle, let content = content {
+            } else if case .modal(let modalStyle) = (wrapped as? WorkflowItemPresentable)?.workflowLaunchStyle, let content = stateBag.content {
                 switch modalStyle {
                     case .sheet: content.testableSheet(isPresented: $isActive) { nextView }
                     #if (os(iOS) || os(tvOS) || os(watchOS) || targetEnvironment(macCatalyst))
                     case .fullScreenCover: content.fullScreenCover(isPresented: $isActive) { nextView }
                     #endif
                 }
-            } else if let body = model.body?.extractErasedView() as? Content, elementRef == nil || elementRef === model.body, launchStyle != .navigationLink {
-                content ?? body
+            } else if let body = model.body?.extractErasedView() as? Content, stateBag.elementRef == nil || stateBag.elementRef === model.body, launchStyle != .navigationLink {
+                stateBag.content ?? body
             } else {
                 nextView
             }
+        }
+        .onReceive(model.onBodyChangePublisher) {
+            print("--- I AM \(F.self) ---")
+            print("--- I Received \($0?.value.instance?.underlyingInstance) ---")
         }
         .onReceive(model.onBodyChangePublisher, perform: proceedInWorkflow)
         .onReceive(model.onBodyChangePublisher, perform: activateIfNeeded)
@@ -160,7 +172,7 @@ public struct WorkflowItem<F: FlowRepresentable & View, Wrapped: View, Content: 
     }
 
     private func activateIfNeeded(element: AnyWorkflow.Element?) {
-        if elementRef != nil, elementRef === element?.previouslyLoadedElement {
+        if stateBag.elementRef != nil, stateBag.elementRef === element?.previouslyLoadedElement {
             isActive = true
         }
     }
@@ -168,19 +180,19 @@ public struct WorkflowItem<F: FlowRepresentable & View, Wrapped: View, Content: 
     private func backUpInWorkflow(element: AnyWorkflow.Element?) {
         // We have found no satisfactory way to test this...we haven't even really found unsatisfactory ways to test it.
         // See: https://github.com/nalexn/ViewInspector/issues/131
-        if elementRef === element {
+        if stateBag.elementRef === element {
             presentation.wrappedValue.dismiss()
         }
     }
 
     private func proceedInWorkflow(element: AnyWorkflow.Element?) {
-        if let body = element?.extractErasedView() as? Content, elementRef === element || elementRef == nil {
-            elementRef = element
-            content = body
-            persistence = element?.value.metadata.persistence ?? .default
-        } else if persistence == .removedAfterProceeding {
-            content = nil
-            elementRef = nil
+        if let body = element?.extractErasedView() as? Content, stateBag.elementRef === element || stateBag.elementRef == nil {
+            stateBag.elementRef = element
+            stateBag.content = body
+            stateBag.persistence = element?.value.metadata.persistence ?? .default
+        } else if stateBag.persistence == .removedAfterProceeding {
+            stateBag.content = nil
+            stateBag.elementRef = nil
         }
     }
 }

@@ -38,7 +38,11 @@ struct ContentView: View {
 struct FRR1: View, FlowRepresentable {
     weak var _workflowPointer: AnyFlowRepresentable?
     var body: some View {
-        FR1()
+        VStack {
+            Text("This is \(String(describing: Self.self))")
+            Button("Navigate forward") { proceedInWorkflow() }
+            Button("Navigate backward") { try? backUpInWorkflow() }
+        }
     }
 
     func shouldLoad() -> Bool { false }
@@ -47,7 +51,11 @@ struct FRR1: View, FlowRepresentable {
 struct FRR2: View, FlowRepresentable {
     weak var _workflowPointer: AnyFlowRepresentable?
     var body: some View {
-        FR2()
+        VStack {
+            Text("This is \(String(describing: Self.self))")
+            Button("Navigate forward") { proceedInWorkflow() }
+            Button("Navigate backward") { try? backUpInWorkflow() }
+        }
     }
 
     func shouldLoad() -> Bool { false }
