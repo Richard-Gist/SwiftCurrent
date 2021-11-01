@@ -14,6 +14,6 @@ public struct AnyWorkflowItem: View {
     public typealias Body = AnyView
     public let body: Body
     init<F, W, C>(view: WorkflowItem<F, W, C>) {
-        body = AnyView(Text("Howdy"))
+        body = AnyView(view)
     }
 }

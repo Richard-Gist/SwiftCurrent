@@ -19,7 +19,7 @@ class FRThisMetadata: FlowRepresentableMetadata {
         self.init(viewy: viewy,
                   launchStyle: launchStyle,
                   flowPersistence: flowPersistence) { args in
-            AnyFlowRepresentable(F.self, args: args)
+            AnyFlowRepresentableView(type: F.self, args: args)
         }
         workflowItem = {
             AnyWorkflowItem(view: WorkflowItem(F.self))
