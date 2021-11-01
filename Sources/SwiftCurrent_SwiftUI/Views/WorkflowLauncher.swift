@@ -86,6 +86,20 @@ public struct WorkflowLauncher<Content: View>: View {
         self.init(isLaunched: isLaunched, startingArgs: .none, content: content())
     }
 
+    // swiftlint:disable all
+    public init(isLaunched: Binding<Bool>, workflow: AnyWorkflow) where Content == AnyWorkflowItem {
+        workflow.forEach {
+            assert($0.value.metadata is FRThisMetadata)
+        }
+        _isLaunched = isLaunched
+        let model = WorkflowViewModel(isLaunched: isLaunched, launchArgs: .none)
+        _model = StateObject(wrappedValue: model)
+        _launcher = StateObject(wrappedValue: Launcher(workflow: workflow,
+                                                       responder: model,
+                                                       launchArgs: .none))
+        _content = State(wrappedValue: (workflow.first!.value.metadata as! FRThisMetadata).workflowItem!()!)
+    }
+
     /**
      Creates a base for proceeding with a `WorkflowItem`.
      - Parameter isLaunched: binding that controls launching the underlying `Workflow`.

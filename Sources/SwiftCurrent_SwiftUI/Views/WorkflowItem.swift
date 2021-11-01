@@ -19,13 +19,13 @@ import UIKit
  #### Example
  ```swift
  thenProceed(FirstView.self)
-            .persistence(.removedAfterProceeding) // affects only FirstView
-            .applyModifiers {
-                $0.background(Color.gray) // $0 is a FirstView instance
-                    .transition(.slide)
-                    .animation(.spring())
-            }
-  ```
+ .persistence(.removedAfterProceeding) // affects only FirstView
+ .applyModifiers {
+ $0.background(Color.gray) // $0 is a FirstView instance
+ .transition(.slide)
+ .animation(.spring())
+ }
+ ```
  */
 @available(iOS 14.0, macOS 11, tvOS 14.0, watchOS 7.0, *)
 public struct WorkflowItem<F: FlowRepresentable & View, Wrapped: View, Content: View>: View {
@@ -52,9 +52,9 @@ public struct WorkflowItem<F: FlowRepresentable & View, Wrapped: View, Content: 
             } else if case .modal(let modalStyle) = (wrapped as? WorkflowItemPresentable)?.workflowLaunchStyle, let content = content {
                 switch modalStyle {
                     case .sheet: content.testableSheet(isPresented: $isActive) { nextView }
-                    #if (os(iOS) || os(tvOS) || os(watchOS) || targetEnvironment(macCatalyst))
+#if (os(iOS) || os(tvOS) || os(watchOS) || targetEnvironment(macCatalyst))
                     case .fullScreenCover: content.fullScreenCover(isPresented: $isActive) { nextView }
-                    #endif
+#endif
                 }
             } else if let body = model.body?.extractErasedView() as? Content, elementRef == nil || elementRef === model.body, launchStyle != .navigationLink {
                 content ?? body
@@ -89,31 +89,31 @@ public struct WorkflowItem<F: FlowRepresentable & View, Wrapped: View, Content: 
         _modifierClosure = State(initialValue: modifierClosure)
         _flowPersistenceClosure = State(initialValue: flowPersistenceClosure)
         _launchStyle = State(initialValue: launchStyle)
-        let metadata = FlowRepresentableMetadata(F.self,
-                                                 launchStyle: launchStyle.rawValue,
-                                                 flowPersistence: flowPersistenceClosure,
-                                                 flowRepresentableFactory: factory)
+        let metadata = FRThisMetadata(viewy: F.self,
+                                      launchStyle: launchStyle.rawValue,
+                                      flowPersistence: flowPersistenceClosure,
+                                      flowRepresentableFactory: factory)
         _metadata = State(initialValue: metadata)
     }
 
     init(_ item: F.Type) where Wrapped == Never, Content == F {
-        let metadata = FlowRepresentableMetadata(Content.self,
-                                                 launchStyle: .new,
-                                                 flowPersistence: flowPersistenceClosure,
-                                                 flowRepresentableFactory: factory)
+        let metadata = FRThisMetadata(viewy: Content.self,
+                                      launchStyle: .new,
+                                      flowPersistence: flowPersistenceClosure,
+                                      flowRepresentableFactory: factory)
         _metadata = State(initialValue: metadata)
     }
 
     init(_ item: F.Type, wrapped: () -> Wrapped) where Content == F {
-        let metadata = FlowRepresentableMetadata(Content.self,
-                                                 launchStyle: .new,
-                                                 flowPersistence: flowPersistenceClosure,
-                                                 flowRepresentableFactory: factory)
+        let metadata = FRThisMetadata(viewy: Content.self,
+                                      launchStyle: .new,
+                                      flowPersistence: flowPersistenceClosure,
+                                      flowRepresentableFactory: factory)
         _metadata = State(initialValue: metadata)
         _wrapped = State(initialValue: wrapped())
     }
 
-    #if (os(iOS) || os(tvOS) || targetEnvironment(macCatalyst)) && canImport(UIKit)
+#if (os(iOS) || os(tvOS) || targetEnvironment(macCatalyst)) && canImport(UIKit)
     /// Creates a `WorkflowItem` from a `UIViewController`.
     @available(iOS 14.0, macOS 11, tvOS 14.0, *)
     init<VC: FlowRepresentable & UIViewController>(_: VC.Type) where Content == ViewControllerWrapper<VC>, Wrapped == Never, F == ViewControllerWrapper<VC> {
@@ -135,7 +135,7 @@ public struct WorkflowItem<F: FlowRepresentable & View, Wrapped: View, Content: 
                                                  flowRepresentableFactory: factory)
         _metadata = State(initialValue: metadata)
     }
-    #endif
+#endif
 
     /**
      Provides a way to apply modifiers to your `FlowRepresentable` view.
@@ -145,11 +145,11 @@ public struct WorkflowItem<F: FlowRepresentable & View, Wrapped: View, Content: 
         WorkflowItem<F, Wrapped, V>(previous: self,
                                     launchStyle: launchStyle,
                                     modifierClosure: {
-                                        // We are essentially casting this to itself, that cannot fail. (Famous last words)
-                                        // swiftlint:disable:next force_cast
-                                        let instance = $0.underlyingInstance as! F
-                                        $0.changeUnderlyingView(to: closure(instance))
-                                    },
+            // We are essentially casting this to itself, that cannot fail. (Famous last words)
+            // swiftlint:disable:next force_cast
+            let instance = $0.underlyingInstance as! F
+            $0.changeUnderlyingView(to: closure(instance))
+        },
                                     flowPersistenceClosure: flowPersistenceClosure)
     }
 
@@ -217,11 +217,11 @@ extension WorkflowItem {
              launchStyle: launchStyle,
              modifierClosure: modifierClosure ?? { _ in },
              flowPersistenceClosure: {
-                guard case .args(let arg as F.WorkflowInput) = $0 else {
-                    fatalError("Could not cast \(String(describing: $0)) to expected type: \(F.WorkflowInput.self)")
-                }
+            guard case .args(let arg as F.WorkflowInput) = $0 else {
+                fatalError("Could not cast \(String(describing: $0)) to expected type: \(F.WorkflowInput.self)")
+            }
             return persistence(arg).rawValue
-             })
+        })
     }
 
     /// Sets persistence on the `FlowRepresentable` of the `WorkflowItem`.
