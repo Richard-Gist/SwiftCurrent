@@ -97,7 +97,21 @@ public struct WorkflowLauncher<Content: View>: View {
         _launcher = StateObject(wrappedValue: Launcher(workflow: workflow,
                                                        responder: model,
                                                        launchArgs: .none))
-        _content = State(wrappedValue: (workflow.first!.value.metadata as! FRThisMetadata).workflowItem!()!)
+        let lastElement = try? workflow.last(where: { $0.next == nil })
+        let lastMeta = (lastElement?.value.metadata as? FRThisMetadata)
+        let lastItem = lastMeta?.workflowItem?(nil)
+
+        _content = State(wrappedValue: lastItem!)
+        if let recursedItem = self.recurseToStart(element: lastElement!, item: lastItem) {
+            _content = State(wrappedValue: recursedItem)
+        }
+    }
+
+    func recurseToStart(element: AnyWorkflow.Element, item: AnyWorkflowItem?) -> AnyWorkflowItem? {
+        guard let nextElement = element.previous else { return item }
+
+        let item2 = (nextElement.value.metadata as? FRThisMetadata)?.workflowItem?(item)
+        return recurseToStart(element: nextElement, item: item2)
     }
 
     /**

@@ -12,7 +12,7 @@ import SwiftUI
 
 @available(iOS 14.0, macOS 11, tvOS 14.0, watchOS 7.0, *)
 class FRThisMetadata: FlowRepresentableMetadata {
-    var workflowItem: (() -> AnyWorkflowItem?)?
+    var workflowItem: ((AnyWorkflowItem?) -> AnyWorkflowItem)?
     public convenience init<F: FlowRepresentable & View>(viewy: F.Type,
                                                          launchStyle: LaunchStyle = .default,
                                                          flowPersistence: @escaping (AnyWorkflow.PassedArgs) -> FlowPersistence) {
@@ -22,7 +22,11 @@ class FRThisMetadata: FlowRepresentableMetadata {
             AnyFlowRepresentableView(type: F.self, args: args)
         }
         workflowItem = {
-            AnyWorkflowItem(view: WorkflowItem(F.self))
+            if let innerItem = $0 {
+                return AnyWorkflowItem(view: WorkflowItem(F.self, wrapped: { innerItem }))
+            } else {
+                return AnyWorkflowItem(view: WorkflowItem(F.self))
+            }
         }
     }
 
@@ -35,7 +39,11 @@ class FRThisMetadata: FlowRepresentableMetadata {
                    flowPersistence: flowPersistence,
                    flowRepresentableFactory: flowRepresentableFactory)
         workflowItem = {
-            AnyWorkflowItem(view: WorkflowItem(FR.self))
+            if let innerItem = $0 {
+                return AnyWorkflowItem(view: WorkflowItem(FR.self, wrapped: { innerItem }))
+            } else {
+                return AnyWorkflowItem(view: WorkflowItem(FR.self))
+            }
         }
     }
 }

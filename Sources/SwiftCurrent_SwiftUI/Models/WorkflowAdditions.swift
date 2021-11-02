@@ -40,4 +40,20 @@ extension Workflow {
                                  launchStyle: launchStyle) { flowPersistence($0) })
         return wf
     }
+
+    /**
+     Adds an item to the workflow; enforces the `FlowRepresentable.WorkflowOutput` of the previous item matches the `FlowRepresentable.WorkflowInput` of this item.
+     - Parameter type: a reference to the next `FlowRepresentable`'s concrete type in the workflow.
+     - Parameter launchStyle: the `LaunchStyle` the `FlowRepresentable` should use while it's part of this workflow.
+     - Parameter flowPersistence: a closure returning a `FlowPersistence` representing how this item in the workflow should persist.
+     - Returns: a new workflow with the additional `FlowRepresentable` item.
+     */
+    public func thenFRnProceed<FR: FlowRepresentable & View>(with type: FR.Type,
+                                                             launchStyle: LaunchStyle = .default,
+                                                             flowPersistence: @escaping () -> FlowPersistence) -> Workflow<FR> where FR.WorkflowInput == Never {
+        let wf = Workflow<FR>(first)
+        wf.append(FRThisMetadata(viewy: type,
+                                 launchStyle: launchStyle) { _ in flowPersistence() })
+        return wf
+    }
 }

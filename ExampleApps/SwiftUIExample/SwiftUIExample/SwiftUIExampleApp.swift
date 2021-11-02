@@ -18,6 +18,12 @@ struct SwiftUIExampleApp: App {
     }
 
     @State var wf = Workflow(viewy: SwiftCurrentOnboarding.self)
+                .thenFRnProceed(with: SwiftCurrentOnboarding.self) { _ in .default }
+                .thenFRnProceed(with: SwiftCurrentOnboarding.self) { _ in .default }
+                .thenFRnProceed(with: SwiftCurrentOnboarding.self) { _ in .default }
+                .thenFRnProceed(with: SwiftCurrentOnboarding.self) { _ in .default }
+                .thenFRnProceed(with: SwiftCurrentOnboarding.self) { _ in .default }
+                .thenFRnProceed(with: ContentView.self) { .default }
 
     var body: some Scene {
         WindowGroup {
