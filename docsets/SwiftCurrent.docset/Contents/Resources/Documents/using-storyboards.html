@@ -98,7 +98,7 @@
      <div class="section-content top-matter"> 
       <h2 id="overview" class="heading">Overview</h2> 
       <p>This guide will walk you through getting a <code><a href="Classes/Workflow.html">Workflow</a></code> up and running in a new iOS project. If you would like to see an existing project, clone the repo and view the <code>UIKitExample</code> scheme in <code>SwiftCurrent.xcworkspace</code>.</p> 
-      <p>The app in this guide is going to be very simple. It consists of a screen that will launch the <code><a href="Classes/Workflow.html">Workflow</a></code>, a screen to enter an email address, and an optional screen for when the user enters an email with <code>@wwt.com</code> in it. Here is a preview of what the app will look like:</p> 
+      <p>The app in this guide is going to be very simple. It consists of a screen that will launch the <code><a href="Classes/Workflow.html">Workflow</a></code>, a screen to enter an email address, and an optional screen for when the user enters an email with <code>@Richard-Gist.com</code> in it. Here is a preview of what the app will look like:</p> 
       <p><img src="https://user-images.githubusercontent.com/79471462/131556008-943f5e00-b7d0-4782-974d-1e914c4179fc.gif" alt="Preview image of app"></p> 
       <h2 id="adding-the-dependency" class="heading">Adding the Dependency</h2> 
       <p>For instructions on SPM and CocoaPods, <a href="installation.html#swift-package-manager">check out our installation page.</a>.</p> 
@@ -169,7 +169,7 @@
     <span class="p">}</span>
 
     <span class="kd">func</span> <span class="nf">shouldLoad</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="c1">// SwiftCurrent</span>
-        <span class="k">return</span> <span class="n">email</span><span class="o">.</span><span class="nf">contains</span><span class="p">(</span><span class="s">"@wwt.com"</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">email</span><span class="o">.</span><span class="nf">contains</span><span class="p">(</span><span class="s">"@Richard-Gist.com"</span><span class="p">)</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre> 
@@ -276,7 +276,7 @@
     <span class="p">}</span>
 
     <span class="kd">func</span> <span class="nf">testSecondViewControllerLoadsWhenInputIsContainsWWTEmail</span><span class="p">()</span> <span class="p">{</span>
-        <span class="k">let</span> <span class="nv">ref</span> <span class="o">=</span> <span class="kt">AnyFlowRepresentable</span><span class="p">(</span><span class="kt">SecondViewController</span><span class="o">.</span><span class="k">self</span><span class="p">,</span> <span class="nv">args</span><span class="p">:</span> <span class="o">.</span><span class="nf">args</span><span class="p">(</span><span class="s">"Awesome.Possum@wwt.com"</span><span class="p">))</span>
+        <span class="k">let</span> <span class="nv">ref</span> <span class="o">=</span> <span class="kt">AnyFlowRepresentable</span><span class="p">(</span><span class="kt">SecondViewController</span><span class="o">.</span><span class="k">self</span><span class="p">,</span> <span class="nv">args</span><span class="p">:</span> <span class="o">.</span><span class="nf">args</span><span class="p">(</span><span class="s">"Awesome.Possum@Richard-Gist.com"</span><span class="p">))</span>
         <span class="k">let</span> <span class="nv">testViewController</span> <span class="o">=</span> <span class="p">(</span><span class="n">ref</span><span class="o">.</span><span class="n">underlyingInstance</span> <span class="k">as!</span> <span class="kt">SecondViewController</span><span class="p">)</span>
 
         <span class="kt">XCTAssert</span><span class="p">(</span><span class="n">testViewController</span><span class="o">.</span><span class="nf">shouldLoad</span><span class="p">(),</span> <span class="s">"SecondViewController should load"</span><span class="p">)</span>
@@ -285,7 +285,7 @@
     <span class="kd">func</span> <span class="nf">testProceedPassesThroughInput</span><span class="p">()</span> <span class="p">{</span>
         <span class="c1">// Arrange</span>
         <span class="k">var</span> <span class="nv">proceedInWorkflowCalled</span> <span class="o">=</span> <span class="kc">false</span>
-        <span class="k">let</span> <span class="nv">expectedString</span> <span class="o">=</span> <span class="s">"Awesome.Possum@wwt.com"</span>
+        <span class="k">let</span> <span class="nv">expectedString</span> <span class="o">=</span> <span class="s">"Awesome.Possum@Richard-Gist.com"</span>
         <span class="k">let</span> <span class="nv">ref</span> <span class="o">=</span> <span class="kt">AnyFlowRepresentable</span><span class="p">(</span><span class="kt">SecondViewController</span><span class="o">.</span><span class="k">self</span><span class="p">,</span> <span class="nv">args</span><span class="p">:</span> <span class="o">.</span><span class="nf">args</span><span class="p">(</span><span class="n">expectedString</span><span class="p">))</span>
         <span class="k">var</span> <span class="nv">testViewController</span> <span class="o">=</span> <span class="p">(</span><span class="n">ref</span><span class="o">.</span><span class="n">underlyingInstance</span> <span class="k">as!</span> <span class="kt">SecondViewController</span><span class="p">)</span>
         <span class="c1">// Mimicking the lifecycle of the view controller</span>
