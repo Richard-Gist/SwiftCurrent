@@ -98,7 +98,7 @@
      <div class="section-content top-matter"> 
       <p><img src="https://user-images.githubusercontent.com/79471462/131564417-6f4976f4-270c-41b3-bbe1-428528e2cc2c.png" alt="SwiftCurrent"></p> 
       <!-- Library Information --> 
-      <p><a href="https://github.com/Richard-Gist/SwiftCurrent/security/policy"><img src="https://img.shields.io/badge/platform-iOS%20%7C%20macOS%20%7C%20watchOS%20%7C%20tvOS-lightgrey" alt="Supported Platforms"></a> <a href="https://Richard-Gist.github.io/SwiftCurrent/installation.html#swift-package-manager"><img src="https://img.shields.io/badge/Swift_Package_Manager-supported-brightgreen" alt="Swift Package Manager"></a> <a href="https://Richard-Gist.github.io/SwiftCurrent/installation.html#cocoapods"><img src="https://img.shields.io/cocoapods/v/SwiftCurrent.svg?style=popout" alt="Pod Version"></a> <a href="https://github.com/Richard-Gist/SwiftCurrent/blob/main/LICENSE"><img src="https://img.shields.io/github/license/Richard-Gist/SwiftCurrent" alt="License"></a> <a href="https://github.com/Richard-Gist/SwiftCurrent/actions?query=branch%3Amain"><img src="https://github.com/Richard-Gist/SwiftCurrent/actions/workflows/CI.yml/badge.svg?branch=main" alt="Build Status"></a> <a href="https://codecov.io/gh/Richard-Gist/SwiftCurrent"><img src="https://codecov.io/gh/Richard-Gist/SwiftCurrent/branch/main/graph/badge.svg?token=04Q5KSHict" alt="Code Coverage"></a></p> 
+      <p><a href="https://github.com/Richard-Gist/SwiftCurrent/security/policy"><img src="https://img.shields.io/badge/platform-iOS%20%7C%20macOS%20%7C%20watchOS%20%7C%20tvOS-lightgrey" alt="Supported Platforms"></a> <a href="https://wwt.github.io/SwiftCurrent/installation.html#swift-package-manager"><img src="https://img.shields.io/badge/Swift_Package_Manager-supported-brightgreen" alt="Swift Package Manager"></a> <a href="https://wwt.github.io/SwiftCurrent/installation.html#cocoapods"><img src="https://img.shields.io/cocoapods/v/SwiftCurrent.svg?style=popout" alt="Pod Version"></a> <a href="https://github.com/Richard-Gist/SwiftCurrent/blob/main/LICENSE"><img src="https://img.shields.io/github/license/Richard-Gist/SwiftCurrent" alt="License"></a> <a href="https://github.com/Richard-Gist/SwiftCurrent/actions?query=branch%3Amain"><img src="https://github.com/Richard-Gist/SwiftCurrent/actions/workflows/CI.yml/badge.svg?branch=main" alt="Build Status"></a> <a href="https://codecov.io/gh/Richard-Gist/SwiftCurrent"><img src="https://codecov.io/gh/Richard-Gist/SwiftCurrent/branch/main/graph/badge.svg?token=04Q5KSHict" alt="Code Coverage"></a></p> 
       <h1 id="welcome" class="heading">Welcome</h1> 
       <p>SwiftCurrent is a library that lets you easily manage journeys through your Swift application.</p> 
       <p>It comes with built-in support for UIKit and SwiftUI app-routing. In SwiftCurrent, workflows are a sequence of operations. Those operations usually display views in an application. The workflow describes the sequence of views and manages which view should come next. Your views are responsible for performing necessary tasks before proceeding forward in the workflow, like processing user input.</p> 
@@ -123,7 +123,7 @@
        <li><strong>Creates Conditional Flows</strong>. Make your flows robust and handle ever-changing designs. Need a screen to only to show up sometimes? Need a flow for person A and another for person B? We’ve got you covered.</li> 
       </ul> 
       <h1 id="quick-start" class="heading">Quick Start</h1> 
-      <p>Why show a quick start when we have an example app? Because it’s so easy to get started, we can drop in two code snippets, and you’re ready to go! This quick start uses Swift Package Manager and SwiftUI, but for other approaches, <a href="https://Richard-Gist.github.io/SwiftCurrent/installation.html">see our installation instructions</a>.</p> 
+      <p>Why show a quick start when we have an example app? Because it’s so easy to get started, we can drop in two code snippets, and you’re ready to go! This quick start uses Swift Package Manager and SwiftUI, but for other approaches, <a href="https://wwt.github.io/SwiftCurrent/installation.html">see our installation instructions</a>.</p> 
       <pre class="highlight swift"><code><span class="o">.</span><span class="nf">package</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="s">"https://github.com/Richard-Gist/SwiftCurrent.git"</span><span class="p">,</span> <span class="o">.</span><span class="nf">upToNextMajor</span><span class="p">(</span><span class="nv">from</span><span class="p">:</span> <span class="s">"4.5.0"</span><span class="p">)),</span>
 <span class="o">...</span>
 <span class="o">.</span><span class="nf">product</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="s">"SwiftCurrent"</span><span class="p">,</span> <span class="nv">package</span><span class="p">:</span> <span class="s">"SwiftCurrent"</span><span class="p">),</span>
@@ -156,18 +156,18 @@
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre> 
-      <p>And just like that, you’ve got a workflow! You can now add more items to it or reorder the items that are there. To understand more of how this works, <a href="https://Richard-Gist.github.io/SwiftCurrent/How%20to%20use%20SwiftCurrent%20with%20SwiftUI.html">check out our developer docs.</a></p> 
+      <p>And just like that, you’ve got a workflow! You can now add more items to it or reorder the items that are there. To understand more of how this works, <a href="https://wwt.github.io/SwiftCurrent/How%20to%20use%20SwiftCurrent%20with%20SwiftUI.html">check out our developer docs.</a></p> 
       <h1 id="look-at-our-example-apps" class="heading">Look at Our Example Apps</h1> 
       <p>We have <a href="https://github.com/Richard-Gist/SwiftCurrent/tree/main/ExampleApps">example apps</a> for both SwiftUI and UIKit that show SwiftCurrent in action. They’ve already been tested, so you can see what it’s like to test SwiftCurrent code. To run it locally, start by cloning the repo, open <code>SwiftCurrent.xcworkspace</code> and then run the <code>SwiftUIExample</code> scheme or the <code>UIKitExample</code> scheme. </p> 
-      <h1 id="a-href-https-wwt-github-io-swiftcurrent-creating-20workflows-html-click-here-to-learn-more-a" class="heading"><a href="https://Richard-Gist.github.io/SwiftCurrent/Creating%20Workflows.html">Click Here to Learn More</a></h1> 
+      <h1 id="a-href-https-wwt-github-io-swiftcurrent-creating-20workflows-html-click-here-to-learn-more-a" class="heading"><a href="https://wwt.github.io/SwiftCurrent/Creating%20Workflows.html">Click Here to Learn More</a></h1> 
       <p>For specific documentation check out:</p> 
       <ul> 
-       <li><a href="https://Richard-Gist.github.io/SwiftCurrent/why-this-library.html">Why SwiftCurrent?</a></li> 
-       <li><a href="https://Richard-Gist.github.io/SwiftCurrent/installation.html">Installation</a></li> 
-       <li><a href="https://Richard-Gist.github.io/SwiftCurrent/getting-started-with-swiftui.html">Getting Started With SwiftUI</a></li> 
-       <li><a href="https://Richard-Gist.github.io/SwiftCurrent/using-storyboards.html">Getting Started With Storyboards</a></li> 
-       <li><a href="https://Richard-Gist.github.io/SwiftCurrent/using-programmatic-views.html">Getting Started With Programmatic UIKit Views</a></li> 
-       <li><a href="https://Richard-Gist.github.io/SwiftCurrent/index.html">Developer Documentation</a></li> 
+       <li><a href="https://wwt.github.io/SwiftCurrent/why-this-library.html">Why SwiftCurrent?</a></li> 
+       <li><a href="https://wwt.github.io/SwiftCurrent/installation.html">Installation</a></li> 
+       <li><a href="https://wwt.github.io/SwiftCurrent/getting-started-with-swiftui.html">Getting Started With SwiftUI</a></li> 
+       <li><a href="https://wwt.github.io/SwiftCurrent/using-storyboards.html">Getting Started With Storyboards</a></li> 
+       <li><a href="https://wwt.github.io/SwiftCurrent/using-programmatic-views.html">Getting Started With Programmatic UIKit Views</a></li> 
+       <li><a href="https://wwt.github.io/SwiftCurrent/index.html">Developer Documentation</a></li> 
        <li><a href="https://github.com/Richard-Gist/SwiftCurrent/blob/main/.github/UPGRADE_PATH.md">Upgrade Path</a></li> 
        <li><a href="https://github.com/Richard-Gist/SwiftCurrent/blob/main/.github/CONTRIBUTING.md">Contributing to SwiftCurrent</a></li> 
       </ul> 
