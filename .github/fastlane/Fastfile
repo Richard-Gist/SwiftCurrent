@@ -10,7 +10,7 @@ platform :ios do
   lane :unit_test do
     scan(
       code_coverage: true,
-      scheme:  'SwiftCurrent',
+      scheme:  'SwiftCurrent_SwiftUI',
       workspace: '../SwiftCurrent.xcworkspace',
       derived_data_path: "~/Library/Developer/Xcode/DerivedData",
       result_bundle: true
