@@ -14,12 +14,9 @@
 
 /* Begin PBXFileReference section */
 		CA6FB0E226C6AD9E00FB3285 /* UIKitInteropTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKitInteropTests.swift; sourceTree = "<group>"; };
-		CAC34B4B26A07F830039A373 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CAC34B5026A07F840039A373 /* SwiftUIExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftUIExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAC34B5626A07F840039A373 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D74A4D5D26A7471700010617 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		D7A6CE7426E0316C00599824 /* SwiftCurrent_SwiftUI_UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftCurrent_SwiftUI_UITests.swift; sourceTree = "<group>"; };
-		D7A6CE7626E0316C00599824 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D7DBD20126CD923600F1E39B /* XCTestHooks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCTestHooks.m; sourceTree = "<group>"; };
 		D7DBD20326CD923600F1E39B /* NSObjectLoadable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSObjectLoadable.h; sourceTree = "<group>"; };
 		D7DBD20426CD923600F1E39B /* XCTestHooks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCTestHooks.h; sourceTree = "<group>"; };
@@ -41,9 +38,7 @@
 			isa = PBXGroup;
 			children = (
 				D74A4D5D26A7471700010617 /* README.md */,
-				CAC34B4126A07F830039A373 /* SwiftUIExample */,
 				CAC34B5326A07F840039A373 /* SwiftUIExampleTests */,
-				D7A6CE7326E0316C00599824 /* SwiftCurrent_SwiftUI_UITests */,
 				CAC34B4026A07F830039A373 /* Products */,
 				CAC34B8026A080910039A373 /* Frameworks */,
 			);
@@ -55,14 +50,6 @@
 				CAC34B5026A07F840039A373 /* SwiftUIExampleTests.xctest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		CAC34B4126A07F830039A373 /* SwiftUIExample */ = {
-			isa = PBXGroup;
-			children = (
-				CAC34B4B26A07F830039A373 /* Info.plist */,
-			);
-			path = SwiftUIExample;
 			sourceTree = "<group>";
 		};
 		CAC34B5326A07F840039A373 /* SwiftUIExampleTests */ = {
@@ -80,15 +67,6 @@
 			children = (
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		D7A6CE7326E0316C00599824 /* SwiftCurrent_SwiftUI_UITests */ = {
-			isa = PBXGroup;
-			children = (
-				D7A6CE7426E0316C00599824 /* SwiftCurrent_SwiftUI_UITests.swift */,
-				D7A6CE7626E0316C00599824 /* Info.plist */,
-			);
-			path = SwiftCurrent_SwiftUI_UITests;
 			sourceTree = "<group>";
 		};
 		D7DBD20026CD923600F1E39B /* SwiftCurrent_Testing_ObjC */ = {
