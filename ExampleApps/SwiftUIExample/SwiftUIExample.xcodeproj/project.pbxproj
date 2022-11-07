@@ -13,7 +13,6 @@
 		CA4A6F2026CDAEE600BE3E74 /* TestEventReceiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4A6F1F26CDAEE600BE3E74 /* TestEventReceiver.swift */; };
 		CA6FB0DE26C6AD5200FB3285 /* UIKitInteropProgrammaticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6FB0DD26C6AD5200FB3285 /* UIKitInteropProgrammaticViewController.swift */; };
 		CA6FB0E026C6AD7900FB3285 /* SwiftCurrent_UIKit in Frameworks */ = {isa = PBXBuildFile; productRef = CA6FB0DF26C6AD7900FB3285 /* SwiftCurrent_UIKit */; };
-		CA6FB0E326C6AD9E00FB3285 /* UIKitInterop.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA6FB0E126C6AD9E00FB3285 /* UIKitInterop.storyboard */; };
 		CA6FB0E426C6AD9E00FB3285 /* UIKitInteropTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6FB0E226C6AD9E00FB3285 /* UIKitInteropTests.swift */; };
 		CA6FB0E726C6ADCD00FB3285 /* UIUTest in Frameworks */ = {isa = PBXBuildFile; productRef = CA6FB0E626C6ADCD00FB3285 /* UIUTest */; };
 		CA6FB0ED26C6AE3600FB3285 /* TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6FB0E926C6AE3600FB3285 /* TopViewController.swift */; };
@@ -103,7 +102,6 @@
 		CA0536F526A0888200BF8FC5 /* ProfileFeatureOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFeatureOnboardingView.swift; sourceTree = "<group>"; };
 		CA4A6F1F26CDAEE600BE3E74 /* TestEventReceiver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestEventReceiver.swift; sourceTree = "<group>"; };
 		CA6FB0DD26C6AD5200FB3285 /* UIKitInteropProgrammaticViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKitInteropProgrammaticViewController.swift; sourceTree = "<group>"; };
-		CA6FB0E126C6AD9E00FB3285 /* UIKitInterop.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UIKitInterop.storyboard; sourceTree = "<group>"; };
 		CA6FB0E226C6AD9E00FB3285 /* UIKitInteropTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKitInteropTests.swift; sourceTree = "<group>"; };
 		CA6FB0E926C6AE3600FB3285 /* TopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopViewController.swift; sourceTree = "<group>"; };
 		CA6FB0EA26C6AE3600FB3285 /* WaitUntil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaitUntil.swift; sourceTree = "<group>"; };
@@ -301,7 +299,6 @@
 				D7DBD20026CD923600F1E39B /* SwiftCurrent_Testing_ObjC */,
 				D7DBD1F326CD920700F1E39B /* SwiftCurrent_Testing */,
 				CA6FB0E826C6AE3600FB3285 /* TestUtilities */,
-				CA6FB0E126C6AD9E00FB3285 /* UIKitInterop.storyboard */,
 				CA6FB0E226C6AD9E00FB3285 /* UIKitInteropTests.swift */,
 				CAD026AD26A0C8570075B818 /* ViewInspector */,
 				CAC34B5626A07F840039A373 /* Info.plist */,
@@ -599,7 +596,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CA6FB0E326C6AD9E00FB3285 /* UIKitInterop.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
