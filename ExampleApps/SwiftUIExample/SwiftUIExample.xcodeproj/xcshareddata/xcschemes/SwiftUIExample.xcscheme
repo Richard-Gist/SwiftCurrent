@@ -51,13 +51,6 @@
             BlueprintName = "SwiftCurrent_SwiftUI"
             ReferencedContainer = "container:../..">
          </BuildableReference>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "CAC34B3E26A07F830039A373"
-            BuildableName = "SwiftUIExample.app"
-            BlueprintName = "SwiftUIExample"
-            ReferencedContainer = "container:SwiftUIExample.xcodeproj">
-         </BuildableReference>
       </CodeCoverageTargets>
       <Testables>
          <TestableReference
