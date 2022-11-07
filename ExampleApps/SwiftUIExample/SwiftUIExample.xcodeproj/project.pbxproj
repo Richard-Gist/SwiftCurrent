@@ -21,7 +21,6 @@
 		CA7B821026A123F6005AA87D /* InspectableSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7B820F26A123F6005AA87D /* InspectableSheet.swift */; };
 		CA7B829F26A1FAAC005AA87D /* InspectableAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7B829E26A1FAAC005AA87D /* InspectableAlert.swift */; };
 		CA7F7F7E26D4531C00DB1903 /* WorkflowItemExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7F7F7D26D4531C00DB1903 /* WorkflowItemExtensions.swift */; };
-		CA7F7F8026D453C100DB1903 /* ViewHostingExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7F7F7F26D453C100DB1903 /* ViewHostingExtensions.swift */; };
 		CA971D2226D593150083821A /* XCTestCaseExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA971D2126D593150083821A /* XCTestCaseExtensions.swift */; };
 		CAA4DE0228BB1A740059324B /* SwiftCurrent_UIKit in Frameworks */ = {isa = PBXBuildFile; productRef = CAA4DE0128BB1A740059324B /* SwiftCurrent_UIKit */; };
 		CABEC41726E13BC900F1BF53 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A6CE7D26E039C300599824 /* TestView.swift */; };
@@ -42,9 +41,7 @@
 		CAD0269A26A0BE390075B818 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = CAD0269926A0BE390075B818 /* Swinject */; };
 		CAD0269F26A0BE810075B818 /* ContainerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD0269E26A0BE810075B818 /* ContainerExtensions.swift */; };
 		CAD026A126A0BE9A0075B818 /* DependencyInjected.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD026A026A0BE9A0075B818 /* DependencyInjected.swift */; };
-		CAD026A326A0BEB50075B818 /* DependencyInjectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD026A226A0BEB50075B818 /* DependencyInjectionTests.swift */; };
 		CAD026AC26A0C83B0075B818 /* Inspection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD026AB26A0C83B0075B818 /* Inspection.swift */; };
-		CAD026AF26A0C8680075B818 /* InspectableExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD026AE26A0C8680075B818 /* InspectableExtensions.swift */; };
 		D72B763D26FBCF7000E0405F /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72B763626FBCF6F00E0405F /* Colors.swift */; };
 		D72B763E26FBCF7000E0405F /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72B763726FBCF6F00E0405F /* PrimaryButton.swift */; };
 		D72B763F26FBCF7000E0405F /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72B763826FBCF6F00E0405F /* Images.swift */; };
@@ -62,7 +59,6 @@
 		D72B765526FC032B00E0405F /* ChangeEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72B765426FC032B00E0405F /* ChangeEmailView.swift */; };
 		D72B765726FC036A00E0405F /* AccountInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72B765626FC036A00E0405F /* AccountInformationView.swift */; };
 		D72B765A26FC048100E0405F /* MFAView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72B765926FC048100E0405F /* MFAView.swift */; };
-		D74A4D5C26A7315F00010617 /* TestConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74A4D5B26A7315F00010617 /* TestConstant.swift */; };
 		D78139C027075EFF004A4721 /* NotificationReceiverLocal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78139BF27075EFF004A4721 /* NotificationReceiverLocal.swift */; };
 		D78139C227075F67004A4721 /* WorkflowTestingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78139C127075F67004A4721 /* WorkflowTestingData.swift */; };
 		D78139D0270DE5F4004A4721 /* OnboardingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78139CF270DE5F4004A4721 /* OnboardingData.swift */; };
@@ -109,7 +105,6 @@
 		CA7B820F26A123F6005AA87D /* InspectableSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectableSheet.swift; sourceTree = "<group>"; };
 		CA7B829E26A1FAAC005AA87D /* InspectableAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectableAlert.swift; sourceTree = "<group>"; };
 		CA7F7F7D26D4531C00DB1903 /* WorkflowItemExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WorkflowItemExtensions.swift; path = ../../../../Tests/SwiftCurrent_SwiftUITests/WorkflowItemExtensions.swift; sourceTree = "<group>"; };
-		CA7F7F7F26D453C100DB1903 /* ViewHostingExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewHostingExtensions.swift; path = ../../../../Tests/SwiftCurrent_SwiftUITests/ViewInspector/ViewHostingExtensions.swift; sourceTree = "<group>"; };
 		CA971D2126D593150083821A /* XCTestCaseExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = XCTestCaseExtensions.swift; path = ../../../../Tests/SwiftCurrent_SwiftUITests/TestExtensions/XCTestCaseExtensions.swift; sourceTree = "<group>"; };
 		CAC34B3F26A07F830039A373 /* SwiftUIExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUIExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAC34B4226A07F830039A373 /* SwiftUIExampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIExampleApp.swift; sourceTree = "<group>"; };
@@ -125,9 +120,7 @@
 		CAC34B7226A07FE90039A373 /* MapFeatureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapFeatureView.swift; sourceTree = "<group>"; };
 		CAD0269E26A0BE810075B818 /* ContainerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerExtensions.swift; sourceTree = "<group>"; };
 		CAD026A026A0BE9A0075B818 /* DependencyInjected.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyInjected.swift; sourceTree = "<group>"; };
-		CAD026A226A0BEB50075B818 /* DependencyInjectionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyInjectionTests.swift; sourceTree = "<group>"; };
 		CAD026AB26A0C83B0075B818 /* Inspection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inspection.swift; sourceTree = "<group>"; };
-		CAD026AE26A0C8680075B818 /* InspectableExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectableExtensions.swift; sourceTree = "<group>"; };
 		D72B763626FBCF6F00E0405F /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		D72B763726FBCF6F00E0405F /* PrimaryButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
 		D72B763826FBCF6F00E0405F /* Images.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
@@ -145,7 +138,6 @@
 		D72B765426FC032B00E0405F /* ChangeEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeEmailView.swift; sourceTree = "<group>"; };
 		D72B765626FC036A00E0405F /* AccountInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountInformationView.swift; sourceTree = "<group>"; };
 		D72B765926FC048100E0405F /* MFAView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MFAView.swift; sourceTree = "<group>"; };
-		D74A4D5B26A7315F00010617 /* TestConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestConstant.swift; sourceTree = "<group>"; };
 		D74A4D5D26A7471700010617 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D78139BF27075EFF004A4721 /* NotificationReceiverLocal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationReceiverLocal.swift; sourceTree = "<group>"; };
 		D78139C127075F67004A4721 /* WorkflowTestingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkflowTestingData.swift; sourceTree = "<group>"; };
@@ -300,10 +292,7 @@
 				D7DBD1F326CD920700F1E39B /* SwiftCurrent_Testing */,
 				CA6FB0E826C6AE3600FB3285 /* TestUtilities */,
 				CA6FB0E226C6AD9E00FB3285 /* UIKitInteropTests.swift */,
-				CAD026AD26A0C8570075B818 /* ViewInspector */,
 				CAC34B5626A07F840039A373 /* Info.plist */,
-				CAD026A226A0BEB50075B818 /* DependencyInjectionTests.swift */,
-				D74A4D5B26A7315F00010617 /* TestConstant.swift */,
 			);
 			path = SwiftUIExampleTests;
 			sourceTree = "<group>";
@@ -347,15 +336,6 @@
 				CAD026AB26A0C83B0075B818 /* Inspection.swift */,
 				CA7B820F26A123F6005AA87D /* InspectableSheet.swift */,
 				CA7B829E26A1FAAC005AA87D /* InspectableAlert.swift */,
-			);
-			path = ViewInspector;
-			sourceTree = "<group>";
-		};
-		CAD026AD26A0C8570075B818 /* ViewInspector */ = {
-			isa = PBXGroup;
-			children = (
-				CA7F7F7F26D453C100DB1903 /* ViewHostingExtensions.swift */,
-				CAD026AE26A0C8680075B818 /* InspectableExtensions.swift */,
 			);
 			path = ViewInspector;
 			sourceTree = "<group>";
@@ -655,19 +635,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CAD026AF26A0C8680075B818 /* InspectableExtensions.swift in Sources */,
 				D7DBD1FB26CD920700F1E39B /* MockOrchestrationResponder.swift in Sources */,
 				CA6FB0EE26C6AE3600FB3285 /* WaitUntil.swift in Sources */,
 				D78139C227075F67004A4721 /* WorkflowTestingData.swift in Sources */,
 				D7DBD1FE26CD920700F1E39B /* FlowRepresentableMetadataAdditions.swift in Sources */,
 				CA971D2226D593150083821A /* XCTestCaseExtensions.swift in Sources */,
 				D7DBD1FF26CD920700F1E39B /* CustomAssertions.swift in Sources */,
-				CA7F7F8026D453C100DB1903 /* ViewHostingExtensions.swift in Sources */,
 				D7DBD20626CD923600F1E39B /* XCTestHooks.m in Sources */,
 				CA6FB0EF26C6AE3600FB3285 /* UIKitAssertions.swift in Sources */,
-				CAD026A326A0BEB50075B818 /* DependencyInjectionTests.swift in Sources */,
 				D78139C027075EFF004A4721 /* NotificationReceiverLocal.swift in Sources */,
-				D74A4D5C26A7315F00010617 /* TestConstant.swift in Sources */,
 				CA7F7F7E26D4531C00DB1903 /* WorkflowItemExtensions.swift in Sources */,
 				D7DBD1FC26CD920700F1E39B /* ViewControllerAdditions.swift in Sources */,
 				CA6FB0ED26C6AE3600FB3285 /* TopViewController.swift in Sources */,
