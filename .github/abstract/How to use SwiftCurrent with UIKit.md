@@ -1,1 +1,0 @@
-SwiftCurrent works well with UIKit when `FlowRepresentable`s are `UIViewController`s. `UIView`s are not supported at this time. It comes with [support for Storyboards](using-storyboards.html) with `StoryboardLoadable` and [programmatic views](using-programmatic-views.html). 
