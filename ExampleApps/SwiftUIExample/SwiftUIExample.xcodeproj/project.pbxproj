@@ -15,50 +15,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		628952D927E5281700FDDCEF /* SettingsOnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsOnboardingViewController.swift; sourceTree = "<group>"; };
-		628952DB27E528CC00FDDCEF /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		CA0536F526A0888200BF8FC5 /* ProfileFeatureOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFeatureOnboardingView.swift; sourceTree = "<group>"; };
-		CA6FB0DD26C6AD5200FB3285 /* UIKitInteropProgrammaticViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKitInteropProgrammaticViewController.swift; sourceTree = "<group>"; };
 		CA6FB0E226C6AD9E00FB3285 /* UIKitInteropTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKitInteropTests.swift; sourceTree = "<group>"; };
-		CA7B820F26A123F6005AA87D /* InspectableSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectableSheet.swift; sourceTree = "<group>"; };
-		CA7B829E26A1FAAC005AA87D /* InspectableAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectableAlert.swift; sourceTree = "<group>"; };
 		CAC34B4226A07F830039A373 /* SwiftUIExampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIExampleApp.swift; sourceTree = "<group>"; };
 		CAC34B4626A07F830039A373 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		CAC34B4926A07F830039A373 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CAC34B4B26A07F830039A373 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CAC34B5026A07F840039A373 /* SwiftUIExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftUIExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAC34B5626A07F840039A373 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CAC34B6E26A07FE90039A373 /* QRScannerFeatureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRScannerFeatureView.swift; sourceTree = "<group>"; };
-		CAC34B6F26A07FE90039A373 /* QRScannerFeatureOnboardingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRScannerFeatureOnboardingView.swift; sourceTree = "<group>"; };
-		CAC34B7026A07FE90039A373 /* MapFeatureOnboardingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapFeatureOnboardingView.swift; sourceTree = "<group>"; };
-		CAC34B7126A07FE90039A373 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		CAC34B7226A07FE90039A373 /* MapFeatureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapFeatureView.swift; sourceTree = "<group>"; };
-		CAD0269E26A0BE810075B818 /* ContainerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerExtensions.swift; sourceTree = "<group>"; };
-		CAD026A026A0BE9A0075B818 /* DependencyInjected.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyInjected.swift; sourceTree = "<group>"; };
-		CAD026AB26A0C83B0075B818 /* Inspection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inspection.swift; sourceTree = "<group>"; };
-		D72B763626FBCF6F00E0405F /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
-		D72B763726FBCF6F00E0405F /* PrimaryButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
-		D72B763826FBCF6F00E0405F /* Images.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
-		D72B763926FBCF6F00E0405F /* SecondaryButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondaryButton.swift; sourceTree = "<group>"; };
-		D72B763A26FBCF6F00E0405F /* PrimaryTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrimaryTextField.swift; sourceTree = "<group>"; };
-		D72B763B26FBCF6F00E0405F /* Styles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
-		D72B763C26FBCF7000E0405F /* PasswordField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordField.swift; sourceTree = "<group>"; };
-		D72B764626FBCFB200E0405F /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
-		D72B764726FBCFB200E0405F /* SignUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
-		D72B764826FBCFB200E0405F /* TermsAndConditions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsAndConditions.swift; sourceTree = "<group>"; };
-		D72B764C26FBDC3C00E0405F /* SwiftCurrentOnboarding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftCurrentOnboarding.swift; sourceTree = "<group>"; };
-		D72B764E26FBEDB900E0405F /* GenericOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericOnboardingView.swift; sourceTree = "<group>"; };
-		D72B765026FC024500E0405F /* ProfileFeatureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFeatureView.swift; sourceTree = "<group>"; };
-		D72B765226FC02B200E0405F /* ChangePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordView.swift; sourceTree = "<group>"; };
-		D72B765426FC032B00E0405F /* ChangeEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeEmailView.swift; sourceTree = "<group>"; };
-		D72B765626FC036A00E0405F /* AccountInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountInformationView.swift; sourceTree = "<group>"; };
-		D72B765926FC048100E0405F /* MFAView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MFAView.swift; sourceTree = "<group>"; };
 		D74A4D5D26A7471700010617 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		D78139CF270DE5F4004A4721 /* OnboardingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingData.swift; sourceTree = "<group>"; };
 		D7A6CE7426E0316C00599824 /* SwiftCurrent_SwiftUI_UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftCurrent_SwiftUI_UITests.swift; sourceTree = "<group>"; };
 		D7A6CE7626E0316C00599824 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D7A6CE7D26E039C300599824 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
-		D7A6CE7F26E039EE00599824 /* TestEnumerations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestEnumerations.swift; sourceTree = "<group>"; };
 		D7DBD20126CD923600F1E39B /* XCTestHooks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCTestHooks.m; sourceTree = "<group>"; };
 		D7DBD20326CD923600F1E39B /* NSObjectLoadable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSObjectLoadable.h; sourceTree = "<group>"; };
 		D7DBD20426CD923600F1E39B /* XCTestHooks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCTestHooks.h; sourceTree = "<group>"; };
@@ -78,36 +43,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		628952D827E5280000FDDCEF /* Settings */ = {
-			isa = PBXGroup;
-			children = (
-				628952D927E5281700FDDCEF /* SettingsOnboardingViewController.swift */,
-				628952DB27E528CC00FDDCEF /* SettingsViewController.swift */,
-			);
-			path = Settings;
-			sourceTree = "<group>";
-		};
-		CA0536F926A0917A00BF8FC5 /* Profile */ = {
-			isa = PBXGroup;
-			children = (
-				D72B765626FC036A00E0405F /* AccountInformationView.swift */,
-				D72B765426FC032B00E0405F /* ChangeEmailView.swift */,
-				D72B765226FC02B200E0405F /* ChangePasswordView.swift */,
-				D72B765926FC048100E0405F /* MFAView.swift */,
-				CA0536F526A0888200BF8FC5 /* ProfileFeatureOnboardingView.swift */,
-				D72B765026FC024500E0405F /* ProfileFeatureView.swift */,
-			);
-			path = Profile;
-			sourceTree = "<group>";
-		};
-		CA6FB0DC26C6AD5200FB3285 /* UIKitInterop */ = {
-			isa = PBXGroup;
-			children = (
-				CA6FB0DD26C6AD5200FB3285 /* UIKitInteropProgrammaticViewController.swift */,
-			);
-			path = UIKitInterop;
-			sourceTree = "<group>";
-		};
 		CAC34B3626A07F830039A373 = {
 			isa = PBXGroup;
 			children = (
@@ -131,26 +66,11 @@
 		CAC34B4126A07F830039A373 /* SwiftUIExample */ = {
 			isa = PBXGroup;
 			children = (
-				CAD0269D26A0BE610075B818 /* DependencyInjection */,
-				D78139CE270DE504004A4721 /* Models */,
-				CAC34B4826A07F830039A373 /* Preview Content */,
-				D7A6CE7C26E039B400599824 /* TestViews */,
-				CA6FB0DC26C6AD5200FB3285 /* UIKitInterop */,
-				CAD026AA26A0C7F80075B818 /* ViewInspector */,
-				CAC34B6D26A07FE90039A373 /* Views */,
 				CAC34B4B26A07F830039A373 /* Info.plist */,
 				CAC34B4226A07F830039A373 /* SwiftUIExampleApp.swift */,
 				CAC34B4626A07F830039A373 /* Assets.xcassets */,
 			);
 			path = SwiftUIExample;
-			sourceTree = "<group>";
-		};
-		CAC34B4826A07F830039A373 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				CAC34B4926A07F830039A373 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 		CAC34B5326A07F840039A373 /* SwiftUIExampleTests */ = {
@@ -163,96 +83,11 @@
 			path = SwiftUIExampleTests;
 			sourceTree = "<group>";
 		};
-		CAC34B6D26A07FE90039A373 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				628952D827E5280000FDDCEF /* Settings */,
-				D72B763526FBCF5A00E0405F /* Design */,
-				D78139CB270DE3AD004A4721 /* Map */,
-				CA0536F926A0917A00BF8FC5 /* Profile */,
-				D78139CC270DE3C2004A4721 /* QRScanner */,
-				D72B764526FBCFB200E0405F /* SignUp */,
-				CAC34B7126A07FE90039A373 /* ContentView.swift */,
-				D72B764E26FBEDB900E0405F /* GenericOnboardingView.swift */,
-				D72B764626FBCFB200E0405F /* LoginView.swift */,
-				D72B764C26FBDC3C00E0405F /* SwiftCurrentOnboarding.swift */,
-			);
-			path = Views;
-			sourceTree = SOURCE_ROOT;
-		};
 		CAC34B8026A080910039A373 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		CAD0269D26A0BE610075B818 /* DependencyInjection */ = {
-			isa = PBXGroup;
-			children = (
-				CAD0269E26A0BE810075B818 /* ContainerExtensions.swift */,
-				CAD026A026A0BE9A0075B818 /* DependencyInjected.swift */,
-			);
-			path = DependencyInjection;
-			sourceTree = "<group>";
-		};
-		CAD026AA26A0C7F80075B818 /* ViewInspector */ = {
-			isa = PBXGroup;
-			children = (
-				CAD026AB26A0C83B0075B818 /* Inspection.swift */,
-				CA7B820F26A123F6005AA87D /* InspectableSheet.swift */,
-				CA7B829E26A1FAAC005AA87D /* InspectableAlert.swift */,
-			);
-			path = ViewInspector;
-			sourceTree = "<group>";
-		};
-		D72B763526FBCF5A00E0405F /* Design */ = {
-			isa = PBXGroup;
-			children = (
-				D72B763626FBCF6F00E0405F /* Colors.swift */,
-				D72B763826FBCF6F00E0405F /* Images.swift */,
-				D72B763C26FBCF7000E0405F /* PasswordField.swift */,
-				D72B763726FBCF6F00E0405F /* PrimaryButton.swift */,
-				D72B763A26FBCF6F00E0405F /* PrimaryTextField.swift */,
-				D72B763926FBCF6F00E0405F /* SecondaryButton.swift */,
-				D72B763B26FBCF6F00E0405F /* Styles.swift */,
-			);
-			path = Design;
-			sourceTree = "<group>";
-		};
-		D72B764526FBCFB200E0405F /* SignUp */ = {
-			isa = PBXGroup;
-			children = (
-				D72B764726FBCFB200E0405F /* SignUp.swift */,
-				D72B764826FBCFB200E0405F /* TermsAndConditions.swift */,
-			);
-			path = SignUp;
-			sourceTree = "<group>";
-		};
-		D78139CB270DE3AD004A4721 /* Map */ = {
-			isa = PBXGroup;
-			children = (
-				CAC34B7026A07FE90039A373 /* MapFeatureOnboardingView.swift */,
-				CAC34B7226A07FE90039A373 /* MapFeatureView.swift */,
-			);
-			path = Map;
-			sourceTree = "<group>";
-		};
-		D78139CC270DE3C2004A4721 /* QRScanner */ = {
-			isa = PBXGroup;
-			children = (
-				CAC34B6F26A07FE90039A373 /* QRScannerFeatureOnboardingView.swift */,
-				CAC34B6E26A07FE90039A373 /* QRScannerFeatureView.swift */,
-			);
-			path = QRScanner;
-			sourceTree = "<group>";
-		};
-		D78139CE270DE504004A4721 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				D78139CF270DE5F4004A4721 /* OnboardingData.swift */,
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		D7A6CE7326E0316C00599824 /* SwiftCurrent_SwiftUI_UITests */ = {
@@ -262,15 +97,6 @@
 				D7A6CE7626E0316C00599824 /* Info.plist */,
 			);
 			path = SwiftCurrent_SwiftUI_UITests;
-			sourceTree = "<group>";
-		};
-		D7A6CE7C26E039B400599824 /* TestViews */ = {
-			isa = PBXGroup;
-			children = (
-				D7A6CE7D26E039C300599824 /* TestView.swift */,
-				D7A6CE7F26E039EE00599824 /* TestEnumerations.swift */,
-			);
-			path = TestViews;
 			sourceTree = "<group>";
 		};
 		D7DBD20026CD923600F1E39B /* SwiftCurrent_Testing_ObjC */ = {
