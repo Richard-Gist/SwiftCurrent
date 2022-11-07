@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		CA6FB0E426C6AD9E00FB3285 /* UIKitInteropTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6FB0E226C6AD9E00FB3285 /* UIKitInteropTests.swift */; };
-		D7DBD20626CD923600F1E39B /* XCTestHooks.m in Sources */ = {isa = PBXBuildFile; fileRef = D7DBD20126CD923600F1E39B /* XCTestHooks.m */; };
-		D7DBD20726CD923600F1E39B /* NSObjectLoadable.m in Sources */ = {isa = PBXBuildFile; fileRef = D7DBD20526CD923600F1E39B /* NSObjectLoadable.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -17,10 +15,6 @@
 		CAC34B5026A07F840039A373 /* SwiftUIExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftUIExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAC34B5626A07F840039A373 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D74A4D5D26A7471700010617 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		D7DBD20126CD923600F1E39B /* XCTestHooks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCTestHooks.m; sourceTree = "<group>"; };
-		D7DBD20326CD923600F1E39B /* NSObjectLoadable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSObjectLoadable.h; sourceTree = "<group>"; };
-		D7DBD20426CD923600F1E39B /* XCTestHooks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCTestHooks.h; sourceTree = "<group>"; };
-		D7DBD20526CD923600F1E39B /* NSObjectLoadable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSObjectLoadable.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,7 +49,6 @@
 		CAC34B5326A07F840039A373 /* SwiftUIExampleTests */ = {
 			isa = PBXGroup;
 			children = (
-				D7DBD20026CD923600F1E39B /* SwiftCurrent_Testing_ObjC */,
 				CA6FB0E226C6AD9E00FB3285 /* UIKitInteropTests.swift */,
 				CAC34B5626A07F840039A373 /* Info.plist */,
 			);
@@ -67,26 +60,6 @@
 			children = (
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		D7DBD20026CD923600F1E39B /* SwiftCurrent_Testing_ObjC */ = {
-			isa = PBXGroup;
-			children = (
-				D7DBD20126CD923600F1E39B /* XCTestHooks.m */,
-				D7DBD20226CD923600F1E39B /* Include */,
-				D7DBD20526CD923600F1E39B /* NSObjectLoadable.m */,
-			);
-			name = SwiftCurrent_Testing_ObjC;
-			path = ../../../Sources/SwiftCurrent_Testing_ObjC;
-			sourceTree = "<group>";
-		};
-		D7DBD20226CD923600F1E39B /* Include */ = {
-			isa = PBXGroup;
-			children = (
-				D7DBD20326CD923600F1E39B /* NSObjectLoadable.h */,
-				D7DBD20426CD923600F1E39B /* XCTestHooks.h */,
-			);
-			path = Include;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -161,9 +134,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D7DBD20626CD923600F1E39B /* XCTestHooks.m in Sources */,
 				CA6FB0E426C6AD9E00FB3285 /* UIKitInteropTests.swift in Sources */,
-				D7DBD20726CD923600F1E39B /* NSObjectLoadable.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,7 +272,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = WWT.SwiftUIExampleTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "../../Sources/SwiftCurrent_Testing_ObjC/SwiftUIExampleTests-Bridging-Header.h";
+				SWIFT_PRECOMPILE_BRIDGING_HEADER = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -322,7 +293,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = WWT.SwiftUIExampleTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "../../Sources/SwiftCurrent_Testing_ObjC/SwiftUIExampleTests-Bridging-Header.h";
+				SWIFT_PRECOMPILE_BRIDGING_HEADER = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
