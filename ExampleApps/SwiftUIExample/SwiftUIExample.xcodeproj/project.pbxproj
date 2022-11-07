@@ -3,13 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		CA6FB0E426C6AD9E00FB3285 /* UIKitInteropTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6FB0E226C6AD9E00FB3285 /* UIKitInteropTests.swift */; };
-		CA6FB0E726C6ADCD00FB3285 /* UIUTest in Frameworks */ = {isa = PBXBuildFile; productRef = CA6FB0E626C6ADCD00FB3285 /* UIUTest */; };
-		CAC34B7A26A0801E0039A373 /* ViewInspector in Frameworks */ = {isa = PBXBuildFile; productRef = CAC34B7926A0801E0039A373 /* ViewInspector */; };
 		D7DBD20626CD923600F1E39B /* XCTestHooks.m in Sources */ = {isa = PBXBuildFile; fileRef = D7DBD20126CD923600F1E39B /* XCTestHooks.m */; };
 		D7DBD20726CD923600F1E39B /* NSObjectLoadable.m in Sources */ = {isa = PBXBuildFile; fileRef = D7DBD20526CD923600F1E39B /* NSObjectLoadable.m */; };
 /* End PBXBuildFile section */
@@ -35,8 +33,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CA6FB0E726C6ADCD00FB3285 /* UIUTest in Frameworks */,
-				CAC34B7A26A0801E0039A373 /* ViewInspector in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,8 +132,6 @@
 			);
 			name = SwiftUIExampleTests;
 			packageProductDependencies = (
-				CAC34B7926A0801E0039A373 /* ViewInspector */,
-				CA6FB0E626C6ADCD00FB3285 /* UIUTest */,
 			);
 			productName = SwiftUIExampleTests;
 			productReference = CAC34B5026A07F840039A373 /* SwiftUIExampleTests.xctest */;
@@ -168,10 +162,6 @@
 			);
 			mainGroup = CAC34B3626A07F830039A373;
 			packageReferences = (
-				CAC34B7826A0801E0039A373 /* XCRemoteSwiftPackageReference "ViewInspector" */,
-				CAC34B7B26A0803C0039A373 /* XCRemoteSwiftPackageReference "CodeScanner" */,
-				CAD0269826A0BE390075B818 /* XCRemoteSwiftPackageReference "Swinject" */,
-				CA6FB0E526C6ADCD00FB3285 /* XCRemoteSwiftPackageReference "UIUTest" */,
 			);
 			productRefGroup = CAC34B4026A07F830039A373 /* Products */;
 			projectDirPath = "";
@@ -386,54 +376,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		CA6FB0E526C6ADCD00FB3285 /* XCRemoteSwiftPackageReference "UIUTest" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/nallick/UIUTest.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.8.0;
-			};
-		};
-		CAC34B7826A0801E0039A373 /* XCRemoteSwiftPackageReference "ViewInspector" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/nalexn/ViewInspector.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.8.1;
-			};
-		};
-		CAC34B7B26A0803C0039A373 /* XCRemoteSwiftPackageReference "CodeScanner" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/twostraws/CodeScanner";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.7;
-			};
-		};
-		CAD0269826A0BE390075B818 /* XCRemoteSwiftPackageReference "Swinject" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Swinject/Swinject";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		CA6FB0E626C6ADCD00FB3285 /* UIUTest */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CA6FB0E526C6ADCD00FB3285 /* XCRemoteSwiftPackageReference "UIUTest" */;
-			productName = UIUTest;
-		};
-		CAC34B7926A0801E0039A373 /* ViewInspector */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CAC34B7826A0801E0039A373 /* XCRemoteSwiftPackageReference "ViewInspector" */;
-			productName = ViewInspector;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CAC34B3726A07F830039A373 /* Project object */;
 }
